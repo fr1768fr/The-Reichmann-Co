@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reichmann Holdings Pty Ltd is a South African technology company designing and developing mobile apps, web applications, and SaaS products for every platform.">
+    <meta name="keywords" content="Reichmann Holdings, software development, app development, SaaS, mobile apps, web applications, iOS, Android, South Africa, technology">
+    <meta property="og:title" content="Reichmann Holdings · Software, Apps & SaaS">
+    <meta property="og:description" content="South African technology company. We design and build apps and SaaS products across mobile, web, and desktop.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reichmannholdings.co.za">
+    <title>Reichmann Holdings · Software, Apps & SaaS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+    <link rel="apple-touch-icon" href="favicon.svg?v=3">
+    <link rel="canonical" href="https://reichmannholdings.co.za/">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Reichmann Holdings",
+        "legalName": "Reichmann Holdings Pty Ltd",
+        "alternateName": "Reichmann Holdings Pty Ltd",
+        "url": "https://reichmannholdings.co.za",
+        "logo": "https://reichmannholdings.co.za/favicon.svg",
+        "description": "Reichmann Holdings Pty Ltd is a South African technology company designing and developing mobile apps, web applications, and SaaS products for every platform.",
+        "foundingDate": "2026",
+        "founders": [
+            {
+                "@type": "Person",
+                "name": "Franco Reichmann"
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ZA",
+            "addressRegion": "South Africa"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@reichmannholdings.co.za",
+            "contactType": "customer support",
+            "areaServed": "Worldwide",
+            "availableLanguage": "English"
+        },
+        "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "CIPC Registration Number",
+            "value": "2026/389746/07"
+        },
+        "knowsAbout": [
+            "Software Development",
+            "Mobile App Development",
+            "Web Application Development",
+            "SaaS Development",
+            "Enterprise Resource Planning",
+            "Cloud Infrastructure"
+        ]
+    }
+    </script>
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <svg class="logo-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="atomBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1e293b"/>
+                            <stop offset="1" stop-color="#0a0f1c"/>
+                        </linearGradient>
+                        <radialGradient id="atomNucleus" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#bfdbfe"/>
+                            <stop offset="55%" stop-color="#60a5fa"/>
+                            <stop offset="100%" stop-color="#2563eb"/>
+                        </radialGradient>
+                        <linearGradient id="atomOrbit" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#60a5fa"/>
+                            <stop offset="1" stop-color="#3b82f6"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="64" height="64" rx="14" fill="url(#atomBg)"/>
+                    <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="rgba(96, 165, 250, 0.2)"/>
+                    <g class="atom-orbits" stroke="url(#atomOrbit)" stroke-width="1.75" fill="none">
+                        <ellipse cx="32" cy="32" rx="22" ry="9"/>
+                        <ellipse cx="32" cy="32" rx="22" ry="9" transform="rotate(60 32 32)"/>
+                        <ellipse cx="32" cy="32" rx="22" ry="9" transform="rotate(120 32 32)"/>
+                    </g>
+                    <circle cx="54" cy="32" r="2.5" fill="#93c5fd"/>
+                    <circle cx="21" cy="13" r="2.5" fill="#93c5fd"/>
+                    <circle cx="21" cy="51" r="2.5" fill="#93c5fd"/>
+                    <circle cx="32" cy="32" r="5" fill="url(#atomNucleus)"/>
+                </svg>
+                <span class="logo-text">Reichmann Holdings</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">What We Build</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
+                <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2"/>
+                    <path d="M12 20v2"/>
+                    <path d="m4.93 4.93 1.41 1.41"/>
+                    <path d="m17.66 17.66 1.41 1.41"/>
+                    <path d="M2 12h2"/>
+                    <path d="M20 12h2"/>
+                    <path d="m4.93 19.07 1.41-1.41"/>
+                    <path d="m17.66 6.34 1.41-1.41"/>
+                </svg>
+                <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Software</span>
+                <span class="title-line title-accent">engineered</span>
+                <span class="title-line">for every screen.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Reichmann Holdings is a South African technology company designing and developing mobile apps, web applications, and SaaS products for ambitious teams worldwide.
+            </p>
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary">
+                    <span>What We Build</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-ghost">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About <span class="accent">Reichmann Holdings</span></h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="lead">
+                        Reichmann Holdings Pty Ltd is a South African technology company
+                        specialising in custom software development, from native mobile
+                        apps to enterprise SaaS platforms.
+                    </p>
+                    <p>
+                        We design, build, and ship software across every major platform:
+                        iOS, Android, web, and desktop. Our work spans bespoke client
+                        engagements and our own portfolio of SaaS products, each built to
+                        the same uncompromising standard.
+                    </p>
+                    <p>
+                        Founded on the belief that great software starts with great
+                        engineering, we partner with founders, businesses, and operators
+                        to turn ideas into products that ship. Fast, polished, and built
+                        to scale.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2026</div>
+                        <div class="stat-label">Founded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">ZA</div>
+                        <div class="stat-label">South Africa</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Platforms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">SaaS</div>
+                        <div class="stat-label">Native</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / What We Build Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">What We <span class="accent">Build</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-intro">
+                    We design and ship software across every platform. From native mobile
+                    apps to enterprise SaaS, our team builds products that are fast,
+                    beautiful, and engineered to last.
+                </p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2.5"></rect>
+                            <line x1="12" y1="18" x2="12" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>
+                        Native iOS and Android applications. Polished, performant, and
+                        built to scale, from MVP to App Store launch and beyond.
+                    </p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Web Applications</h3>
+                    <p>
+                        Modern web apps built with the latest frameworks. Responsive,
+                        accessible, and fast on every device, from desktop to mobile.
+                    </p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
+                    <h3>SaaS Products</h3>
+                    <p>
+                        End-to-end SaaS development. We design, build, and ship
+                        subscription products, from blank canvas to paying customers.
+                    </p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <line x1="2" y1="17" x2="22" y2="17"></line>
+                            <line x1="6" y1="21" x2="18" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Desktop Software</h3>
+                    <p>
+                        Native desktop applications for Windows, macOS, and Linux.
+                        For when the browser doesn't cut it.
+                    </p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3>Cloud &amp; Backend</h3>
+                    <p>
+                        Scalable APIs, backends, and cloud infrastructure on AWS, GCP,
+                        or Azure. Architected for performance and uptime.
+                    </p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>AI &amp; Integrations</h3>
+                    <p>
+                        LLM-powered features, intelligent automation, and seamless
+                        integrations with the platforms your customers already use.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Current Products <span class="accent">In Development</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-intro">
+                    Beyond our client work, we build software for ourselves.
+                    Products designed from first principles. Here's what's
+                    currently in the lab.
+                </p>
+            </div>
+            <div class="products-grid">
+                <article class="product-card">
+                    <div class="product-card-header">
+                        <div class="product-status">
+                            <span class="status-dot"></span>
+                            <span>In Development</span>
+                        </div>
+                        <span class="product-category">Enterprise Resource Planning</span>
+                    </div>
+
+                    <h3 class="product-name">Lumarix</h3>
+
+                    <p class="product-tagline">
+                        Enterprise Resource Planning, reimagined.
+                    </p>
+
+                    <div class="product-description">
+                        <p>
+                            Lumarix is a cutting-edge Enterprise Resource Planning (ERP)
+                            solution engineered to establish new benchmarks in business
+                            management software. Designed, built, developed, and deployed
+                            by Reichmann Holdings Pty Ltd, Lumarix embodies a bold vision
+                            to become the premier ERP system in the world, empowering
+                            organizations with unparalleled efficiency, insight, and agility.
+                        </p>
+                        <p>
+                            As a fully integrated platform, Lumarix harmonizes core
+                            business processes, from financial management and human
+                            capital to supply chain, manufacturing, procurement, sales,
+                            and customer engagement, into a single, cohesive ecosystem.
+                            Leveraging advanced technologies such as real-time analytics,
+                            intelligent automation, and scalable cloud architecture, it
+                            enables data-driven decision making and operational excellence
+                            across global enterprises.
+                        </p>
+                        <p>
+                            With a focus on intuitive design, robust security, and
+                            seamless adaptability, Lumarix supports businesses of all
+                            sizes in navigating complexity while driving sustainable
+                            growth. Backed by the expertise and innovation of Reichmann
+                            Holdings Pty Ltd, Lumarix is poised to deliver transformative
+                            value to forward-thinking organizations worldwide.
+                        </p>
+                    </div>
+
+                    <div class="product-tags">
+                        <span class="product-tag">Finance</span>
+                        <span class="product-tag">Human Capital</span>
+                        <span class="product-tag">Supply Chain</span>
+                        <span class="product-tag">Manufacturing</span>
+                        <span class="product-tag">Procurement</span>
+                        <span class="product-tag">Sales &amp; CRM</span>
+                        <span class="product-tag">Real-Time Analytics</span>
+                        <span class="product-tag">Intelligent Automation</span>
+                        <span class="product-tag">Cloud-Native</span>
+                    </div>
+
+                    <form class="beta-signup" id="lumarixBetaForm" novalidate>
+                        <div class="beta-signup-header">
+                            <span class="beta-badge">Beta Access</span>
+                            <h4 class="beta-heading">Sign up for Beta testing</h4>
+                            <p class="beta-subline">
+                                For accountants. We'll email you the moment Lumarix is ready for beta testing.
+                            </p>
+                        </div>
+                        <div class="beta-input-row">
+                            <input type="email" name="email" id="betaEmail" placeholder="your@email.com" required aria-label="Email address" autocomplete="email">
+                            <button type="submit" class="btn btn-primary" id="betaSubmit">
+                                <span>Join Waitlist</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="beta-note" id="betaNote" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="product-meta">
+                        <span class="meta-label">Launch: Coming Soon</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="section vision" id="approach">
+        <div class="container">
+            <div class="vision-content">
+                <div class="section-header center">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">Our <span class="accent">Approach</span></h2>
+                    <div class="section-divider centered"></div>
+                </div>
+                <blockquote class="vision-quote">
+                    <p>
+                        "Engineering is craft. Every product we ship is built to be fast,
+                        dependable, and worth coming back to. Software given the same
+                        care as a piece of architecture."
+                    </p>
+                    <footer>Reichmann Holdings</footer>
+                </blockquote>
+                <div class="values-grid">
+                    <div class="value">
+                        <div class="value-number">01</div>
+                        <h4>Engineering Craft</h4>
+                        <p>Code that ages well. Built to last, not just to ship.</p>
+                    </div>
+                    <div class="value">
+                        <div class="value-number">02</div>
+                        <h4>Speed to Market</h4>
+                        <p>MVPs in weeks. Production releases in months.</p>
+                    </div>
+                    <div class="value">
+                        <div class="value-number">03</div>
+                        <h4>Every Platform</h4>
+                        <p>Mobile, web, desktop. We meet users where they are.</p>
+                    </div>
+                    <div class="value">
+                        <div class="value-number">04</div>
+                        <h4>Honest Partnership</h4>
+                        <p>Clear scope, direct communication, no surprises.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <h2 class="section-title">Let's <span class="accent">Build</span></h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <p class="contact-lead">
+                        Have an idea, an app to build, or a SaaS to launch?
+                        Whether you're a founder with a sketch on a napkin or a business
+                        scaling its operations, we'd love to hear about it.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:info@reichmannholdings.co.za" class="contact-value">info@reichmannholdings.co.za</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">South Africa</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Hours</span>
+                            <span class="contact-value">Mon to Fri · 09:00 to 17:00 SAST</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xojbnyog" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company <span class="optional">(optional)</span></label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Project Type</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a project type</option>
+                            <option value="mobile-app">Mobile App (iOS / Android)</option>
+                            <option value="web-app">Web Application</option>
+                            <option value="saas">SaaS Product</option>
+                            <option value="desktop">Desktop Software</option>
+                            <option value="cloud">Cloud / Backend / API</option>
+                            <option value="consulting">Technical Consulting</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                    <p class="form-note" id="formNote"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo">
+                        <svg class="logo-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="atomBgF" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#1e293b"/>
+                                    <stop offset="1" stop-color="#0a0f1c"/>
+                                </linearGradient>
+                                <radialGradient id="atomNucleusF" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#bfdbfe"/>
+                                    <stop offset="55%" stop-color="#60a5fa"/>
+                                    <stop offset="100%" stop-color="#2563eb"/>
+                                </radialGradient>
+                                <linearGradient id="atomOrbitF" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#60a5fa"/>
+                                    <stop offset="1" stop-color="#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="64" height="64" rx="14" fill="url(#atomBgF)"/>
+                            <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="rgba(96, 165, 250, 0.2)"/>
+                            <g stroke="url(#atomOrbitF)" stroke-width="1.75" fill="none">
+                                <ellipse cx="32" cy="32" rx="22" ry="9"/>
+                                <ellipse cx="32" cy="32" rx="22" ry="9" transform="rotate(60 32 32)"/>
+                                <ellipse cx="32" cy="32" rx="22" ry="9" transform="rotate(120 32 32)"/>
+                            </g>
+                            <circle cx="54" cy="32" r="2.5" fill="#93c5fd"/>
+                            <circle cx="21" cy="13" r="2.5" fill="#93c5fd"/>
+                            <circle cx="21" cy="51" r="2.5" fill="#93c5fd"/>
+                            <circle cx="32" cy="32" r="5" fill="url(#atomNucleusF)"/>
+                        </svg>
+                        <span class="logo-text">Reichmann Holdings</span>
+                    </a>
+                    <p>Software, apps &amp; SaaS. Built to ship.</p>
+                </div>
+                <div class="footer-links">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">What We Build</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#approach">Approach</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li>Reichmann Holdings Pty Ltd</li>
+                        <li>Reg. No. 2026/389746/07</li>
+                        <li>Registered in South Africa</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year">2026</span> Reichmann Holdings Pty Ltd. All rights reserved.</p>
+                <p class="footer-tagline">Engineered in South Africa</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
