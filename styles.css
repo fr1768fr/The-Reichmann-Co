@@ -4,20 +4,20 @@
    ======================================== */
 
 :root {
-    /* Color palette */
+    /* Color palette — pure black + subtle grey trim */
     --bg-primary: #000000;
-    --bg-secondary: #060912;
-    --bg-tertiary: #0a1024;
-    --bg-elevated: #0f1428;
-    --bg-card: rgba(30, 41, 59, 0.35);
-    --bg-card-hover: rgba(51, 65, 85, 0.45);
-    --border: rgba(148, 163, 184, 0.08);
-    --border-strong: rgba(148, 163, 184, 0.18);
-    --border-accent: rgba(96, 165, 250, 0.3);
+    --bg-secondary: #000000;
+    --bg-tertiary: #000000;
+    --bg-elevated: #050505;
+    --bg-card: transparent;
+    --bg-card-hover: rgba(255, 255, 255, 0.025);
+    --border: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --border-accent: rgba(96, 165, 250, 0.35);
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --text-dim: #475569;
+    --text-secondary: #a3a3a3;
+    --text-muted: #707070;
+    --text-dim: #525252;
     --accent: #3b82f6;
     --accent-bright: #60a5fa;
     --accent-deep: #2563eb;
@@ -102,12 +102,12 @@ ul {
     z-index: 100;
     padding: 1.25rem 0;
     transition: all 0.3s var(--ease);
-    background: rgba(10, 15, 28, 0);
+    background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0);
 }
 
 .nav.scrolled {
-    background: rgba(10, 15, 28, 0.78);
+    background: rgba(0, 0, 0, 0.78);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
@@ -1028,7 +1028,7 @@ ul {
     flex: 1;
     min-width: 0;
     padding: 0.75rem 0.875rem;
-    background-color: rgba(10, 15, 28, 0.55);
+    background-color: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-strong);
     border-radius: 8px;
     color: var(--text-primary);
@@ -1044,12 +1044,12 @@ ul {
 
 .beta-input-row input:focus {
     border-color: var(--accent);
-    background-color: rgba(10, 15, 28, 0.8);
+    background-color: rgba(255, 255, 255, 0.06);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 [data-theme="light"] .beta-input-row input {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 [data-theme="light"] .beta-input-row input:focus {
@@ -1320,7 +1320,7 @@ a.contact-value:hover {
 .form-group textarea {
     width: 100%;
     padding: 0.75rem 0.875rem;
-    background: rgba(10, 15, 28, 0.5);
+    background-color: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-strong);
     border-radius: 8px;
     color: var(--text-primary);
@@ -1341,7 +1341,7 @@ a.contact-value:hover {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--accent);
-    background: rgba(10, 15, 28, 0.8);
+    background-color: rgba(255, 255, 255, 0.06);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
@@ -1534,7 +1534,7 @@ a.contact-value:hover {
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(10, 15, 28, 0.97);
+        background: rgba(0, 0, 0, 0.97);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 2rem;
@@ -1927,19 +1927,20 @@ a.contact-value:hover {
    Light theme
    ======================================== */
 [data-theme="light"] {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #f1f5f9;
-    --bg-tertiary: #e2e8f0;
-    --bg-elevated: #ffffff;
-    --bg-card: rgba(255, 255, 255, 0.7);
-    --bg-card-hover: rgba(255, 255, 255, 0.95);
-    --border: rgba(15, 23, 42, 0.08);
-    --border-strong: rgba(15, 23, 42, 0.14);
+    /* Pure white + subtle grey trim */
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #ffffff;
+    --bg-elevated: #fafafa;
+    --bg-card: transparent;
+    --bg-card-hover: rgba(0, 0, 0, 0.025);
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.15);
     --border-accent: rgba(37, 99, 235, 0.35);
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --text-dim: #94a3b8;
+    --text-primary: #0a0a0a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --text-dim: #bababa;
     --accent: #2563eb;
     --accent-bright: #3b82f6;
     --accent-deep: #1d4ed8;
@@ -1951,7 +1952,7 @@ a.contact-value:hover {
 
 /* Light theme component overrides */
 [data-theme="light"] .nav.scrolled {
-    background: rgba(248, 250, 252, 0.82);
+    background: rgba(255, 255, 255, 0.82);
     border-bottom-color: var(--border);
 }
 
@@ -1971,7 +1972,7 @@ a.contact-value:hover {
 }
 
 [data-theme="light"] .btn-ghost {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.02);
     color: var(--text-primary);
     border-color: var(--border-strong);
 }
@@ -1998,7 +1999,7 @@ a.contact-value:hover {
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group select,
 [data-theme="light"] .form-group textarea {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.025);
     border-color: var(--border-strong);
     color: var(--text-primary);
 }
@@ -2006,7 +2007,7 @@ a.contact-value:hover {
 [data-theme="light"] .form-group input:focus,
 [data-theme="light"] .form-group select:focus,
 [data-theme="light"] .form-group textarea:focus {
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.04);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
@@ -2138,6 +2139,6 @@ html.to-dark::view-transition-new(root) {
     }
 
     [data-theme="light"] .nav-links {
-        background: rgba(248, 250, 252, 0.97);
+        background: rgba(255, 255, 255, 0.97);
     }
 }
