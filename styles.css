@@ -186,6 +186,18 @@ ul {
     position: relative;
 }
 
+.logo-mark-light {
+    display: none;
+}
+
+[data-theme="light"] .logo-mark-dark {
+    display: none;
+}
+
+[data-theme="light"] .logo-mark-light {
+    display: block;
+}
+
 .nav-logo:hover .logo-mark {
     transform: translateY(-1px);
 }
