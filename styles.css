@@ -1662,6 +1662,119 @@ a.contact-value:hover {
 }
 
 /* ========================================
+   404 — Page not found
+   ======================================== */
+.not-found {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+}
+
+.not-found-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.not-found-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+}
+
+.not-found-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-bright);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 0.875rem;
+    background: var(--accent-soft);
+    border: 1px solid var(--border-accent);
+    border-radius: 100px;
+}
+
+.not-found-title {
+    margin-bottom: 1.25rem;
+    line-height: 1;
+}
+
+.not-found-code {
+    font-size: clamp(7rem, 22vw, 14rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--accent-bright), var(--accent), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+    display: inline-block;
+    padding-bottom: 0.08em;
+}
+
+.not-found-subtitle {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+}
+
+.not-found-message {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.not-found-cta {
+    display: flex;
+    gap: 0.875rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.not-found .btn svg {
+    transition: transform 0.25s var(--ease);
+}
+
+.not-found .btn-primary:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 768px) {
+    .not-found {
+        padding: 5rem 1.25rem 3rem;
+    }
+
+    .not-found-cta {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .not-found-cta .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
    Legal pages (privacy, terms, etc.)
    ======================================== */
 .legal-page {
