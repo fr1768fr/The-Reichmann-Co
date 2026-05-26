@@ -25,6 +25,14 @@
             return;
         }
 
+        // Mobile: skip the custom circle clip-path (renders inconsistently on
+        // touch browsers and can flash white). Let the default cross-fade
+        // play instead — slower duration set in CSS.
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            document.startViewTransition(() => setTheme(next));
+            return;
+        }
+
         const rect = themeToggle.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;

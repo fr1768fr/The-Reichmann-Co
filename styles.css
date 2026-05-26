@@ -1630,14 +1630,26 @@ a.contact-value:hover {
     .services-grid,
     .services-grid-lead {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .services-grid-lead .service-card,
     .services-grid .service-card {
-        max-width: 480px;
+        max-width: 360px;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
+    }
+
+    .services-grid .service-icon,
+    .services-grid-lead .service-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .service-card .text-link {
+        display: inline-block;
     }
 
     .about-stats {
@@ -2151,27 +2163,40 @@ a.contact-value:hover {
 /* ========================================
    View Transitions API — circle reveal
    ======================================== */
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+/* Desktop: disable default cross-fade so the JS-driven circle reveal
+   is the only animation. Layer order is flipped when going to dark so
+   the OLD (light) layer shrinks on top, revealing the new dark layer. */
+@media (min-width: 769px) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+    }
+
+    ::view-transition-old(root) {
+        z-index: 1;
+    }
+
+    ::view-transition-new(root) {
+        z-index: 9999;
+    }
+
+    html.to-dark::view-transition-old(root) {
+        z-index: 9999;
+    }
+
+    html.to-dark::view-transition-new(root) {
+        z-index: 1;
+    }
 }
 
-::view-transition-old(root) {
-    z-index: 1;
-}
-
-::view-transition-new(root) {
-    z-index: 9999;
-}
-
-/* When transitioning to dark, OLD (light) sits on top so we can watch it shrink into the button */
-html.to-dark::view-transition-old(root) {
-    z-index: 9999;
-}
-
-html.to-dark::view-transition-new(root) {
-    z-index: 1;
+/* Mobile: let the default cross-fade play — circle reveal is unreliable
+   on touch devices. Slightly slower for a smoother feel. */
+@media (max-width: 768px) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0.35s;
+    }
 }
 
 /* Reduced motion */
