@@ -147,22 +147,22 @@ ul {
 
 .nav-logo::before {
     top: 50%;
-    left: 16px;
-    width: 36px;
-    height: 36px;
+    left: 24px;
+    width: 56px;
+    height: 56px;
     transform: translate(-50%, -50%);
-    background: rgba(212, 184, 138, 0.9);
-    filter: blur(12px);
+    background: rgba(165, 46, 46, 0.85);
+    filter: blur(18px);
 }
 
 .nav-logo::after {
     top: 50%;
-    left: 16px;
-    width: 64px;
-    height: 64px;
+    left: 24px;
+    width: 96px;
+    height: 96px;
     transform: translate(-50%, -50%);
-    background: rgba(201, 166, 117, 0.55);
-    filter: blur(22px);
+    background: rgba(165, 46, 46, 0.5);
+    filter: blur(32px);
 }
 
 @keyframes logo-halo {
