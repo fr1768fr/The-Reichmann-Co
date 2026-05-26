@@ -151,7 +151,7 @@ ul {
     width: 44px;
     height: 44px;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(59, 130, 246, 0.6);
     filter: blur(14px);
 }
 
@@ -161,16 +161,16 @@ ul {
     width: 72px;
     height: 72px;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.28);
+    background: rgba(59, 130, 246, 0.35);
     filter: blur(24px);
 }
 
 [data-theme="light"] .nav-logo::before {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(29, 78, 216, 0.55);
 }
 
 [data-theme="light"] .nav-logo::after {
-    background: rgba(0, 0, 0, 0.32);
+    background: rgba(29, 78, 216, 0.32);
 }
 
 @keyframes logo-halo {
