@@ -112,8 +112,8 @@ Last updated: 26 May 2026
 | Component | Setup |
 |---|---|
 | Live site | https://thereichmannco.co.za |
-| GitHub repo | https://github.com/fr1768fr/reichmann-holdings |
-| Vercel project | reichmann-holdings (under franco-s-projects8) |
+| GitHub repo | https://github.com/fr1768fr/The-Reichmann-Co (private) |
+| Vercel project | the-reichmann-co (under franco-s-projects8) |
 | Auto-deploy | Push to `main` → auto-deploys to production |
 | Custom domain | thereichmannco.co.za (DNS at domains.co.za, hosted on Vercel) |
 | Mailbox | info@thereichmannco.co.za (cPanel via Web Hosting Basic, R109/mo) |
@@ -168,6 +168,23 @@ Last updated: 26 May 2026
 - All HTML/JSON-LD/sitemap/robots references migrated
 - Old domain removed from Vercel
 - Google Search Console: new property verified, sitemap submitted, home page indexing requested
+
+### Later same day (multi-page split + content fixes)
+
+- GitHub repo renamed `reichmann-holdings` → `The-Reichmann-Co` + set to private
+- Vercel project renamed `reichmann-holdings` → `the-reichmann-co`
+- Local git remote + `.vercel/project.json` synced to new names
+- **Multi-page split:** site broken from single-page into 13 pages (`/`, `/about.html`, `/services.html` + 6 sub-pages, `/products.html`, `/products/lumarix.html`, `/contact.html`, `/blog/`)
+- Hero CTAs swapped: "Start a Project" now primary, "What We Build" secondary
+- Lead services narrowed to **Web Applications + SaaS Products** on homepage; other 4 (Mobile, Desktop, Cloud, AI) live on `/services.html`
+- Subtle South Africa positioning in hero, About, Contact, and schema PostalAddress
+- SAST hours rephrased as "Primary hours" + explicit async outside-hours reply commitment
+- Schema.org expanded: per-page Service, BreadcrumbList, SoftwareApplication (Lumarix), AboutPage, ContactPage, CollectionPage, WebSite, Blog + openingHoursSpecification on Organization
+- sitemap.xml expanded to all 14 URLs
+- privacy.html + 404.html nav/footer migrated from anchor links to page links
+- styles.css extended with new component classes (`.breadcrumb`, `.feature-list`, `.service-detail-grid`, `.services-subhead`, `.service-callout`, `.service-card-featured`, `.contact-cta`, `.text-link`, etc.)
+
+> Note: nav + footer markup is duplicated across all ~13 HTML files. Updating nav links requires editing each page — consider a build step (11ty, Astro) or JS partials loader when this becomes painful.
 
 ---
 
