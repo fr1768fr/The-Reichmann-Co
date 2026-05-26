@@ -1442,6 +1442,23 @@ a.contact-value:hover {
 
 .footer-brand .nav-logo {
     margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.footer-brand .logo-mark {
+    width: 200px;
+    height: 200px;
+}
+
+.footer-brand .nav-logo::before,
+.footer-brand .nav-logo::after {
+    display: none;
+}
+
+.footer-brand .logo-text {
+    font-size: 1.125rem;
 }
 
 .footer-links h5 {

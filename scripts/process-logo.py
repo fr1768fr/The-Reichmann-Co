@@ -27,17 +27,33 @@ DARK_SRC = ROOT / "source-logo-dark.png"
 LIGHT_SRC = ROOT / "source-logo-light.png"
 
 def cutout_dark(im: Image.Image) -> Image.Image:
-    """White-silhouette-on-black → white-on-transparent."""
+    """White silhouette + opaque-black shield interior + transparent outer BG.
+
+    Uses the same dilated-bright-wall trick as the light variant so the
+    flood-fill from corners can't leak through the gaps in the circuit
+    pattern and erase the shield interior. The interior stays as opaque
+    black, so animations behind the logo never show through the shield.
+    """
     arr = np.array(im.convert("RGBA"))
-    # Max channel is a good luminance proxy here (image is grayscale).
-    lum = arr[..., :3].max(axis=-1).astype(np.uint8)
-    arr[..., 3] = lum
-    # Force colour to pure white where alpha > 0, so any near-grey edges
-    # become smooth white-on-transparent rather than grey halos.
-    mask = lum > 0
-    arr[..., 0] = np.where(mask, 255, 0)
-    arr[..., 1] = np.where(mask, 255, 0)
-    arr[..., 2] = np.where(mask, 255, 0)
+    rgb = arr[..., :3]
+    lum = rgb.max(axis=-1)
+
+    is_dark = lum < 60
+    is_bright = ~is_dark
+
+    sealed = ndimage.binary_dilation(is_bright, iterations=10)
+
+    candidate_bg = is_dark & ~sealed
+    labels, _ = ndimage.label(candidate_bg)
+    h, w = arr.shape[:2]
+    corner_labels = {
+        labels[0, 0], labels[0, w - 1],
+        labels[h - 1, 0], labels[h - 1, w - 1],
+    }
+    corner_labels.discard(0)
+    outer_bg = np.isin(labels, list(corner_labels))
+
+    arr[..., 3] = np.where(outer_bg, 0, 255).astype(np.uint8)
     return Image.fromarray(arr)
 
 def cutout_light(im: Image.Image) -> Image.Image:
