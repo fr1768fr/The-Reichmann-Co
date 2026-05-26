@@ -1,11 +1,8 @@
 <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
     <style>
-        .light { display: none; }
-        @media (prefers-color-scheme: light) {
-            .dark { display: none; }
-            .light { display: block; }
+        @media (prefers-color-scheme: dark) {
+            image { filter: invert(1); }
         }
     </style>
-    <image class="dark" href="favicon-512.png" width="512" height="512"/>
-    <image class="light" href="favicon-light-512.png" width="512" height="512"/>
+    <image href="favicon-light-512.png" width="512" height="512"/>
 </svg>

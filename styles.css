@@ -186,16 +186,8 @@ ul {
     position: relative;
 }
 
-.logo-mark-light {
-    display: none;
-}
-
-[data-theme="light"] .logo-mark-dark {
-    display: none;
-}
-
-[data-theme="light"] .logo-mark-light {
-    display: block;
+[data-theme="dark"] .logo-mark {
+    filter: invert(1);
 }
 
 .nav-logo:hover .logo-mark {
