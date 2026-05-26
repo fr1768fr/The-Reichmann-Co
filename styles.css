@@ -1,10 +1,10 @@
 /* ========================================
    The Reichmann Co. — Stylesheet
-   Premium mono: pure black/white + champagne accent
+   Premium mono: pure black/white + finance blue accent
    ======================================== */
 
 :root {
-    /* Color palette — pure black + subtle grey trim */
+    /* Color palette — pure black + subtle grey trim + blue accent */
     --bg-primary: #000000;
     --bg-secondary: #000000;
     --bg-tertiary: #000000;
@@ -13,17 +13,17 @@
     --bg-card-hover: rgba(255, 255, 255, 0.025);
     --border: rgba(255, 255, 255, 0.09);
     --border-strong: rgba(255, 255, 255, 0.16);
-    --border-accent: rgba(212, 184, 138, 0.35);
+    --border-accent: rgba(96, 165, 250, 0.35);
     --text-primary: #f8fafc;
     --text-secondary: #a3a3a3;
     --text-muted: #707070;
     --text-dim: #525252;
-    --accent: #c9a675;
-    --accent-bright: #d4b88a;
-    --accent-deep: #a88554;
-    --accent-glow: rgba(201, 166, 117, 0.35);
-    --accent-soft: rgba(201, 166, 117, 0.08);
-    --sky: #d4b88a;
+    --accent: #3b82f6;
+    --accent-bright: #60a5fa;
+    --accent-deep: #1d4ed8;
+    --accent-glow: rgba(59, 130, 246, 0.35);
+    --accent-soft: rgba(59, 130, 246, 0.08);
+    --sky: #60a5fa;
     --sky-glow: rgba(14, 165, 233, 0.25);
 
     /* Typography */
@@ -292,8 +292,8 @@ ul {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(212, 184, 138, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 184, 138, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(96, 165, 250, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.035) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
@@ -520,7 +520,7 @@ ul {
 }
 
 .btn-ghost:hover {
-    background: rgba(212, 184, 138, 0.08);
+    background: rgba(96, 165, 250, 0.08);
     border-color: var(--border-accent);
     color: var(--accent-bright);
 }
@@ -714,7 +714,7 @@ ul {
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, transparent 30%, rgba(212, 184, 138, 0.3) 100%);
+    background: linear-gradient(135deg, transparent 30%, rgba(96, 165, 250, 0.3) 100%);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -745,7 +745,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(201, 166, 117, 0.15), rgba(201, 166, 117, 0.05));
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
     border: 1px solid var(--border-accent);
     border-radius: 10px;
     color: var(--accent-bright);
@@ -754,7 +754,7 @@ ul {
 }
 
 .service-card:hover .service-icon {
-    background: linear-gradient(135deg, rgba(201, 166, 117, 0.25), rgba(201, 166, 117, 0.08));
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.08));
     border-color: var(--accent);
 }
 
@@ -856,7 +856,7 @@ ul {
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(135deg, transparent 30%, rgba(212, 184, 138, 0.35) 100%);
+    background: linear-gradient(135deg, transparent 30%, rgba(96, 165, 250, 0.35) 100%);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -963,7 +963,7 @@ ul {
 
 .product-tag {
     padding: 0.4rem 0.875rem;
-    background: rgba(212, 184, 138, 0.06);
+    background: rgba(96, 165, 250, 0.06);
     border: 1px solid var(--border-strong);
     border-radius: 100px;
     font-size: 0.75rem;
@@ -974,7 +974,7 @@ ul {
 }
 
 .product-tag:hover {
-    background: rgba(212, 184, 138, 0.12);
+    background: rgba(96, 165, 250, 0.12);
     border-color: var(--border-accent);
     color: var(--accent-bright);
 }
@@ -984,7 +984,7 @@ ul {
     margin-top: 0.5rem;
     margin-bottom: 1.75rem;
     padding: 1.75rem;
-    background: rgba(212, 184, 138, 0.05);
+    background: rgba(96, 165, 250, 0.05);
     border: 1px solid var(--border-accent);
     border-radius: 12px;
     position: relative;
@@ -1065,7 +1065,7 @@ ul {
 .beta-input-row input:focus {
     border-color: var(--accent);
     background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(201, 166, 117, 0.15);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 [data-theme="light"] .beta-input-row input {
@@ -1074,7 +1074,7 @@ ul {
 
 [data-theme="light"] .beta-input-row input:focus {
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(168, 133, 84, 0.12);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
 }
 
 .beta-input-row .btn {
@@ -1364,7 +1364,7 @@ a.contact-value:hover {
 .form-group textarea:focus {
     border-color: var(--accent);
     background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(201, 166, 117, 0.15);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .form-group select {
@@ -1885,7 +1885,7 @@ a.contact-value:hover {
 .legal-doc a {
     color: var(--accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgba(212, 184, 138, 0.3);
+    text-decoration-color: rgba(96, 165, 250, 0.3);
     text-underline-offset: 3px;
     transition: text-decoration-color 0.2s var(--ease), color 0.2s var(--ease);
 }
@@ -1959,16 +1959,16 @@ a.contact-value:hover {
     --bg-card-hover: rgba(0, 0, 0, 0.025);
     --border: rgba(0, 0, 0, 0.08);
     --border-strong: rgba(0, 0, 0, 0.15);
-    --border-accent: rgba(168, 133, 84, 0.35);
+    --border-accent: rgba(29, 78, 216, 0.35);
     --text-primary: #0a0a0a;
     --text-secondary: #555555;
     --text-muted: #888888;
     --text-dim: #bababa;
-    --accent: #a88554;
-    --accent-bright: #c9a675;
-    --accent-deep: #8a6f3f;
-    --accent-glow: rgba(168, 133, 84, 0.2);
-    --accent-soft: rgba(201, 166, 117, 0.08);
+    --accent: #1d4ed8;
+    --accent-bright: #3b82f6;
+    --accent-deep: #1e3a8a;
+    --accent-glow: rgba(29, 78, 216, 0.2);
+    --accent-soft: rgba(59, 130, 246, 0.08);
     --sky: #0284c7;
     --sky-glow: rgba(14, 165, 233, 0.18);
 }
@@ -1981,8 +1981,8 @@ a.contact-value:hover {
 
 [data-theme="light"] .grid-overlay {
     background-image:
-        linear-gradient(rgba(168, 133, 84, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168, 133, 84, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(29, 78, 216, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 78, 216, 0.04) 1px, transparent 1px);
 }
 
 [data-theme="light"] .gradient-orb {
@@ -1990,7 +1990,7 @@ a.contact-value:hover {
 }
 
 [data-theme="light"] .hero-eyebrow {
-    background: rgba(168, 133, 84, 0.06);
+    background: rgba(29, 78, 216, 0.06);
     color: var(--accent);
 }
 
@@ -2001,7 +2001,7 @@ a.contact-value:hover {
 }
 
 [data-theme="light"] .btn-ghost:hover {
-    background: rgba(201, 166, 117, 0.06);
+    background: rgba(59, 130, 246, 0.06);
     color: var(--accent);
     border-color: var(--border-accent);
 }
@@ -2031,7 +2031,7 @@ a.contact-value:hover {
 [data-theme="light"] .form-group select:focus,
 [data-theme="light"] .form-group textarea:focus {
     background-color: rgba(0, 0, 0, 0.04);
-    box-shadow: 0 0 0 3px rgba(168, 133, 84, 0.12);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
 }
 
 [data-theme="light"] .form-group select {
@@ -2230,7 +2230,7 @@ html.to-dark::view-transition-new(root) {
 }
 
 .service-card-featured:hover {
-    background: rgba(201, 166, 117, 0.12);
+    background: rgba(59, 130, 246, 0.12);
 }
 
 .service-card .text-link {

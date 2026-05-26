@@ -49,11 +49,11 @@ module.exports = async function handler(req, res) {
                 <table role="presentation" width="560" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;background:#0f172a;border:1px solid rgba(148,163,184,0.12);border-radius:14px;overflow:hidden;">
                     <tr>
                         <td style="padding:40px 40px 32px;">
-                            <div style="display:inline-block;padding:6px 12px;background:rgba(201,166,117,0.12);border:1px solid rgba(212,184,138,0.4);border-radius:100px;font-size:11px;font-weight:500;color:#d4b88a;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px;">
+                            <div style="display:inline-block;padding:6px 12px;background:rgba(59, 130, 246,0.12);border:1px solid rgba(96, 165, 250,0.4);border-radius:100px;font-size:11px;font-weight:500;color:#60a5fa;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px;">
                                 Beta Access Confirmed
                             </div>
                             <h1 style="margin:0 0 16px;font-size:28px;font-weight:700;letter-spacing:-0.025em;line-height:1.2;color:#f8fafc;">
-                                Welcome to the <span style="background:linear-gradient(135deg,#d4b88a,#c9a675);-webkit-background-clip:text;background-clip:text;color:transparent;">Lumarix</span> Beta
+                                Welcome to the <span style="background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent;">Lumarix</span> Beta
                             </h1>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 Thanks for signing up. You've secured a spot on our accountant beta tester list for Lumarix, the next-generation Enterprise Resource Planning platform we're building at The Reichmann Co.
@@ -69,7 +69,7 @@ module.exports = async function handler(req, res) {
                                 <p style="margin:0 0 4px;font-size:14px;color:#94a3b8;font-weight:500;">The Reichmann Co. (Pty) Ltd</p>
                                 <p style="margin:0 0 4px;font-size:12px;color:#64748b;">Reg. No. 2026/389746/07</p>
                                 <p style="margin:0;font-size:13px;color:#64748b;">
-                                    <a href="https://thereichmannco.co.za" style="color:#d4b88a;text-decoration:none;">thereichmannco.co.za</a>
+                                    <a href="https://thereichmannco.co.za" style="color:#60a5fa;text-decoration:none;">thereichmannco.co.za</a>
                                 </p>
                             </div>
                         </td>
@@ -108,7 +108,7 @@ module.exports = async function handler(req, res) {
                                             Email
                                         </p>
                                         <p style="margin:0;font-size:16px;color:#0f172a;font-weight:500;">
-                                            <a href="mailto:${safeEmail}" style="color:#a88554;text-decoration:none;">${safeEmail}</a>
+                                            <a href="mailto:${safeEmail}" style="color:#1d4ed8;text-decoration:none;">${safeEmail}</a>
                                         </p>
                                     </td>
                                 </tr>

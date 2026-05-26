@@ -17,13 +17,13 @@
 
     <!-- Eyebrow line + label -->
     <g transform="translate(400, 230)">
-        <line x1="0" y1="9" x2="40" y2="9" stroke="rgba(201, 166, 117, 0.85)" stroke-width="1"/>
+        <line x1="0" y1="9" x2="40" y2="9" stroke="rgba(59, 130, 246, 0.85)" stroke-width="1"/>
         <text x="56" y="14"
               font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
               font-size="14"
               font-weight="500"
               letter-spacing="4"
-              fill="rgba(201, 166, 117, 0.95)">ESTABLISHED 2026</text>
+              fill="rgba(59, 130, 246, 0.95)">ESTABLISHED 2026</text>
     </g>
 
     <!-- Company name in serif -->
