@@ -1,5 +1,5 @@
 /* ========================================
-   Reichmann Holdings — JavaScript
+   The Reichmann Co. — JavaScript
    ======================================== */
 
 (function() {

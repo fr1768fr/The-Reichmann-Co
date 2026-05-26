@@ -1,6 +1,6 @@
 /* ========================================
-   Reichmann Holdings — Stylesheet
-   Modern tech-finance: electric blue + slate
+   The Reichmann Co. — Stylesheet
+   Premium mono: pure black/white + champagne accent
    ======================================== */
 
 :root {
@@ -13,21 +13,22 @@
     --bg-card-hover: rgba(255, 255, 255, 0.025);
     --border: rgba(255, 255, 255, 0.09);
     --border-strong: rgba(255, 255, 255, 0.16);
-    --border-accent: rgba(96, 165, 250, 0.35);
+    --border-accent: rgba(212, 184, 138, 0.35);
     --text-primary: #f8fafc;
     --text-secondary: #a3a3a3;
     --text-muted: #707070;
     --text-dim: #525252;
-    --accent: #3b82f6;
-    --accent-bright: #60a5fa;
-    --accent-deep: #2563eb;
-    --accent-glow: rgba(59, 130, 246, 0.35);
-    --accent-soft: rgba(59, 130, 246, 0.08);
-    --sky: #0ea5e9;
+    --accent: #c9a675;
+    --accent-bright: #d4b88a;
+    --accent-deep: #a88554;
+    --accent-glow: rgba(201, 166, 117, 0.35);
+    --accent-soft: rgba(201, 166, 117, 0.08);
+    --sky: #d4b88a;
     --sky-glow: rgba(14, 165, 233, 0.25);
 
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
 
     /* Spacing */
@@ -150,7 +151,7 @@ ul {
     width: 36px;
     height: 36px;
     transform: translate(-50%, -50%);
-    background: rgba(96, 165, 250, 0.9);
+    background: rgba(212, 184, 138, 0.9);
     filter: blur(12px);
 }
 
@@ -160,7 +161,7 @@ ul {
     width: 64px;
     height: 64px;
     transform: translate(-50%, -50%);
-    background: rgba(59, 130, 246, 0.55);
+    background: rgba(201, 166, 117, 0.55);
     filter: blur(22px);
 }
 
@@ -272,8 +273,8 @@ ul {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(96, 165, 250, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(96, 165, 250, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(212, 184, 138, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 184, 138, 0.035) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
@@ -344,11 +345,12 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-family: var(--font-serif);
+    font-size: clamp(2.75rem, 7vw, 6rem);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.05;
     margin-bottom: 1.75rem;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.025em;
 }
 
 .title-line {
@@ -499,7 +501,7 @@ ul {
 }
 
 .btn-ghost:hover {
-    background: rgba(96, 165, 250, 0.08);
+    background: rgba(212, 184, 138, 0.08);
     border-color: var(--border-accent);
     color: var(--accent-bright);
 }
@@ -526,11 +528,12 @@ ul {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
 }
 
 .section-title .accent {
@@ -692,7 +695,7 @@ ul {
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, transparent 30%, rgba(96, 165, 250, 0.3) 100%);
+    background: linear-gradient(135deg, transparent 30%, rgba(212, 184, 138, 0.3) 100%);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -723,7 +726,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+    background: linear-gradient(135deg, rgba(201, 166, 117, 0.15), rgba(201, 166, 117, 0.05));
     border: 1px solid var(--border-accent);
     border-radius: 10px;
     color: var(--accent-bright);
@@ -732,7 +735,7 @@ ul {
 }
 
 .service-card:hover .service-icon {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.08));
+    background: linear-gradient(135deg, rgba(201, 166, 117, 0.25), rgba(201, 166, 117, 0.08));
     border-color: var(--accent);
 }
 
@@ -834,7 +837,7 @@ ul {
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(135deg, transparent 30%, rgba(96, 165, 250, 0.35) 100%);
+    background: linear-gradient(135deg, transparent 30%, rgba(212, 184, 138, 0.35) 100%);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -897,13 +900,11 @@ ul {
 }
 
 .product-name {
-    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 3.2vw, 3rem);
     font-weight: 700;
-    letter-spacing: -0.035em;
-    background: linear-gradient(135deg, var(--accent-bright), var(--accent), var(--sky));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
     margin-bottom: 0.875rem;
     line-height: 1.1;
     padding-bottom: 0.08em;
@@ -943,7 +944,7 @@ ul {
 
 .product-tag {
     padding: 0.4rem 0.875rem;
-    background: rgba(96, 165, 250, 0.06);
+    background: rgba(212, 184, 138, 0.06);
     border: 1px solid var(--border-strong);
     border-radius: 100px;
     font-size: 0.75rem;
@@ -954,7 +955,7 @@ ul {
 }
 
 .product-tag:hover {
-    background: rgba(96, 165, 250, 0.12);
+    background: rgba(212, 184, 138, 0.12);
     border-color: var(--border-accent);
     color: var(--accent-bright);
 }
@@ -964,7 +965,7 @@ ul {
     margin-top: 0.5rem;
     margin-bottom: 1.75rem;
     padding: 1.75rem;
-    background: rgba(96, 165, 250, 0.05);
+    background: rgba(212, 184, 138, 0.05);
     border: 1px solid var(--border-accent);
     border-radius: 12px;
     position: relative;
@@ -1045,7 +1046,7 @@ ul {
 .beta-input-row input:focus {
     border-color: var(--accent);
     background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 166, 117, 0.15);
 }
 
 [data-theme="light"] .beta-input-row input {
@@ -1054,7 +1055,7 @@ ul {
 
 [data-theme="light"] .beta-input-row input:focus {
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    box-shadow: 0 0 0 3px rgba(168, 133, 84, 0.12);
 }
 
 .beta-input-row .btn {
@@ -1176,12 +1177,14 @@ ul {
 }
 
 .vision-quote p {
-    font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+    font-family: var(--font-serif);
+    font-size: clamp(1.375rem, 2.4vw, 2rem);
     font-weight: 500;
+    font-style: italic;
     line-height: 1.4;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
 }
 
 .vision-quote footer {
@@ -1342,7 +1345,7 @@ a.contact-value:hover {
 .form-group textarea:focus {
     border-color: var(--accent);
     background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 166, 117, 0.15);
 }
 
 .form-group select {
@@ -1680,23 +1683,23 @@ a.contact-value:hover {
 }
 
 .not-found-code {
+    font-family: var(--font-serif);
     font-size: clamp(7rem, 22vw, 14rem);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    background: linear-gradient(135deg, var(--accent-bright), var(--accent), var(--sky));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     line-height: 1;
     display: inline-block;
     padding-bottom: 0.08em;
 }
 
 .not-found-subtitle {
+    font-family: var(--font-serif);
     font-size: clamp(1.5rem, 3.5vw, 2.25rem);
     font-weight: 600;
+    font-style: italic;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.015em;
     margin-bottom: 1.25rem;
     line-height: 1.15;
 }
@@ -1777,10 +1780,11 @@ a.contact-value:hover {
 }
 
 .legal-title {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
     font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
 }
 
@@ -1862,7 +1866,7 @@ a.contact-value:hover {
 .legal-doc a {
     color: var(--accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgba(96, 165, 250, 0.3);
+    text-decoration-color: rgba(212, 184, 138, 0.3);
     text-underline-offset: 3px;
     transition: text-decoration-color 0.2s var(--ease), color 0.2s var(--ease);
 }
@@ -1936,16 +1940,16 @@ a.contact-value:hover {
     --bg-card-hover: rgba(0, 0, 0, 0.025);
     --border: rgba(0, 0, 0, 0.08);
     --border-strong: rgba(0, 0, 0, 0.15);
-    --border-accent: rgba(37, 99, 235, 0.35);
+    --border-accent: rgba(168, 133, 84, 0.35);
     --text-primary: #0a0a0a;
     --text-secondary: #555555;
     --text-muted: #888888;
     --text-dim: #bababa;
-    --accent: #2563eb;
-    --accent-bright: #3b82f6;
-    --accent-deep: #1d4ed8;
-    --accent-glow: rgba(37, 99, 235, 0.2);
-    --accent-soft: rgba(59, 130, 246, 0.08);
+    --accent: #a88554;
+    --accent-bright: #c9a675;
+    --accent-deep: #8a6f3f;
+    --accent-glow: rgba(168, 133, 84, 0.2);
+    --accent-soft: rgba(201, 166, 117, 0.08);
     --sky: #0284c7;
     --sky-glow: rgba(14, 165, 233, 0.18);
 }
@@ -1958,8 +1962,8 @@ a.contact-value:hover {
 
 [data-theme="light"] .grid-overlay {
     background-image:
-        linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(168, 133, 84, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 133, 84, 0.04) 1px, transparent 1px);
 }
 
 [data-theme="light"] .gradient-orb {
@@ -1967,7 +1971,7 @@ a.contact-value:hover {
 }
 
 [data-theme="light"] .hero-eyebrow {
-    background: rgba(37, 99, 235, 0.06);
+    background: rgba(168, 133, 84, 0.06);
     color: var(--accent);
 }
 
@@ -1978,7 +1982,7 @@ a.contact-value:hover {
 }
 
 [data-theme="light"] .btn-ghost:hover {
-    background: rgba(59, 130, 246, 0.06);
+    background: rgba(201, 166, 117, 0.06);
     color: var(--accent);
     border-color: var(--border-accent);
 }
@@ -2008,7 +2012,7 @@ a.contact-value:hover {
 [data-theme="light"] .form-group select:focus,
 [data-theme="light"] .form-group textarea:focus {
     background-color: rgba(0, 0, 0, 0.04);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    box-shadow: 0 0 0 3px rgba(168, 133, 84, 0.12);
 }
 
 [data-theme="light"] .form-group select {
