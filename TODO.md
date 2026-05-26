@@ -1,111 +1,109 @@
-# Reichmann Holdings — Website TODO
+# The Reichmann Co. — Website TODO
 
 Outstanding work and improvements for **thereichmannco.co.za**.
-Last updated: 25 May 2026
+Last updated: 26 May 2026
+
+> ⚠️ Project folder is still named `reichmann-holdings/` from the original brand. Inconsequential for deployment — Vercel reads from the GitHub repo regardless of local folder name. Rename optional.
 
 ---
 
 ## 🔴 High Priority — do soon
 
-### Trust signals & credibility
-- [ ] Add an "About Franco" subsection (name, role, brief bio) under the About section
+### Off-keyboard work (biggest wins for getting found)
+- [ ] **Create LinkedIn Company Page** for The Reichmann Co. Free, biggest single SEO accelerator for new brand. Tag from your personal profile post.
+- [ ] **Google Business Profile** — business.google.com → add business → category "Software company" → verify (postcard takes 1-2 weeks).
+- [ ] **Personal LinkedIn / social announce post** with link to thereichmannco.co.za
+- [ ] **Tell ~5 accountants** about Lumarix beta — they're the target users for the only product in development
+
+### Trust signals on site
+- [ ] Add an "About Franco" subsection under the About section (name, role, brief bio)
 - [ ] Add founder photo (optional but builds trust)
-- [ ] Add LinkedIn profile link in the footer and About section
-- [ ] Consider adding a "Founding cohort" / "What we build first with early clients" angle instead of implying an established track record
+- [ ] Add LinkedIn link in the footer once page exists
 
 ### Approach section: make it specific
-- [ ] Current values (Engineering Craft / Speed to Market / Every Platform / Honest Partnership) are generic — any tech firm could write them
-- [ ] Replace with specifics: tech stack choices, process steps, what makes Reichmann actually different
-- [ ] Possible angles: SA roots + international reach, fixed-price vs hourly, framework specialisations, open-source contributions
+- [ ] Current values ("Engineering Craft / Speed to Market / Every Platform / Honest Partnership") are generic
+- [ ] Needs concrete differentiation — stack choices, process steps, what makes The Reichmann Co. actually different
+- [ ] Requires strategic thinking from you, then I rewrite
 
-### Analytics
-- [ ] Enable **Vercel Analytics** (one toggle in Vercel project settings, cookieless free tier)
-- [ ] If using a different analytics provider, update Privacy Policy §10 with the opt-out mechanism
-
-### Legal follow-ups (POPIA)
-- [ ] **Formally appoint Information Officer** (likely you as CEO) and **register them** with the SA Information Regulator at https://inforegulator.org.za (free online form, legally required)
-- [ ] Update `privacy.html` §13 to name the appointed Information Officer (currently says "Chief Executive Officer" generically)
-- [ ] Have a South African data-protection attorney review the current Privacy Policy before relying on it
+### Legal / CIPC follow-ups
+- [ ] **Wait for CIPC name change to process** (2-4 weeks from when COR15.2 was filed) — when approved, drop "(formerly Reichmann Holdings)" wording in privacy.html §1 and §13
+- [ ] **Formally appoint Information Officer** and register at https://inforegulator.org.za (POPIA requirement)
+- [ ] Update privacy.html §13 with named Information Officer once appointed
+- [ ] Have a SA data-protection attorney review privacy policy
 
 ---
 
 ## 🟡 Medium Priority — next sprint
 
+### Old domain cleanup (when you're ready)
+- [ ] **Cancel Email Only 10 plan on reichmannholdings.co.za** — saves R69/mo. Old mailbox info@reichmannholdings.co.za stops working. Forwarder still routes any stragglers from old domain users to new mailbox.
+- [ ] Decide whether to renew reichmannholdings.co.za domain when annual renewal comes up. Letting it expire is fine since it's removed from Vercel anyway.
+- [ ] Delete old reichmannholdings.co.za property from Google Search Console once new one is fully indexed (~4 weeks)
+- [ ] Reconsider re-adding old domain to Vercel as 308 redirect to new — currently old URLs return generic Vercel error. (Decided to wait it out for now.)
+
 ### Sharing & SEO polish
-- [ ] Design and add an **Open Graph image** (1200×630 PNG) so link previews on WhatsApp / LinkedIn / X look polished
-- [ ] Create `sitemap.xml` listing all public URLs
-- [ ] Create `robots.txt` allowing crawlers
-- [ ] Add **JSON-LD `Organization` schema** to `index.html` for better search results
-
-### Custom 404 page
-- [ ] Create `404.html` matching site aesthetic so bad URLs don't show the Vercel default
-
-### Footer enhancements
-- [ ] Add direct email link (`mailto:info@thereichmannco.co.za`)
-- [ ] Add LinkedIn / X / GitHub links (once accounts exist)
+- [ ] Bing Webmaster Tools — same drill as Google Search Console but for Bing. 10 min, free.
+- [ ] Request indexing for `/privacy.html` in Search Console (separate request)
+- [ ] Lighthouse audit — perf + a11y on both light and dark themes
+- [ ] WebAIM WAVE scan for colour contrast / ARIA issues
 
 ### Lumarix card polish
-- [ ] The three-paragraph description is heavy reading. Consider:
-  - Summary + "Read more" expand
-  - Tabbed sections (Overview / Modules / Vision)
+- [ ] Three-paragraph description is dense — consider summary + "Read more" expand
+- [ ] Add real launch date once known
 - [ ] Add screenshots / mockups once available
-- [ ] Update "Launch: Coming Soon" with a real target window when known (e.g., "Q4 2026")
+
+### Footer enhancements
+- [ ] Direct email link `mailto:info@thereichmannco.co.za`
+- [ ] LinkedIn / X / GitHub links once accounts exist
 
 ---
 
 ## 🟢 Low Priority — polish
 
 ### Mobile & accessibility
-- [ ] Real-device testing on iPhone + Android (not just browser devtools)
-- [ ] Lighthouse accessibility audit — fix any critical issues
-- [ ] WebAIM WAVE scan for colour contrast and ARIA issues
-- [ ] Verify keyboard navigation works through the whole site (Tab through everything)
-
-### Performance
-- [ ] Run Lighthouse performance audit
-- [ ] Consider self-hosting Google Fonts (saves a DNS lookup + improves privacy)
+- [ ] Real-device testing on iPhone + Android
+- [ ] Verify keyboard navigation works through whole site (Tab)
 - [ ] Confirm SVG favicon caches correctly across browsers
 
+### Performance
+- [ ] Consider self-hosting Google Fonts (saves DNS lookup + improves privacy)
+
 ### DNS hygiene
-- [ ] Remove `include:_spf.tld-mx.com` from the root SPF record at domains.co.za (leftover from the parking setup, no longer needed)
+- [ ] thereichmannco.co.za still has wildcard CNAME `*.thereichmannco.co.za → thereichmannco.co.za`. Harmless but worth knowing.
+- [ ] Consider cleaning up unused CNAMEs in domains.co.za DNS (cpcalendars, cpcontacts) if you never use cPanel calendar/contacts features
 
 ### Email setup polish
-- [ ] Set up Gmail "Send mail as" for `info@thereichmannco.co.za` so replies can be sent from Gmail's UI directly
-- [ ] Verify both contact-form submissions (Formspree) and beta signups (Resend) land cleanly in `info@`
+- [ ] Set up Gmail "Send mail as" for info@thereichmannco.co.za so replies can be sent from Gmail's UI (uses SMTP cp68.domains.co.za, port 465, SSL)
 
 ---
 
 ## 🔵 Future expansions
 
-### When Lumarix launches
-- [ ] **Major Privacy Policy expansion**: Lumarix will process client/employee data on behalf of accounting firms = Data Processor relationship under POPIA. Adds obligations:
-  - Data Processing Agreements (DPAs) with clients
-  - 72-hour breach notification timelines
-  - Sub-processor list management
-  - Cross-border transfer specifics for SaaS users
-- [ ] Create separate **Terms of Service** for the SaaS product
-- [ ] Add **Cookie Policy** if analytics/marketing tracking is added
-- [ ] Create a dedicated **Lumarix product page** (separate from the holding company site)
-- [ ] Add case studies / testimonials once early beta users go live
+### Lumarix (planned: SaaS ERP for accountants)
+- [ ] Domains already secured: **lumarixapp.com** + **lumarix.co.za** (registered on Vercel 9+ days ago, ready to use)
+- [ ] **Database decision: managed Postgres (Supabase / Neon)** — not self-hosted. Use local Postgres in Docker for dev, Supabase for staging/prod.
+- [ ] Dedicated product page (separate from holding company site)
+- [ ] **Privacy Policy expansion** for Lumarix — Data Processor relationship under POPIA (DPAs, 72hr breach notification, sub-processor list, cross-border specifics)
+- [ ] Terms of Service for SaaS
+- [ ] Cookie Policy if/when analytics/marketing tracking added
+- [ ] Case studies / testimonials once early beta users go live
 
 ### Additional products
-- [ ] When new products are added to the "Current Products In Development" section, switch the products grid from single-column to multi-column. CSS already supports this — just change `grid-template-columns` and `max-width` on `.products-grid` in `styles.css`
+- [ ] When new products added to "Current Products In Development" section, switch products grid from single-column to multi-column. Edit `.products-grid` in styles.css.
 
 ### Business documents
-- [ ] When you start producing invoices, quotes, employment contracts, etc. — these also need the company reg number + full name per Companies Act §32
+- [ ] Invoices, quotes, employment contracts need company reg number + name (Companies Act §32). Once CIPC change approved, use the new name; meanwhile use "The Reichmann Co. Pty Ltd (formerly Reichmann Holdings)".
 
 ---
 
 ## ⚡ Quick wins (one-sitting tasks)
 
-These are all low-effort, high-impact. Could knock them out in 1–2 hours:
-
-1. Enable Vercel Analytics
-2. Add LinkedIn link to footer
-3. Create OG image (use Canva / Figma)
-4. Add `sitemap.xml` and `robots.txt`
-5. Clean up SPF record (remove tld-mx leftover)
-6. Add custom 404 page
+1. Create LinkedIn Company Page (15 min)
+2. Apply for Google Business Profile (10 min, verification takes 1-2 weeks)
+3. Set up Gmail "Send mail as" for info@thereichmannco.co.za (10 min)
+4. Add LinkedIn link to footer once page exists (5 min code change)
+5. Submit privacy.html for indexing in Search Console (2 min)
+6. Bing Webmaster Tools (10 min)
 
 ---
 
@@ -113,28 +111,72 @@ These are all low-effort, high-impact. Could knock them out in 1–2 hours:
 
 | Component | Setup |
 |---|---|
-| Site | https://thereichmannco.co.za |
-| Custom domain | thereichmannco.co.za (DNS at domains.co.za, hosting on Vercel) |
-| Mailbox | info@thereichmannco.co.za (domains.co.za Email Only 10) |
+| Live site | https://thereichmannco.co.za |
+| GitHub repo | https://github.com/fr1768fr/reichmann-holdings |
+| Vercel project | reichmann-holdings (under franco-s-projects8) |
+| Auto-deploy | Push to `main` → auto-deploys to production |
+| Custom domain | thereichmannco.co.za (DNS at domains.co.za, hosted on Vercel) |
+| Mailbox | info@thereichmannco.co.za (cPanel via Web Hosting Basic, R109/mo) |
+| Email forwarder | info@thereichmannco.co.za → francoreichmann69@gmail.com |
 | Transactional sender | beta@thereichmannco.co.za (Resend, domain verified) |
 | Contact form | Formspree endpoint `xojbnyog` |
 | Beta signup | Vercel serverless function `/api/beta-signup` → Resend API |
-| Company reg | 2026/389746/07 |
+| CIPC reg | 2026/389746/07 |
+| Legal name | The Reichmann Co. (Pty) Ltd (formerly Reichmann Holdings, change in progress) |
 | Privacy Policy | /privacy.html |
+| 404 page | /404.html ("Lost in orbit" branded) |
+
+### Vercel env vars (production)
+| Variable | Value |
+|---|---|
+| RESEND_API_KEY | (set, rotated once) |
+| RESEND_FROM | `Lumarix Beta <beta@thereichmannco.co.za>` |
+| NOTIFICATION_EMAIL | `info@thereichmannco.co.za` |
+
+### Visual identity
+- **Logo:** serif "R" monogram + champagne divider + "CO" caption (premium watchmaker aesthetic)
+- **Palette:** pure black / pure white + champagne `#c9a675` accent
+- **Display font:** Playfair Display (serif) — headings
+- **Body font:** Inter (sans) — body text
+- **Mono:** JetBrains Mono — labels, code-like elements
+
+### cPanel access
+- URL: https://cp68.domains.co.za:2083
+- Username: thereich
+- **TODO: change cPanel password** (the original was shared in chat — security hygiene)
+
+### Google Search Console
+- Property: thereichmannco.co.za (Domain property, verified via TXT)
+- Sitemap submitted: https://thereichmannco.co.za/sitemap.xml
+- Home page indexing requested (waiting 24-72h for first index)
 
 ---
 
-## ✅ Recently completed (for memory)
+## ✅ Completed in this session (26 May 2026)
 
-- Site design + atomic logo
-- Light/dark mode toggle with View Transitions circle reveal
-- Pulsing glow on nav + footer logos
-- Custom domain wired up (A record + www CNAME → Vercel)
-- domains.co.za Email Only 10 set up + MX records corrected
-- Formspree integrated for contact form
-- Resend integrated for beta signup welcome + admin notification emails
-- Resend domain verification for `thereichmannco.co.za`
-- Beta signup form added to Lumarix card
-- API key rotated cleanly
-- POPIA-compliant Privacy Policy published
-- CIPC reg number `2026/389746/07` added to all public-facing materials
+- Full rebrand: Reichmann Holdings → The Reichmann Co.
+- New logo design (serif R monogram replacing atomic concept)
+- Palette swap: electric blue + slate → black/white + champagne
+- Typography: added Playfair Display serif for headings
+- Re-generated all favicons (32, 48, 96, 180, 192, 512px) + OG image
+- New domain (thereichmannco.co.za) registered + DNS configured
+- Web Hosting Basic package on cPanel (R109/mo, includes email mailboxes)
+- Mailbox info@thereichmannco.co.za created in cPanel
+- Forwarder info@ → francoreichmann69@gmail.com active
+- Resend domain re-verified for thereichmannco.co.za
+- Vercel env vars updated for new domain
+- All HTML/JSON-LD/sitemap/robots references migrated
+- Old domain removed from Vercel
+- Google Search Console: new property verified, sitemap submitted, home page indexing requested
+
+---
+
+## ⚠️ Known issues / accepted tradeoffs
+
+1. **Old domain `reichmannholdings.co.za` returns generic Vercel error** for any path. Decision was to delete from Vercel rather than maintain 308 redirects. Old Google search results will gradually 404-out over 4-12 weeks.
+
+2. **Old Google search results still show "Reichmann Holdings"** — Google's cache lag. Will naturally update over 1-4 weeks. No "Change of Address" tool usage (would have required keeping redirects).
+
+3. **CIPC name change still in processing window** (2-4 weeks from filing). Until approved, legal name is technically still "Reichmann Holdings Pty Ltd" — privacy policy uses "formerly" language during this period.
+
+4. **Email Only 10 plan on old domain still active** (R69/mo) — can be cancelled now that everything's on new domain. Optional cost saving.
