@@ -19,8 +19,14 @@
         const next = current === 'light' ? 'dark' : 'light';
         const goingDark = next === 'dark';
 
-        // Fallback for browsers without View Transitions API or reduced motion
-        if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Fallback for browsers without View Transitions API, reduced motion,
+        // or small viewports (the clip-path circle reveal renders inconsistently
+        // on mobile and can flash a fully-white frame mid-transition).
+        if (
+            !document.startViewTransition ||
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+            window.matchMedia('(max-width: 768px)').matches
+        ) {
             setTheme(next);
             return;
         }
