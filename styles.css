@@ -1630,15 +1630,11 @@ a.contact-value:hover {
     .services-grid,
     .services-grid-lead {
         grid-template-columns: 1fr;
-        justify-items: center;
+        padding: 0 1.5rem;
     }
 
     .services-grid-lead .service-card,
     .services-grid .service-card {
-        max-width: 360px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
         text-align: center;
     }
 
@@ -2282,8 +2278,10 @@ a.contact-value:hover {
     font-weight: 500;
 }
 
-.services-grid-lead {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+@media (min-width: 769px) {
+    .services-grid-lead {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
 }
 
 .service-card-featured {
