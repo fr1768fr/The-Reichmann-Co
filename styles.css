@@ -526,9 +526,7 @@ ul {
 }
 
 .section-number {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-block;
     font-family: var(--font-mono);
     color: var(--accent-bright);
     font-size: 0.75rem;
@@ -536,13 +534,6 @@ ul {
     letter-spacing: 0.1em;
     margin-bottom: 1.25rem;
     text-transform: uppercase;
-}
-
-.section-number::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--accent-bright);
 }
 
 .section-title {
@@ -559,19 +550,6 @@ ul {
     background-clip: text;
     color: transparent;
     font-style: normal;
-}
-
-.section-divider {
-    width: 48px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    margin-bottom: 1.5rem;
-}
-
-.section-divider.centered {
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .section-intro {
