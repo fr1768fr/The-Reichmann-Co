@@ -174,7 +174,7 @@
             const message = form.message.value.trim();
 
             const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0ACompany: ${company || 'N/A'}%0D%0A%0D%0A${message}`;
-            const mailtoLink = `mailto:info@reichmannholdings.co.za?subject=${encodeURIComponent('[' + subject + '] Website Inquiry')}&body=${body}`;
+            const mailtoLink = `mailto:info@thereichmannco.co.za?subject=${encodeURIComponent('[' + subject + '] Website Inquiry')}&body=${body}`;
 
             formNote.className = 'form-note success';
             formNote.textContent = 'Opening your email client…';
@@ -206,7 +206,7 @@
             }
         } catch (err) {
             formNote.className = 'form-note error';
-            formNote.textContent = 'Something went wrong. Please email us directly at info@reichmannholdings.co.za';
+            formNote.textContent = 'Something went wrong. Please email us directly at info@thereichmannco.co.za';
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;

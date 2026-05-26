@@ -18,8 +18,8 @@ module.exports = async function handler(req, res) {
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || 'info@reichmannholdings.co.za';
-    // Sender address. Use Resend's onboarding domain by default until reichmannholdings.co.za is verified in Resend.
+    const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || 'info@thereichmannco.co.za';
+    // Sender address. Use Resend's onboarding domain by default until thereichmannco.co.za is verified in Resend.
     const FROM_ADDRESS = process.env.RESEND_FROM || 'Lumarix Beta <onboarding@resend.dev>';
 
     if (!RESEND_API_KEY) {
@@ -69,14 +69,14 @@ module.exports = async function handler(req, res) {
                                 <p style="margin:0 0 4px;font-size:14px;color:#94a3b8;font-weight:500;">The Reichmann Co. (Pty) Ltd</p>
                                 <p style="margin:0 0 4px;font-size:12px;color:#64748b;">Reg. No. 2026/389746/07</p>
                                 <p style="margin:0;font-size:13px;color:#64748b;">
-                                    <a href="https://reichmannholdings.co.za" style="color:#d4b88a;text-decoration:none;">reichmannholdings.co.za</a>
+                                    <a href="https://thereichmannco.co.za" style="color:#d4b88a;text-decoration:none;">thereichmannco.co.za</a>
                                 </p>
                             </div>
                         </td>
                     </tr>
                 </table>
                 <p style="margin:24px 0 0;font-size:12px;color:#475569;">
-                    You're receiving this email because you signed up for the Lumarix beta at reichmannholdings.co.za.
+                    You're receiving this email because you signed up for the Lumarix beta at thereichmannco.co.za.
                 </p>
             </td>
         </tr>
@@ -114,7 +114,7 @@ module.exports = async function handler(req, res) {
                                 </tr>
                             </table>
                             <p style="margin:0;font-size:13px;color:#94a3b8;">
-                                Signed up via the Lumarix beta form on reichmannholdings.co.za.
+                                Signed up via the Lumarix beta form on thereichmannco.co.za.
                             </p>
                         </td>
                     </tr>

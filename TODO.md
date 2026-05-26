@@ -1,6 +1,6 @@
 # Reichmann Holdings — Website TODO
 
-Outstanding work and improvements for **reichmannholdings.co.za**.
+Outstanding work and improvements for **thereichmannco.co.za**.
 Last updated: 25 May 2026
 
 ---
@@ -41,7 +41,7 @@ Last updated: 25 May 2026
 - [ ] Create `404.html` matching site aesthetic so bad URLs don't show the Vercel default
 
 ### Footer enhancements
-- [ ] Add direct email link (`mailto:info@reichmannholdings.co.za`)
+- [ ] Add direct email link (`mailto:info@thereichmannco.co.za`)
 - [ ] Add LinkedIn / X / GitHub links (once accounts exist)
 
 ### Lumarix card polish
@@ -70,7 +70,7 @@ Last updated: 25 May 2026
 - [ ] Remove `include:_spf.tld-mx.com` from the root SPF record at domains.co.za (leftover from the parking setup, no longer needed)
 
 ### Email setup polish
-- [ ] Set up Gmail "Send mail as" for `info@reichmannholdings.co.za` so replies can be sent from Gmail's UI directly
+- [ ] Set up Gmail "Send mail as" for `info@thereichmannco.co.za` so replies can be sent from Gmail's UI directly
 - [ ] Verify both contact-form submissions (Formspree) and beta signups (Resend) land cleanly in `info@`
 
 ---
@@ -113,10 +113,10 @@ These are all low-effort, high-impact. Could knock them out in 1–2 hours:
 
 | Component | Setup |
 |---|---|
-| Site | https://reichmannholdings.co.za |
-| Custom domain | reichmannholdings.co.za (DNS at domains.co.za, hosting on Vercel) |
-| Mailbox | info@reichmannholdings.co.za (domains.co.za Email Only 10) |
-| Transactional sender | beta@reichmannholdings.co.za (Resend, domain verified) |
+| Site | https://thereichmannco.co.za |
+| Custom domain | thereichmannco.co.za (DNS at domains.co.za, hosting on Vercel) |
+| Mailbox | info@thereichmannco.co.za (domains.co.za Email Only 10) |
+| Transactional sender | beta@thereichmannco.co.za (Resend, domain verified) |
 | Contact form | Formspree endpoint `xojbnyog` |
 | Beta signup | Vercel serverless function `/api/beta-signup` → Resend API |
 | Company reg | 2026/389746/07 |
@@ -133,7 +133,7 @@ These are all low-effort, high-impact. Could knock them out in 1–2 hours:
 - domains.co.za Email Only 10 set up + MX records corrected
 - Formspree integrated for contact form
 - Resend integrated for beta signup welcome + admin notification emails
-- Resend domain verification for `reichmannholdings.co.za`
+- Resend domain verification for `thereichmannco.co.za`
 - Beta signup form added to Lumarix card
 - API key rotated cleanly
 - POPIA-compliant Privacy Policy published

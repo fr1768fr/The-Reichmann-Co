@@ -1,8 +1,8 @@
-# robots.txt for reichmannholdings.co.za
-# https://reichmannholdings.co.za/robots.txt
+# robots.txt for thereichmannco.co.za
+# https://thereichmannco.co.za/robots.txt
 
 User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://reichmannholdings.co.za/sitemap.xml
+Sitemap: https://thereichmannco.co.za/sitemap.xml
