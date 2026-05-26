@@ -128,44 +128,6 @@ ul {
     isolation: isolate;
 }
 
-.nav-logo::before,
-.nav-logo::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-    animation: logo-halo 3s ease-in-out infinite;
-}
-
-.nav-logo::before {
-    top: 50%;
-    left: 24px;
-    width: 44px;
-    height: 44px;
-    transform: translate(-50%, -50%);
-    background: rgba(59, 130, 246, 0.6);
-    filter: blur(14px);
-}
-
-.nav-logo::after {
-    top: 50%;
-    left: 24px;
-    width: 72px;
-    height: 72px;
-    transform: translate(-50%, -50%);
-    background: rgba(59, 130, 246, 0.35);
-    filter: blur(24px);
-}
-
-[data-theme="light"] .nav-logo::before {
-    background: rgba(29, 78, 216, 0.55);
-}
-
-[data-theme="light"] .nav-logo::after {
-    background: rgba(29, 78, 216, 0.32);
-}
-
 @keyframes logo-halo {
     0%, 100% { opacity: 0.35; }
     50% { opacity: 1; }
@@ -1444,7 +1406,40 @@ a.contact-value:hover {
 
 .footer-brand .nav-logo::before,
 .footer-brand .nav-logo::after {
-    display: none;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    animation: logo-halo 4s ease-in-out infinite;
+}
+
+.footer-brand .nav-logo::before {
+    top: 100px;
+    left: 100px;
+    width: 180px;
+    height: 180px;
+    transform: translate(-50%, -50%);
+    background: rgba(59, 130, 246, 0.55);
+    filter: blur(40px);
+}
+
+.footer-brand .nav-logo::after {
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: rgba(59, 130, 246, 0.3);
+    filter: blur(70px);
+}
+
+[data-theme="light"] .footer-brand .nav-logo::before {
+    background: rgba(29, 78, 216, 0.45);
+}
+
+[data-theme="light"] .footer-brand .nav-logo::after {
+    background: rgba(29, 78, 216, 0.25);
 }
 
 .footer-brand .logo-text {
@@ -1695,18 +1690,6 @@ a.contact-value:hover {
     .nav .logo-mark {
         width: 36px;
         height: 36px;
-    }
-
-    .nav-logo::before {
-        width: 32px;
-        height: 32px;
-        left: 18px;
-    }
-
-    .nav-logo::after {
-        width: 56px;
-        height: 56px;
-        left: 18px;
     }
 
     .hero {
