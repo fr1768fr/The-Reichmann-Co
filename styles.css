@@ -1481,6 +1481,31 @@ a.contact-value:hover {
     transform: translateY(-2px);
 }
 
+.compliance-block {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card);
+}
+
+.compliance-block .legal-eyebrow {
+    margin-bottom: 1rem;
+}
+
+.compliance-block p {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.compliance-block p:last-child {
+    margin-bottom: 0;
+}
+
 .footer-links h5 {
     font-family: var(--font-mono);
     font-size: 0.75rem;
