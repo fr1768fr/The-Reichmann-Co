@@ -785,7 +785,7 @@ ul {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     max-width: 880px;
     margin: 0 auto;
@@ -1732,7 +1732,8 @@ a.contact-value:hover {
     }
 
     .services-grid,
-    .services-grid-lead {
+    .services-grid-lead,
+    .products-grid {
         grid-template-columns: 1fr;
         padding: 0 1.5rem;
     }
@@ -2384,6 +2385,10 @@ a.contact-value:hover {
 
 @media (min-width: 769px) {
     .services-grid-lead {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+
+    .products-grid {
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
 }
