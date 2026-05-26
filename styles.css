@@ -148,21 +148,29 @@ ul {
 .nav-logo::before {
     top: 50%;
     left: 24px;
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
     transform: translate(-50%, -50%);
-    background: rgba(165, 46, 46, 0.85);
-    filter: blur(18px);
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(14px);
 }
 
 .nav-logo::after {
     top: 50%;
     left: 24px;
-    width: 96px;
-    height: 96px;
+    width: 72px;
+    height: 72px;
     transform: translate(-50%, -50%);
-    background: rgba(165, 46, 46, 0.5);
-    filter: blur(32px);
+    background: rgba(255, 255, 255, 0.28);
+    filter: blur(24px);
+}
+
+[data-theme="light"] .nav-logo::before {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] .nav-logo::after {
+    background: rgba(0, 0, 0, 0.32);
 }
 
 @keyframes logo-halo {
