@@ -171,10 +171,9 @@ ul {
 }
 
 .logo-mark {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
-    border-radius: 8px;
     transition: transform 0.3s var(--ease);
     position: relative;
 }
