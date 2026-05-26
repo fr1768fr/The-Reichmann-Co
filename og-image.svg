@@ -70,8 +70,8 @@
 
     <!-- Eyebrow pill -->
     <g transform="translate(400, 215)">
-        <rect x="0" y="0" rx="100" ry="100" width="290" height="38" fill="#3b82f6" fill-opacity="0.1" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
-        <text x="20" y="25" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="500" fill="#60a5fa" letter-spacing="2.5">SOUTH AFRICAN TECHNOLOGY COMPANY</text>
+        <rect x="0" y="0" rx="100" ry="100" width="195" height="38" fill="#3b82f6" fill-opacity="0.1" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
+        <text x="20" y="25" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="500" fill="#60a5fa" letter-spacing="2.5">ESTABLISHED 2026</text>
     </g>
 
     <!-- Company name -->
