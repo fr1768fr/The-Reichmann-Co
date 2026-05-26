@@ -5,10 +5,10 @@
 
 :root {
     /* Color palette */
-    --bg-primary: #0a0f1c;
-    --bg-secondary: #0c1322;
-    --bg-tertiary: #111a2e;
-    --bg-elevated: #131c33;
+    --bg-primary: #000000;
+    --bg-secondary: #060912;
+    --bg-tertiary: #0a1024;
+    --bg-elevated: #0f1428;
     --bg-card: rgba(30, 41, 59, 0.35);
     --bg-card-hover: rgba(51, 65, 85, 0.45);
     --border: rgba(148, 163, 184, 0.08);
