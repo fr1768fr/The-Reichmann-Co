@@ -33,12 +33,18 @@ def cutout(im: Image.Image) -> Image.Image:
     arr[:, :, 3] = np.minimum(arr[:, :, 3], alpha)
     return Image.fromarray(arr)
 
-def pad_to_square(im: Image.Image) -> Image.Image:
+def pad_to_square(im: Image.Image, padding_pct: float = 0.10) -> Image.Image:
+    """Crop to content, then pad to a square with `padding_pct` margin on all sides.
+
+    A small margin prevents wing tips / shield corners from being clipped by
+    renderers that mask favicons (iOS rounded corners, link-preview cards).
+    """
     bbox = im.getbbox()
     if bbox:
         im = im.crop(bbox)
     w, h = im.size
-    side = max(w, h)
+    content_side = max(w, h)
+    side = int(content_side * (1 + 2 * padding_pct))
     canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
     canvas.paste(im, ((side - w) // 2, (side - h) // 2), im)
     return canvas
