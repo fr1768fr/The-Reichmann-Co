@@ -1464,6 +1464,23 @@ a.contact-value:hover {
     text-align: center;
 }
 
+.footer-brand .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-top: 0.875rem;
+    color: var(--text-muted);
+    border-radius: 8px;
+    transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.footer-brand .social-link:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
 .footer-links h5 {
     font-family: var(--font-mono);
     font-size: 0.75rem;

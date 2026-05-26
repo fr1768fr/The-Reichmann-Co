@@ -10,7 +10,7 @@ Last updated: 26 May 2026
 ## 🔴 High Priority — do soon
 
 ### Off-keyboard work (biggest wins for getting found)
-- [ ] **Create LinkedIn Company Page** for The Reichmann Co. Free, biggest single SEO accelerator for new brand. Tag from your personal profile post.
+- [x] **Create LinkedIn Company Page** for The Reichmann Co. — live at https://www.linkedin.com/company/the-reichmann-co/. Footer link + sameAs schema added.
 - [ ] **Google Business Profile** — business.google.com → add business → category "Software company" → verify (postcard takes 1-2 weeks).
 - [ ] **Personal LinkedIn / social announce post** with link to thereichmannco.co.za
 - [ ] **Tell ~5 accountants** about Lumarix beta — they're the target users for the only product in development
@@ -18,7 +18,7 @@ Last updated: 26 May 2026
 ### Trust signals on site
 - [ ] Add an "About Franco" subsection under the About section (name, role, brief bio)
 - [ ] Add founder photo (optional but builds trust)
-- [ ] Add LinkedIn link in the footer once page exists
+- [x] Add LinkedIn link in the footer once page exists
 
 ### Approach section: make it specific
 - [ ] Current values ("Engineering Craft / Speed to Market / Every Platform / Honest Partnership") are generic
