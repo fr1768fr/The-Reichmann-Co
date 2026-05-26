@@ -48,6 +48,7 @@
 
 html {
     scroll-behavior: smooth;
+    background: var(--bg-primary);
 }
 
 body {
@@ -101,18 +102,11 @@ ul {
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1.25rem 0;
-    transition: all 0.3s var(--ease);
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(0);
-}
-
-.nav.scrolled {
-    background: rgba(0, 0, 0, 0.78);
+    padding: 0.875rem 0;
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 0.875rem 0;
 }
 
 .nav-container {
@@ -2009,8 +2003,8 @@ a.contact-value:hover {
 }
 
 /* Light theme component overrides */
-[data-theme="light"] .nav.scrolled {
-    background: rgba(255, 255, 255, 0.82);
+[data-theme="light"] .nav {
+    background: rgba(255, 255, 255, 0.85);
     border-bottom-color: var(--border);
 }
 

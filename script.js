@@ -19,14 +19,8 @@
         const next = current === 'light' ? 'dark' : 'light';
         const goingDark = next === 'dark';
 
-        // Fallback for browsers without View Transitions API, reduced motion,
-        // or small viewports (the clip-path circle reveal renders inconsistently
-        // on mobile and can flash a fully-white frame mid-transition).
-        if (
-            !document.startViewTransition ||
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-            window.matchMedia('(max-width: 768px)').matches
-        ) {
+        // Fallback for browsers without View Transitions API or reduced motion.
+        if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             setTheme(next);
             return;
         }
@@ -79,17 +73,8 @@
         themeToggle.addEventListener('click', toggleTheme);
     }
 
-    // ---- Navigation: scroll effect ----
+    // Nav is always solid; kept reference for anchor-offset calculations.
     const nav = document.getElementById('nav');
-    const handleScroll = () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
 
     // ---- Mobile nav toggle ----
     const navToggle = document.getElementById('navToggle');
