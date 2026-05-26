@@ -106,7 +106,6 @@ ul {
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--border);
 }
 
 .nav-container {
@@ -806,9 +805,9 @@ ul {
 
 .product-card-header {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
     margin-bottom: 1.75rem;
 }
 
@@ -1396,7 +1395,6 @@ a.contact-value:hover {
 .footer {
     padding: 4.5rem 0 2rem;
     background: var(--bg-primary);
-    border-top: 1px solid var(--border);
     position: relative;
 }
 
@@ -2127,7 +2125,6 @@ a.contact-value:hover {
 /* Light theme component overrides */
 [data-theme="light"] .nav {
     background: rgba(255, 255, 255, 0.85);
-    border-bottom-color: var(--border);
 }
 
 [data-theme="light"] .grid-overlay {
