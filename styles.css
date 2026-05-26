@@ -525,17 +525,6 @@ ul {
     text-align: center;
 }
 
-.section-number {
-    display: inline-block;
-    font-family: var(--font-mono);
-    color: var(--accent-bright);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.25rem;
-    text-transform: uppercase;
-}
-
 .section-title {
     font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: 700;
