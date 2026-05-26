@@ -1517,14 +1517,6 @@ a.contact-value:hover {
     letter-spacing: -0.005em;
 }
 
-.footer-tagline {
-    font-family: var(--font-mono);
-    color: var(--accent-bright);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
 /* ========================================
    Scroll animations
    ======================================== */
@@ -2080,7 +2072,6 @@ a.contact-value:hover {
     background: var(--text-primary);
 }
 
-[data-theme="light"] .footer-tagline,
 [data-theme="light"] .footer-links h5 {
     color: var(--text-primary);
 }
