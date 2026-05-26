@@ -26,10 +26,10 @@
     --sky: #60a5fa;
     --sky-glow: rgba(14, 165, 233, 0.25);
 
-    /* Typography — site-wide font matches "The Reichmann Co." wordmark */
-    --font-sans: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+    /* Typography — flat system stack, no web fonts */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+    --font-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
 
     /* Spacing */
     --container-width: 1600px;
