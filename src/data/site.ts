@@ -3,7 +3,7 @@
 export const SITE = {
   name: 'The Reichmann Co.',
   legalName: 'The Reichmann Co. (Pty) Ltd',
-  shortTagline: 'Software, apps & SaaS. Built to ship.',
+  shortTagline: 'Software for South African business. Built to ship.',
   url: 'https://thereichmannco.co.za',
   email: 'info@thereichmannco.co.za',
   registration: '2026/389746/07',
