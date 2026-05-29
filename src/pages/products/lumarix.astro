@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
 
-const description = 'Lumarix. Enterprise Resource Planning reimagined for modern accountants. Built by The Reichmann Co. Beta access available.';
+const description = 'Lumarix. Windows-native Enterprise Resource Planning for modern accountants and the South African businesses they serve. Built by The Reichmann Co. Early access available.';
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -11,9 +11,9 @@ const productSchema = {
   name: 'Lumarix',
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Enterprise Resource Planning',
-  operatingSystem: 'Web',
+  operatingSystem: 'Windows',
   url: `${SITE.url}/products/lumarix`,
-  description: 'Lumarix is an Enterprise Resource Planning solution engineered to set new benchmarks in business management software.',
+  description: 'Lumarix is a Windows-native Enterprise Resource Planning application engineered to set new benchmarks in business management software for South African businesses.',
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   offers: {
     '@type': 'Offer',
@@ -35,7 +35,7 @@ const breadcrumbSchema = {
 const tags = [
   'Finance', 'Human Capital', 'Supply Chain', 'Manufacturing',
   'Procurement', 'Sales & CRM', 'Real-Time Analytics',
-  'Intelligent Automation', 'Cloud-Native',
+  'Intelligent Automation', 'Windows-Native', 'Local Data',
 ];
 ---
 
@@ -74,26 +74,25 @@ const tags = [
   <section class="section">
     <div class="container container-prose lumarix-intro">
       <p>
-        Lumarix is a cutting-edge Enterprise Resource Planning (ERP) solution
-        engineered to establish new benchmarks in business management software.
-        Designed, built, developed, and deployed by The Reichmann Co. (Pty) Ltd,
-        Lumarix embodies a bold vision to become the premier ERP system in the
-        world, empowering organizations with unparalleled efficiency, insight,
-        and agility.
+        Lumarix is a Windows-native Enterprise Resource Planning (ERP) application
+        engineered to set new benchmarks in business management software for South
+        African businesses. Designed, built, developed, and deployed by The Reichmann
+        Co. (Pty) Ltd, Lumarix embodies a bold vision to become the premier ERP for
+        the SMEs and accountants who run the country's economy.
       </p>
       <p>
-        As a fully integrated platform, Lumarix harmonizes core business
-        processes, from financial management and human capital to supply chain,
-        manufacturing, procurement, sales, and customer engagement, into a
-        single, cohesive ecosystem. Leveraging advanced technologies such as
-        real-time analytics, intelligent automation, and scalable cloud
-        architecture, it enables data-driven decision making and operational
-        excellence across global enterprises.
+        As a fully integrated business platform, Lumarix harmonizes core processes,
+        from financial management and human capital to supply chain, manufacturing,
+        procurement, sales, and customer engagement, into a single, cohesive
+        application. Built natively for Windows, with real-time dashboards and
+        intelligent automation, Lumarix runs at the speed of your hardware. No
+        browser tab between you and your books, no latency between a keystroke
+        and a posting.
       </p>
       <p>
-        With a focus on intuitive design, robust security, and seamless
-        adaptability, Lumarix supports businesses of all sizes in navigating
-        complexity while driving sustainable growth.
+        With a focus on intuitive design, robust security, and your data on your
+        machine, Lumarix supports businesses of all sizes in navigating complexity
+        while driving sustainable growth.
       </p>
 
       <ul class="product-tags">
@@ -127,8 +126,8 @@ const tags = [
         <div class="info-card">
           <h3>Built different</h3>
           <ul class="feature-list">
-            <li>True cloud-native. No installs, no sync headaches</li>
-            <li>Real-time multi-user collaboration</li>
+            <li>Native Windows. Runs at the speed of your hardware</li>
+            <li>Multi-user on a shared network install</li>
             <li>AI-assisted transaction categorisation</li>
             <li>AI-assisted bank reconciliation</li>
             <li>Sage Pastel migration tool included</li>
@@ -138,7 +137,7 @@ const tags = [
           <h3>Trust &amp; compliance</h3>
           <ul class="feature-list">
             <li>POPIA-compliant by design</li>
-            <li>EU data centres today, with a South African region planned</li>
+            <li>Your data on your machine, on your network</li>
             <li>Immutable audit trail on every transaction</li>
             <li>Role-based access for owners, admins, accountants, bookkeepers and viewers</li>
             <li>Encryption at rest and in transit</li>
@@ -237,7 +236,7 @@ const tags = [
       <h2 class="closing-title">Request early access</h2>
       <p class="closing-sub">
         Lumarix is in active development. Submit your email and we will reach
-        out as soon as early access opens, with sign-in details and a guided onboarding.
+        out as soon as early access opens, with installer download and a guided onboarding.
       </p>
       <form class="beta-form" id="lumarixBetaForm" novalidate>
         <input

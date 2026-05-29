@@ -34,7 +34,7 @@ const buildWelcomeHtml = (signupDate: string) => `<!DOCTYPE html>
                             </p>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 <strong style="color:#f8fafc;">What happens next?</strong><br>
-                                When Lumarix is ready for early access, we'll email you directly with access details, login credentials, and onboarding instructions. No further action needed on your side for now.
+                                When Lumarix is ready for early access, we'll email you directly with installer download, license details, and onboarding instructions. No further action needed on your side for now.
                             </p>
                             <p style="margin:0 0 28px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 If you have any questions in the meantime, just reply to this email.
