@@ -230,8 +230,17 @@ const linkKey = (href: string): string => {
 
   /* ---- Mobile ---- */
   @media (max-width: 880px) {
+    .nav-inner {
+      gap: var(--space-4);
+      justify-content: space-between;
+    }
     .nav-toggle { display: flex; }
     .nav-primary { flex: initial; }
+
+    /* The "Start a project" CTA in the nav is redundant on mobile;
+       the hamburger menu already exposes Contact. Drop it to free
+       horizontal space for the wordmark. */
+    .nav-cta { display: none; }
 
     .nav-links {
       display: none;
@@ -257,14 +266,9 @@ const linkKey = (href: string): string => {
     }
   }
 
-  @media (max-width: 480px) {
-    .nav-cta span { display: none; }
-    .nav-cta {
-      padding: var(--space-2);
-      width: 36px;
-      height: 36px;
-      justify-content: center;
-    }
-    .nav-logo-text { display: none; }
+  /* Very narrow phones: trim the wordmark a touch so the row breathes. */
+  @media (max-width: 380px) {
+    .nav-logo-text { font-size: var(--fs-sm); }
+    .nav-inner { gap: var(--space-3); }
   }
 </style>
