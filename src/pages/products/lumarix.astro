@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
@@ -12,13 +12,13 @@ const productSchema = {
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Enterprise Resource Planning',
   operatingSystem: 'Web',
-  url: `${SITE.url}/products/lumarix.html`,
+  url: `${SITE.url}/products/lumarix`,
   description: 'Lumarix is an Enterprise Resource Planning solution engineered to set new benchmarks in business management software.',
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/PreOrder',
-    url: `${SITE.url}/products/lumarix.html`,
+    url: `${SITE.url}/products/lumarix`,
   },
 };
 
@@ -27,8 +27,8 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products.html` },
-    { '@type': 'ListItem', position: 3, name: 'Lumarix', item: `${SITE.url}/products/lumarix.html` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products` },
+    { '@type': 'ListItem', position: 3, name: 'Lumarix', item: `${SITE.url}/products/lumarix` },
   ],
 };
 
@@ -50,7 +50,7 @@ const tags = [
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">/</span>
-        <a href="/products.html">Products</a>
+        <a href="/products">Products</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Lumarix</span>
       </nav>

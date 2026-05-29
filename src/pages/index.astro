@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
@@ -60,7 +60,7 @@ const orgSchema = {
       itemOffered: {
         '@type': 'Service',
         name: 'Web Application Development',
-        url: `${SITE.url}/services/web-applications.html`,
+        url: `${SITE.url}/services/web-applications`,
       },
     },
     {
@@ -68,7 +68,7 @@ const orgSchema = {
       itemOffered: {
         '@type': 'Service',
         name: 'SaaS Product Development',
-        url: `${SITE.url}/services/saas-products.html`,
+        url: `${SITE.url}/services/saas-products`,
       },
     },
   ],
@@ -111,8 +111,8 @@ const websiteSchema = {
           web applications and SaaS products for ambitious teams worldwide.
         </p>
         <div class="hero-cta">
-          <Button href="/contact.html" variant="primary" size="lg" arrow>Start a project</Button>
-          <Button href="/services.html" variant="secondary" size="lg">What we build</Button>
+          <Button href="/contact" variant="primary" size="lg" arrow>Start a project</Button>
+          <Button href="/services" variant="secondary" size="lg">What we build</Button>
         </div>
         <ul class="hero-meta">
           <li><span class="hero-meta-dot"></span> Founded {SITE.founded}</li>
@@ -162,7 +162,7 @@ const websiteSchema = {
       </header>
 
       <div class="lead-grid">
-        <a href="/services/web-applications.html" class="lead-card">
+        <a href="/services/web-applications" class="lead-card">
           <div class="lead-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="3" width="20" height="14" rx="2"></rect>
@@ -180,7 +180,7 @@ const websiteSchema = {
           </div>
         </a>
 
-        <a href="/services/saas-products.html" class="lead-card">
+        <a href="/services/saas-products" class="lead-card">
           <div class="lead-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
@@ -199,11 +199,11 @@ const websiteSchema = {
 
       <div class="section-aux">
         <span class="text-muted">Also available:</span>
-        <a href="/services/mobile-apps.html" class="aux-pill">Mobile Apps</a>
-        <a href="/services/desktop-software.html" class="aux-pill">Desktop Software</a>
-        <a href="/services/cloud-backend.html" class="aux-pill">Cloud &amp; Backend</a>
-        <a href="/services/ai-integrations.html" class="aux-pill">AI &amp; Integrations</a>
-        <a href="/services.html" class="aux-link">See all services<span aria-hidden="true"> &rarr;</span></a>
+        <a href="/services/mobile-apps" class="aux-pill">Mobile Apps</a>
+        <a href="/services/desktop-software" class="aux-pill">Desktop Software</a>
+        <a href="/services/cloud-backend" class="aux-pill">Cloud &amp; Backend</a>
+        <a href="/services/ai-integrations" class="aux-pill">AI &amp; Integrations</a>
+        <a href="/services" class="aux-link">See all services<span aria-hidden="true"> &rarr;</span></a>
       </div>
     </div>
   </section>
@@ -288,7 +288,7 @@ const websiteSchema = {
             Real time books, AI assisted reconciliation, POPIA by design.
           </p>
           <footer class="product-card-foot">
-            <a href="/products/lumarix.html" class="product-link">
+            <a href="/products/lumarix" class="product-link">
               Discover Lumarix<span aria-hidden="true"> &rarr;</span>
             </a>
           </footer>
@@ -308,7 +308,7 @@ const websiteSchema = {
             understanding of SA tax law. Cites every claim it makes.
           </p>
           <footer class="product-card-foot">
-            <a href="/products/veritis.html" class="product-link">
+            <a href="/products/veritis" class="product-link">
               Discover Veritis<span aria-hidden="true"> &rarr;</span>
             </a>
           </footer>
@@ -331,8 +331,8 @@ const websiteSchema = {
         scaling its operations, we would love to hear from you.
       </p>
       <div class="closing-cta-row">
-        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
-        <Button href="/services.html" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
+        <Button href="/contact" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/services" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
       </div>
     </div>
   </section>

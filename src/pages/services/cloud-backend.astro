@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
@@ -10,7 +10,7 @@ const serviceSchema = {
   '@type': 'Service',
   serviceType: 'Cloud Infrastructure and Backend Engineering',
   name: 'Cloud & Backend',
-  url: `${SITE.url}/services/cloud-backend.html`,
+  url: `${SITE.url}/services/cloud-backend`,
   provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   areaServed: 'Worldwide',
   description: 'Scalable APIs, backends, and cloud infrastructure architected for performance and uptime.',
@@ -21,8 +21,8 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
-    { '@type': 'ListItem', position: 3, name: 'Cloud & Backend', item: `${SITE.url}/services/cloud-backend.html` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Cloud & Backend', item: `${SITE.url}/services/cloud-backend` },
   ],
 };
 ---
@@ -38,7 +38,7 @@ const breadcrumbSchema = {
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">/</span>
-        <a href="/services.html">Services</a>
+        <a href="/services">Services</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Cloud &amp; Backend</span>
       </nav>
@@ -81,7 +81,7 @@ const breadcrumbSchema = {
       <span class="eyebrow eyebrow--on-dark">Backend or infra help</span>
       <h2 class="closing-title">Tell us what you are running.</h2>
       <div class="closing-cta-row">
-        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/contact" variant="inverse" size="lg" arrow>Start a project</Button>
       </div>
     </div>
   </section>

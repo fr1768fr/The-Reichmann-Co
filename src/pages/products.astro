@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
@@ -10,12 +10,12 @@ const collectionSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Products · The Reichmann Co.',
-  url: `${SITE.url}/products.html`,
+  url: `${SITE.url}/products`,
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products.html` },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products` },
     ],
   },
 };
@@ -60,7 +60,7 @@ const collectionSchema = {
             businesses they serve. Currently in active development.
           </p>
           <footer class="product-card-foot">
-            <a href="/products/lumarix.html" class="product-link">
+            <a href="/products/lumarix" class="product-link">
               Discover Lumarix<span aria-hidden="true"> &rarr;</span>
             </a>
           </footer>
@@ -81,7 +81,7 @@ const collectionSchema = {
             integrated with Lumarix tomorrow.
           </p>
           <footer class="product-card-foot">
-            <a href="/products/veritis.html" class="product-link">
+            <a href="/products/veritis" class="product-link">
               Discover Veritis<span aria-hidden="true"> &rarr;</span>
             </a>
           </footer>
@@ -96,8 +96,8 @@ const collectionSchema = {
       <h2 class="closing-title">Have a product idea of your own?</h2>
       <p class="closing-sub">We build for clients, too. Tell us what you have in mind.</p>
       <div class="closing-cta-row">
-        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
-        <Button href="/services.html" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
+        <Button href="/contact" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/services" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
       </div>
     </div>
   </section>

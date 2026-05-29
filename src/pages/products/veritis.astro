@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
@@ -12,13 +12,13 @@ const productSchema = {
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Artificial Intelligence',
   operatingSystem: 'Web',
-  url: `${SITE.url}/products/veritis.html`,
+  url: `${SITE.url}/products/veritis`,
   description: 'Veritis is an AI built for South African accountants, focused on accuracy and deep understanding of SA tax law and accounting practice. Currently in research at The Reichmann Co.',
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/PreOrder',
-    url: `${SITE.url}/products/veritis.html`,
+    url: `${SITE.url}/products/veritis`,
   },
 };
 
@@ -27,8 +27,8 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products.html` },
-    { '@type': 'ListItem', position: 3, name: 'Veritis', item: `${SITE.url}/products/veritis.html` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products` },
+    { '@type': 'ListItem', position: 3, name: 'Veritis', item: `${SITE.url}/products/veritis` },
   ],
 };
 
@@ -46,7 +46,7 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">/</span>
-        <a href="/products.html">Products</a>
+        <a href="/products">Products</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">Veritis</span>
       </nav>
@@ -104,8 +104,8 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
       <h2 class="closing-title">Veritis is in research.</h2>
       <p class="closing-sub">When private beta opens, we will reach out to the accountants on our list first.</p>
       <div class="closing-cta-row">
-        <Button href="/contact.html" variant="inverse" size="lg" arrow>Get in touch</Button>
-        <Button href="/products/lumarix.html" variant="ghost" size="lg" class="closing-ghost">See Lumarix</Button>
+        <Button href="/contact" variant="inverse" size="lg" arrow>Get in touch</Button>
+        <Button href="/products/lumarix" variant="ghost" size="lg" class="closing-ghost">See Lumarix</Button>
       </div>
     </div>
   </section>

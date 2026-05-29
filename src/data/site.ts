@@ -1,4 +1,4 @@
-// Site-wide config shared across layouts and components.
+﻿// Site-wide config shared across layouts and components.
 
 export const SITE = {
   name: 'The Reichmann Co.',
@@ -15,9 +15,9 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: '/about.html', label: 'About' },
-  { href: '/services.html', label: 'Services' },
-  { href: '/products.html', label: 'Products' },
-  { href: '/blog.html', label: 'Blog' },
-  { href: '/contact.html', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/products', label: 'Products' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ] as const;
