@@ -4,7 +4,7 @@ import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
 
 const description =
-  'The Reichmann Co. is a South Africa based technology company designing and developing web applications and SaaS products for ambitious teams worldwide.';
+  'The Reichmann Co. is a South Africa based technology company designing and developing web applications and SaaS products for ambitious South African teams.';
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -23,7 +23,7 @@ const orgSchema = {
     '@type': 'ContactPoint',
     email: SITE.email,
     contactType: 'customer support',
-    areaServed: 'Worldwide',
+    areaServed: { '@type': 'Country', name: 'South Africa' },
     availableLanguage: 'English',
   },
   openingHoursSpecification: [
@@ -87,7 +87,7 @@ const websiteSchema = {
   title="The Reichmann Co. · Software, Apps & SaaS"
   description={description}
   ogTitle="The Reichmann Co. · Software, Apps & SaaS"
-  ogDescription="South Africa based technology company designing and building web applications and SaaS products for ambitious teams worldwide."
+  ogDescription="South Africa based technology company designing and building web applications and SaaS products for ambitious South African teams."
   keywords="The Reichmann Co, Reichmann Co, software development, web applications, SaaS, South Africa, app development, iOS, Android, technology"
   jsonLd={[orgSchema, websiteSchema]}
 >
@@ -108,7 +108,7 @@ const websiteSchema = {
         </h1>
         <p class="hero-subtitle">
           The Reichmann Co. is a South Africa based technology company designing and developing
-          web applications and SaaS products for ambitious teams worldwide.
+          web applications and SaaS products for ambitious South African teams.
         </p>
         <div class="hero-cta">
           <Button href="/contact" variant="primary" size="lg" arrow>Start a project</Button>
@@ -116,7 +116,7 @@ const websiteSchema = {
         </div>
         <ul class="hero-meta">
           <li><span class="hero-meta-dot"></span> Founded {SITE.founded}</li>
-          <li><span class="hero-meta-dot"></span> {SITE.country}, working globally</li>
+          <li><span class="hero-meta-dot"></span> Based in {SITE.country}</li>
           <li><span class="hero-meta-dot"></span> Reg. {SITE.registration}</li>
         </ul>
       </div>
@@ -141,8 +141,8 @@ const websiteSchema = {
         <span class="trust-label">Native team</span>
       </div>
       <div class="trust-item">
-        <span class="trust-value">Global</span>
-        <span class="trust-label">Delivery model</span>
+        <span class="trust-value">SA</span>
+        <span class="trust-label">Locally focused</span>
       </div>
     </div>
   </section>

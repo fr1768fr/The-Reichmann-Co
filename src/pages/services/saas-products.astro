@@ -12,7 +12,7 @@ const serviceSchema = {
   name: 'SaaS Products',
   url: `${SITE.url}/services/saas-products`,
   provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
-  areaServed: 'Worldwide',
+  areaServed: { '@type': 'Country', name: 'South Africa' },
   description: 'End-to-end SaaS development from blank canvas to paying customers, including authentication, billing, and infrastructure.',
 };
 
