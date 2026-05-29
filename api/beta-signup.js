@@ -1,4 +1,4 @@
-// Lumarix Beta Signup — Vercel serverless function
+// Lumarix Early Access Signup — Vercel serverless function
 // Receives email, sends welcome email to signup + notification to admin via Resend API.
 
 module.exports = async function handler(req, res) {
@@ -50,17 +50,17 @@ module.exports = async function handler(req, res) {
                     <tr>
                         <td style="padding:40px 40px 32px;">
                             <div style="display:inline-block;padding:6px 12px;background:rgba(59, 130, 246,0.12);border:1px solid rgba(96, 165, 250,0.4);border-radius:100px;font-size:11px;font-weight:500;color:#60a5fa;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px;">
-                                Beta Access Confirmed
+                                Early Access Confirmed
                             </div>
                             <h1 style="margin:0 0 16px;font-size:28px;font-weight:700;letter-spacing:-0.025em;line-height:1.2;color:#f8fafc;">
-                                Welcome to the <span style="background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent;">Lumarix</span> Beta
+                                Welcome to <span style="background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent;">Lumarix</span> Early Access
                             </h1>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
-                                Thanks for signing up. You've secured a spot on our accountant beta tester list for Lumarix, the next-generation Enterprise Resource Planning platform we're building at The Reichmann Co.
+                                Thanks for signing up. You've secured a spot on our early access list for Lumarix, the next-generation Enterprise Resource Planning platform in active development at The Reichmann Co.
                             </p>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 <strong style="color:#f8fafc;">What happens next?</strong><br>
-                                When Lumarix is ready for beta testing, we'll email you directly with access details, login credentials, and onboarding instructions. No further action needed on your side for now.
+                                When Lumarix is ready for early access, we'll email you directly with access details, login credentials, and onboarding instructions. No further action needed on your side for now.
                             </p>
                             <p style="margin:0 0 28px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 If you have any questions in the meantime, just reply to this email.
@@ -76,7 +76,7 @@ module.exports = async function handler(req, res) {
                     </tr>
                 </table>
                 <p style="margin:24px 0 0;font-size:12px;color:#475569;">
-                    You're receiving this email because you signed up for the Lumarix beta at thereichmannco.co.za.
+                    You're receiving this email because you signed up for Lumarix early access at thereichmannco.co.za.
                 </p>
             </td>
         </tr>
@@ -96,7 +96,7 @@ module.exports = async function handler(req, res) {
                     <tr>
                         <td>
                             <h2 style="margin:0 0 4px;font-size:20px;font-weight:600;color:#0f172a;letter-spacing:-0.015em;">
-                                New Lumarix Beta Signup
+                                New Lumarix Early Access Signup
                             </h2>
                             <p style="margin:0 0 20px;font-size:13px;color:#64748b;font-family:'JetBrains Mono',Menlo,Monaco,monospace;">
                                 ${escapeHtml(signupDate)}
@@ -114,7 +114,7 @@ module.exports = async function handler(req, res) {
                                 </tr>
                             </table>
                             <p style="margin:0;font-size:13px;color:#94a3b8;">
-                                Signed up via the Lumarix beta form on thereichmannco.co.za.
+                                Signed up via the Lumarix early access form on thereichmannco.co.za.
                             </p>
                         </td>
                     </tr>
@@ -138,7 +138,7 @@ module.exports = async function handler(req, res) {
                 from: FROM_ADDRESS,
                 to: email,
                 reply_to: NOTIFICATION_EMAIL,
-                subject: 'Welcome to the Lumarix Beta',
+                subject: 'Welcome to Lumarix Early Access',
                 html: welcomeHtml
             })
         });
@@ -160,7 +160,7 @@ module.exports = async function handler(req, res) {
                 from: FROM_ADDRESS,
                 to: NOTIFICATION_EMAIL,
                 reply_to: email,
-                subject: `New Lumarix Beta Signup: ${email}`,
+                subject: `New Lumarix Early Access Signup: ${email}`,
                 html: notifyHtml
             })
         });

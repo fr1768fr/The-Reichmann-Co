@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = 'AI features and integrations by The Reichmann Co. LLM-powered product features, automation, and integrations with the platforms your customers use.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'AI Engineering and Integrations',
+  name: 'AI & Integrations',
+  url: `${SITE.url}/services/ai-integrations.html`,
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: 'Worldwide',
+  description: 'LLM-powered features, intelligent automation, and integrations with the platforms your customers already use.',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
+    { '@type': 'ListItem', position: 3, name: 'AI & Integrations', item: `${SITE.url}/services/ai-integrations.html` },
+  ],
+};
+---
+
+<BaseLayout
+  title="AI &amp; Integrations · The Reichmann Co."
+  description={description}
+  jsonLd={[serviceSchema, breadcrumbSchema]}
+  activeNav="services"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">AI &amp; Integrations</span>
+      </nav>
+      <span class="eyebrow">Service</span>
+      <h1 class="page-hero-title">AI &amp; Integrations.</h1>
+      <p class="page-hero-sub">
+        LLM-powered features, intelligent automation, and seamless
+        integrations with the platforms your customers already use.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>What is included</h3>
+          <ul class="feature-list">
+            <li>LLM features (Claude, GPT, local models)</li>
+            <li>Retrieval-augmented generation (RAG)</li>
+            <li>Workflow automation and background jobs</li>
+            <li>Webhooks, OAuth flows, and SDK integration</li>
+            <li>Eval and monitoring for AI quality</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>How we think about AI</h3>
+          <p class="info-card-prose">
+            We add AI where it makes a product better, not as a sticker.
+            Prompts are tested, costs are measured, and outputs degrade
+            gracefully. The goal is reliability, not novelty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">AI in your product</span>
+      <h2 class="closing-title">Tell us what you want it to do.</h2>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .info-card-prose { color: var(--text-secondary); line-height: var(--lh-relaxed); }
+</style>

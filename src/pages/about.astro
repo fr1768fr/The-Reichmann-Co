@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const description =
+  'About The Reichmann Co. A South Africa based technology company building custom software and SaaS products for ambitious teams worldwide.';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About The Reichmann Co.',
+  url: `${SITE.url}/about.html`,
+  about: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+  },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE.url}/about.html` },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="About · The Reichmann Co."
+  description={description}
+  keywords="The Reichmann Co about, Franco Reichmann, South African software company, custom software development"
+  jsonLd={[aboutSchema]}
+  activeNav="about"
+>
+  <!-- Page header -->
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">About</span>
+      </nav>
+      <span class="eyebrow">About the company</span>
+      <h1 class="page-hero-title">
+        We build software with the same care a good architect brings to a building.
+      </h1>
+      <p class="page-hero-sub">
+        The Reichmann Co. (Pty) Ltd is a South Africa based technology company.
+        We design, build, and ship custom software across every major platform.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story + stats -->
+  <section class="section">
+    <div class="container container-wide story-grid">
+      <div class="story-prose">
+        <p class="lead">
+          We design, build, and ship software across every major platform.
+          iOS, Android, web, and desktop. Our work spans bespoke client
+          engagements and our own portfolio of SaaS products, each built to
+          the same uncompromising standard.
+        </p>
+        <p>
+          Founded on the belief that great software starts with great
+          engineering, we partner with founders, businesses, and operators
+          to turn ideas into products that ship. Fast, polished, and built
+          to scale.
+        </p>
+        <p>
+          Headquartered in South Africa, we work with teams worldwide.
+          Primary hours are Mon to Thu 08:00 to 16:00 and Fri 08:00 to 12:00
+          SAST (UTC+2), with async collaboration outside of those hours.
+        </p>
+      </div>
+
+      <aside class="story-stats">
+        <div class="stat-card">
+          <div class="stat-number">{SITE.founded}</div>
+          <div class="stat-label">Founded</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">{SITE.countryCode}</div>
+          <div class="stat-label">Based</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Global</div>
+          <div class="stat-label">Reach</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">SaaS</div>
+          <div class="stat-label">Native</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Compliance -->
+  <section class="section section--alt">
+    <div class="container container-wide compliance">
+      <span class="eyebrow">Compliance</span>
+      <h2 class="compliance-title">Registered. Verified. Compliant.</h2>
+      <p class="compliance-body">
+        The Reichmann Co. (Pty) Ltd is registered as an Exempt Micro
+        Enterprise (EME) and classified as a <strong>Level 4 B-BBEE
+        Contributor</strong>.
+      </p>
+      <p>
+        <Button href="/bee-certificate.pdf" variant="secondary" size="md" external>
+          View B-BBEE Certificate
+        </Button>
+      </p>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head section-head-center">
+        <span class="eyebrow">How we work</span>
+        <h2 class="section-title">Engineering as a craft. Delivery as a discipline.</h2>
+        <p class="section-intro">
+          We build software the way good architects build buildings.
+          Quietly, carefully, and to last.
+        </p>
+      </header>
+
+      <blockquote class="vision-quote">
+        <p>
+          Engineering is craft. Every product we ship is built to be fast,
+          dependable, and worth coming back to. Software given the same
+          care as a piece of architecture.
+        </p>
+        <footer>The Reichmann Co.</footer>
+      </blockquote>
+
+      <div class="values-grid">
+        <article class="value-card">
+          <span class="value-number">01</span>
+          <h3>Built to last</h3>
+          <p>Modern stack, sensible defaults, tests where they pay back. The code you inherit on day 365 is code you can still read on day one.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">02</span>
+          <h3>Ship in weeks</h3>
+          <p>MVPs land in weeks, production releases in months. Scope is small and honest, momentum is steady, and the demo always works.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">03</span>
+          <h3>Every surface</h3>
+          <p>Web, mobile, desktop, API. We meet your users where they are, with one team that owns the whole experience end to end.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">04</span>
+          <h3>Honest partnership</h3>
+          <p>Direct communication. Clear scope. No theatre. You will always know exactly what we are building, what it costs, and when it ships.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Let&rsquo;s build something</span>
+      <h2 class="closing-title">Ready to build?</h2>
+      <p class="closing-sub">Tell us about your project. We would love to hear about it.</p>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/services.html" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---- Story + stats ---- */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .story-prose p { margin-bottom: var(--space-5); color: var(--text-secondary); line-height: var(--lh-relaxed); }
+  .story-prose .lead { color: var(--text-primary); font-size: var(--fs-xl); }
+
+  .story-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .stat-card {
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .stat-number {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .stat-label {
+    margin-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 880px) {
+    .story-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+  }
+
+  /* ---- Compliance ---- */
+  .compliance {
+    max-width: 44rem;
+  }
+
+  .compliance-title {
+    margin-top: var(--space-3);
+    font-size: var(--fs-3xl);
+    letter-spacing: -0.02em;
+  }
+
+  .compliance-body {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    font-size: var(--fs-lg);
+  }
+
+  /* ---- Vision quote ---- */
+  .vision-quote {
+    margin: 0 auto var(--space-12);
+    max-width: 48rem;
+    padding: var(--space-8);
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--brand-primary);
+    border-radius: var(--radius-md);
+  }
+  .vision-quote p {
+    font-size: var(--fs-xl);
+    line-height: var(--lh-relaxed);
+    color: var(--text-primary);
+    font-style: italic;
+  }
+  .vision-quote footer {
+    margin-top: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--brand-primary);
+    font-style: normal;
+  }
+
+  /* ---- Values grid ---- */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+  .value-card {
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+  }
+  .value-card h3 {
+    font-size: var(--fs-lg);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+  .value-card p {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .value-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+  }
+  @media (max-width: 1000px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px)  { .values-grid { grid-template-columns: 1fr; } }
+</style>

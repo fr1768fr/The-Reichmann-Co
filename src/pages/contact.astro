@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+
+const description = 'Contact The Reichmann Co. Have an app, web application, or SaaS to build? Get in touch.';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact The Reichmann Co.',
+  url: `${SITE.url}/contact.html`,
+  mainEntity: {
+    '@type': 'Organization',
+    name: SITE.name,
+    email: SITE.email,
+    address: { '@type': 'PostalAddress', addressCountry: SITE.countryCode },
+  },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE.url}/contact.html` },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="Contact · The Reichmann Co."
+  description={description}
+  jsonLd={[contactSchema]}
+  activeNav="contact"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Contact</span>
+      </nav>
+      <span class="eyebrow">Get in touch</span>
+      <h1 class="page-hero-title">Let&rsquo;s build something.</h1>
+      <p class="page-hero-sub">
+        Have an idea, an app to build, or a SaaS to launch? Whether you are a founder
+        with a sketch on a napkin or a business scaling its operations, we would love
+        to hear about it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide contact-grid">
+      <aside class="contact-info">
+        <h2 class="contact-info-heading">Reach the team</h2>
+        <dl class="contact-list">
+          <div class="contact-item">
+            <dt>Email</dt>
+            <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
+          </div>
+          <div class="contact-item">
+            <dt>Based</dt>
+            <dd>{SITE.country}. Working globally.</dd>
+          </div>
+          <div class="contact-item">
+            <dt>Primary hours</dt>
+            <dd>Mon to Thu, 08:00 to 16:00<br />Fri, 08:00 to 12:00 SAST (UTC+2)</dd>
+          </div>
+          <div class="contact-item">
+            <dt>Outside hours</dt>
+            <dd>Async. We will reply within 24 hours on weekdays.</dd>
+          </div>
+          <div class="contact-item">
+            <dt>Company</dt>
+            <dd>{SITE.legalName}<br />Reg. No. {SITE.registration}</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xojbnyog" method="POST">
+        <header class="contact-form-head">
+          <h2>Tell us about your project</h2>
+          <p>We read every message and reply within a day on weekdays.</p>
+        </header>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company <span class="optional">(optional)</span></label>
+          <input type="text" id="company" name="company" autocomplete="organization" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Project type</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a project type</option>
+            <option value="web-app">Web Application</option>
+            <option value="saas">SaaS Product</option>
+            <option value="mobile-app">Mobile App (iOS / Android)</option>
+            <option value="desktop">Desktop Software</option>
+            <option value="cloud">Cloud / Backend / API</option>
+            <option value="ai">AI / Integrations</option>
+            <option value="consulting">Technical Consulting</option>
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">
+          <span>Send message</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  const formNote = document.getElementById('formNote');
+
+  if (form && formNote) {
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const action = form.getAttribute('action') || '';
+      const originalHtml = submitBtn?.innerHTML ?? '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+      }
+      formNote.className = 'form-note';
+      formNote.textContent = '';
+
+      try {
+        const response = await fetch(action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (response.ok) {
+          form.reset();
+          formNote.className = 'form-note success';
+          formNote.textContent = 'Thank you. Your message has been sent. We will be in touch.';
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch {
+        formNote.className = 'form-note error';
+        formNote.textContent = 'Something went wrong. Please email us directly at info@thereichmannco.co.za.';
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHtml;
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+
+  .contact-info-heading {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin: 0;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .contact-item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+  .contact-item dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+  .contact-item dd {
+    margin: 0;
+    color: var(--text-primary);
+    line-height: var(--lh-relaxed);
+  }
+  .contact-item dd a {
+    color: var(--brand-primary);
+    font-weight: var(--fw-medium);
+  }
+
+  /* ---- Form ---- */
+  .contact-form {
+    padding: var(--space-8);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .contact-form-head { margin-bottom: var(--space-6); }
+  .contact-form-head h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--space-2);
+  }
+  .contact-form-head p {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  @media (max-width: 540px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-secondary);
+  }
+
+  .optional {
+    color: var(--text-subtle);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--fs-base);
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 7rem;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px var(--brand-focus-ring);
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-4) var(--space-6);
+    background: var(--brand-primary);
+    color: var(--text-on-brand);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-base);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+  }
+
+  .form-submit:hover {
+    background: var(--brand-primary-hover);
+    box-shadow: var(--shadow-brand);
+    transform: translateY(-1px);
+  }
+
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .form-note {
+    margin-top: var(--space-3);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+  }
+  .form-note.success { color: var(--success); }
+  .form-note.error { color: var(--danger); }
+</style>

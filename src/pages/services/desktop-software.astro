@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = "Desktop software development by The Reichmann Co. Native and cross-platform desktop apps for Windows, macOS, and Linux when the browser doesn't cut it.";
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Desktop Software Development',
+  name: 'Desktop Software',
+  url: `${SITE.url}/services/desktop-software.html`,
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: 'Worldwide',
+  description: 'Native desktop applications for Windows, macOS, and Linux when the browser falls short.',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
+    { '@type': 'ListItem', position: 3, name: 'Desktop Software', item: `${SITE.url}/services/desktop-software.html` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Desktop Software · The Reichmann Co."
+  description={description}
+  jsonLd={[serviceSchema, breadcrumbSchema]}
+  activeNav="services"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Desktop Software</span>
+      </nav>
+      <span class="eyebrow">Service</span>
+      <h1 class="page-hero-title">Desktop Software.</h1>
+      <p class="page-hero-sub">
+        Native desktop applications for Windows, macOS, and Linux,
+        for when the browser does not cut it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>What is included</h3>
+          <ul class="feature-list">
+            <li>Cross-platform builds (Tauri, Electron, .NET MAUI)</li>
+            <li>Native builds (Swift / SwiftUI for macOS, WinUI / WPF for Windows)</li>
+            <li>Auto-updates and code signing</li>
+            <li>Offline-first data and sync</li>
+            <li>System integrations (filesystem, peripherals, notifications)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>When it fits</h3>
+          <p class="info-card-prose">
+            Tools used heavily by power users, software requiring offline operation,
+            or apps that need deep OS integration. We help you decide between
+            native, cross-platform, or web-as-desktop based on your constraints.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Need a desktop app</span>
+      <h2 class="closing-title">Tell us what you need to build.</h2>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .info-card-prose { color: var(--text-secondary); line-height: var(--lh-relaxed); }
+</style>

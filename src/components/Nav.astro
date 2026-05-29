@@ -1,0 +1,270 @@
+---
+import { SITE, NAV_LINKS } from '../data/site';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  activeNav?: 'about' | 'services' | 'products' | 'blog' | 'contact';
+}
+
+const { activeNav } = Astro.props;
+
+const linkKey = (href: string): string => {
+  if (href.startsWith('/blog')) return 'blog';
+  const m = href.match(/^\/(\w+)\.html/);
+  return m?.[1] ?? '';
+};
+---
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner container container-wide">
+    <a href="/" class="nav-logo" aria-label={`${SITE.name} home`}>
+      <img src="/favicon-light-192.png" alt="" width="32" height="32" class="nav-logo-mark" />
+      <span class="nav-logo-text">{SITE.name}</span>
+    </a>
+
+    <nav class="nav-primary" aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={['nav-link', { 'is-active': linkKey(link.href) === activeNav }]}
+              aria-current={linkKey(link.href) === activeNav ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <ThemeToggle />
+      <a href="/contact.html" class="nav-cta">
+        <span>Start a project</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('siteNav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    links.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        links.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  if (nav) {
+    const onScroll = () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 4);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg-base) 88%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav.is-scrolled {
+    border-bottom-color: var(--border-subtle);
+    background: color-mix(in srgb, var(--bg-base) 94%, transparent);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    height: var(--nav-height);
+  }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--tracking-tight);
+    flex-shrink: 0;
+  }
+
+  .nav-logo:hover { color: var(--text-primary); }
+
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-logo-text {
+    font-size: var(--fs-base);
+  }
+
+  .nav-primary {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    border-radius: var(--radius-md);
+    transition: color var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background: var(--surface-hover);
+  }
+
+  .nav-link.is-active {
+    color: var(--brand-primary);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--brand-primary);
+    color: var(--text-on-brand);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xs);
+    transition: background-color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-cta:hover {
+    background: var(--brand-primary-hover);
+    color: var(--text-on-brand);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-cta svg {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-cta:hover svg { transform: translateX(2px); }
+
+  .nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--radius-md);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-toggle:hover { background: var(--surface-hover); }
+
+  .nav-toggle span {
+    width: 20px;
+    height: 1.5px;
+    background: var(--text-primary);
+    border-radius: 999px;
+    transition: transform var(--duration-base) var(--ease-out),
+                opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 880px) {
+    .nav-toggle { display: flex; }
+    .nav-primary { flex: initial; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      padding: var(--space-4);
+      gap: var(--space-1);
+      background: var(--bg-base);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-links.is-open { display: flex; }
+
+    .nav-link {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--fs-base);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-cta span { display: none; }
+    .nav-cta {
+      padding: var(--space-2);
+      width: 36px;
+      height: 36px;
+      justify-content: center;
+    }
+    .nav-logo-text { display: none; }
+  }
+</style>

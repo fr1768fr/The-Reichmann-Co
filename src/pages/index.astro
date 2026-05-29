@@ -1,0 +1,780 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const description =
+  'The Reichmann Co. is a South Africa based technology company designing and developing web applications and SaaS products for ambitious teams worldwide.';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  legalName: SITE.legalName,
+  alternateName: ['Reichmann Co', 'Reichmann Holdings'],
+  url: SITE.url,
+  logo: `${SITE.url}/favicon-512.png`,
+  image: `${SITE.url}/og-image.png`,
+  description,
+  foundingDate: SITE.founded,
+  founders: [{ '@type': 'Person', name: 'Franco Reichmann' }],
+  address: { '@type': 'PostalAddress', addressCountry: SITE.countryCode },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: SITE.email,
+    contactType: 'customer support',
+    areaServed: 'Worldwide',
+    availableLanguage: 'English',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '08:00',
+      closes: '16:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Friday',
+      opens: '08:00',
+      closes: '12:00',
+    },
+  ],
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'CIPC Registration Number',
+    value: SITE.registration,
+  },
+  sameAs: [SITE.linkedin],
+  knowsAbout: [
+    'Software Development',
+    'Web Application Development',
+    'SaaS Development',
+    'Mobile App Development',
+    'Enterprise Resource Planning',
+    'Cloud Infrastructure',
+  ],
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Web Application Development',
+        url: `${SITE.url}/services/web-applications.html`,
+      },
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'SaaS Product Development',
+        url: `${SITE.url}/services/saas-products.html`,
+      },
+    },
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  publisher: { '@type': 'Organization', name: SITE.name },
+};
+---
+
+<BaseLayout
+  title="The Reichmann Co. · Software, Apps & SaaS"
+  description={description}
+  ogTitle="The Reichmann Co. · Software, Apps & SaaS"
+  ogDescription="South Africa based technology company designing and building web applications and SaaS products for ambitious teams worldwide."
+  keywords="The Reichmann Co, Reichmann Co, software development, web applications, SaaS, South Africa, app development, iOS, Android, technology"
+  jsonLd={[orgSchema, websiteSchema]}
+>
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+
+    <div class="container container-wide hero-inner">
+      <div class="hero-content">
+        <span class="eyebrow">Software studio &middot; South Africa</span>
+        <h1 class="hero-title">
+          Custom software, <span class="hero-accent">engineered to scale</span>.
+        </h1>
+        <p class="hero-subtitle">
+          The Reichmann Co. is a South Africa based technology company designing and developing
+          web applications and SaaS products for ambitious teams worldwide.
+        </p>
+        <div class="hero-cta">
+          <Button href="/contact.html" variant="primary" size="lg" arrow>Start a project</Button>
+          <Button href="/services.html" variant="secondary" size="lg">What we build</Button>
+        </div>
+        <ul class="hero-meta">
+          <li><span class="hero-meta-dot"></span> Founded {SITE.founded}</li>
+          <li><span class="hero-meta-dot"></span> {SITE.country}, working globally</li>
+          <li><span class="hero-meta-dot"></span> Reg. {SITE.registration}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Trust strip (credentials / quick facts)
+       ============================================================ -->
+  <section class="trust-strip">
+    <div class="container container-wide trust-grid">
+      <div class="trust-item">
+        <span class="trust-value">2026</span>
+        <span class="trust-label">Founded</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-value">B-BBEE</span>
+        <span class="trust-label">Level 4 Contributor</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-value">SaaS</span>
+        <span class="trust-label">Native team</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-value">Global</span>
+        <span class="trust-label">Delivery model</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       What we build — lead services
+       ============================================================ -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">What we build</span>
+        <h2 class="section-title">Two lead services, one team.</h2>
+        <p class="section-intro">
+          We lead with web applications and end-to-end SaaS products.
+          Supporting capabilities round out an engagement when needed.
+        </p>
+      </header>
+
+      <div class="lead-grid">
+        <a href="/services/web-applications.html" class="lead-card">
+          <div class="lead-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="lead-card-body">
+            <h3>Web Applications</h3>
+            <p>
+              Production-grade web apps. Built on modern frameworks. Responsive,
+              accessible, fast on every device, and instrumented from day one.
+            </p>
+            <span class="lead-card-link">Explore web applications<span aria-hidden="true"> &rarr;</span></span>
+          </div>
+        </a>
+
+        <a href="/services/saas-products.html" class="lead-card">
+          <div class="lead-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+          </div>
+          <div class="lead-card-body">
+            <h3>SaaS Products</h3>
+            <p>
+              End to end SaaS development. Blank canvas to paying customers,
+              including auth, billing, multi-tenancy, observability, and infra.
+            </p>
+            <span class="lead-card-link">Explore SaaS products<span aria-hidden="true"> &rarr;</span></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="section-aux">
+        <span class="text-muted">Also available:</span>
+        <a href="/services/mobile-apps.html" class="aux-pill">Mobile Apps</a>
+        <a href="/services/desktop-software.html" class="aux-pill">Desktop Software</a>
+        <a href="/services/cloud-backend.html" class="aux-pill">Cloud &amp; Backend</a>
+        <a href="/services/ai-integrations.html" class="aux-pill">AI &amp; Integrations</a>
+        <a href="/services.html" class="aux-link">See all services<span aria-hidden="true"> &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Approach — how we work
+       ============================================================ -->
+  <section class="section section--alt">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">How we work</span>
+        <h2 class="section-title">Engineering as a craft. Delivery as a discipline.</h2>
+        <p class="section-intro">
+          We build software the way good architects build buildings. Quietly,
+          carefully, and to last.
+        </p>
+      </header>
+
+      <div class="approach-grid">
+        <article class="approach-card">
+          <span class="approach-number">01</span>
+          <h3>Built to last</h3>
+          <p>
+            Modern stack, sensible defaults, tests where they pay back. The code
+            you inherit on day 365 is code you can still read on day one.
+          </p>
+        </article>
+        <article class="approach-card">
+          <span class="approach-number">02</span>
+          <h3>Ship in weeks</h3>
+          <p>
+            MVPs land in weeks, production releases in months. Scope is small
+            and honest, momentum is steady, and the demo always works.
+          </p>
+        </article>
+        <article class="approach-card">
+          <span class="approach-number">03</span>
+          <h3>Every surface</h3>
+          <p>
+            Web, mobile, desktop, API. We meet your users where they are, with
+            one team that owns the whole experience end to end.
+          </p>
+        </article>
+        <article class="approach-card">
+          <span class="approach-number">04</span>
+          <h3>Honest partnership</h3>
+          <p>
+            Direct communication. Clear scope. No theatre. You will always know
+            exactly what we are building, what it costs, and when it ships.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       In the lab — products
+       ============================================================ -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">In the lab</span>
+        <h2 class="section-title">Products built for the work we know best.</h2>
+        <p class="section-intro">
+          Beyond our client work, we build our own software. Designed from first
+          principles for the markets we understand.
+        </p>
+      </header>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <header class="product-card-head">
+            <span class="status">
+              <span class="status-dot"></span> In Development
+            </span>
+            <span class="product-category">Enterprise Resource Planning</span>
+          </header>
+          <h3 class="product-name">Lumarix</h3>
+          <p class="product-tagline">Enterprise Resource Planning, reimagined.</p>
+          <p class="product-body">
+            A cloud native ERP built for modern accountants and the businesses they serve.
+            Real time books, AI assisted reconciliation, POPIA by design.
+          </p>
+          <footer class="product-card-foot">
+            <a href="/products/lumarix.html" class="product-link">
+              Discover Lumarix<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </footer>
+        </article>
+
+        <article class="product-card">
+          <header class="product-card-head">
+            <span class="status status--research">
+              <span class="status-dot"></span> In Research
+            </span>
+            <span class="product-category">Accounting Intelligence</span>
+          </header>
+          <h3 class="product-name">Veritis</h3>
+          <p class="product-tagline">Truth, for accountants.</p>
+          <p class="product-body">
+            An AI built for South African accountants. Accuracy first, with deep
+            understanding of SA tax law. Cites every claim it makes.
+          </p>
+          <footer class="product-card-foot">
+            <a href="/products/veritis.html" class="product-link">
+              Discover Veritis<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Closing CTA — inverse, brand-deep navy panel
+       ============================================================ -->
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Let&rsquo;s build something</span>
+      <h2 class="closing-title">
+        Have an idea, an app, or a SaaS to launch?<br />Tell us about it.
+      </h2>
+      <p class="closing-sub">
+        Whether you are a founder with a sketch on a napkin or a business
+        scaling its operations, we would love to hear from you.
+      </p>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/services.html" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ==========================================================
+     Hero
+     ========================================================== */
+  .hero {
+    position: relative;
+    padding-block: var(--space-20) var(--space-16);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .hero { padding-block: var(--space-24) var(--space-20); }
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
+    opacity: 0.6;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    width: 1100px;
+    height: 600px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, var(--brand-tint-strong) 0%, transparent 60%);
+    opacity: 0.9;
+  }
+
+  .hero-inner {
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: 56rem;
+  }
+
+  .hero-title {
+    margin-top: var(--space-5);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--text-primary);
+  }
+
+  .hero-accent {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-700) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    margin-top: var(--space-6);
+    font-size: var(--fs-xl);
+    line-height: var(--lh-relaxed);
+    color: var(--text-secondary);
+    max-width: 44rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  .hero-meta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+  }
+
+  .hero-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero-meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    box-shadow: 0 0 0 3px var(--brand-tint);
+  }
+
+  /* ==========================================================
+     Trust strip
+     ========================================================== */
+  .trust-strip {
+    border-block: 1px solid var(--border-subtle);
+    background: var(--bg-base);
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-block: var(--space-8);
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-inline: var(--space-6);
+    border-left: 1px solid var(--border-subtle);
+  }
+
+  .trust-item:first-child { border-left: 0; padding-left: 0; }
+
+  .trust-value {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--tracking-tight);
+    color: var(--text-primary);
+  }
+
+  .trust-label {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 720px) {
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .trust-item { border-left: 0; padding-inline: 0; }
+  }
+
+  /* ==========================================================
+     Lead services grid (Web + SaaS)
+     ========================================================== */
+  .lead-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .lead-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    color: inherit;
+    transition: border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out),
+                transform var(--duration-base) var(--ease-out);
+  }
+
+  .lead-card:hover {
+    color: inherit;
+    border-color: var(--brand-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .lead-card-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+  }
+
+  .lead-card-icon svg { width: 24px; height: 24px; }
+
+  .lead-card-body h3 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .lead-card-body p {
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+
+  .lead-card-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-5);
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+
+  @media (max-width: 760px) {
+    .lead-grid { grid-template-columns: 1fr; }
+    .lead-card { padding: var(--space-6); }
+  }
+
+  /* ==========================================================
+     Aux services row
+     ========================================================== */
+  .section-aux {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--fs-sm);
+  }
+
+  .section-aux > .text-muted {
+    margin-right: var(--space-2);
+    font-size: var(--fs-sm);
+  }
+
+  .aux-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    transition: border-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .aux-pill:hover {
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    background: var(--brand-tint);
+  }
+
+  .aux-link {
+    margin-left: auto;
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+  }
+
+  /* ==========================================================
+     Approach grid
+     ========================================================== */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .approach-card {
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .approach-card h3 {
+    font-size: var(--fs-lg);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .approach-card p {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+
+  .approach-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+  }
+
+  @media (max-width: 1000px) {
+    .approach-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 540px) {
+    .approach-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ==========================================================
+     Product grid
+     ========================================================== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-8);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle at top right, var(--brand-tint) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .product-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    position: relative;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-tint-strong);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 30%, transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .product-category {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  .product-name {
+    font-size: var(--fs-4xl);
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .product-tagline {
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    position: relative;
+  }
+
+  .product-body {
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    position: relative;
+  }
+
+  .product-card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    margin-top: var(--space-2);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+  }
+
+  .product-link {
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+
+  .product-link-alt {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+  }
+
+  .product-link-alt:hover { color: var(--brand-primary); }
+
+  @media (max-width: 800px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .product-card { padding: var(--space-6); }
+  }
+
+</style>

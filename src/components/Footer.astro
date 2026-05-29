@@ -1,0 +1,191 @@
+---
+import { SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container container-wide footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label={`${SITE.name} home`}>
+        <img src="/favicon-light-192.png" alt="" width="36" height="36" />
+        <span>{SITE.name}</span>
+      </a>
+      <p class="footer-tagline">{SITE.shortTagline}</p>
+      <div class="footer-social">
+        <a
+          href={SITE.linkedin}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${SITE.name} on LinkedIn`}
+          class="footer-social-link"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-heading">Company</h5>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/products.html">Products</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-heading">Solutions</h5>
+      <ul>
+        <li><a href="/services/web-applications.html">Web Applications</a></li>
+        <li><a href="/services/saas-products.html">SaaS Products</a></li>
+        <li><a href="/services/mobile-apps.html">Mobile Apps</a></li>
+        <li><a href="/services/cloud-backend.html">Cloud &amp; Backend</a></li>
+        <li><a href="/services/ai-integrations.html">AI &amp; Integrations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-heading">Products</h5>
+      <ul>
+        <li><a href="/products/lumarix.html">Lumarix</a></li>
+        <li><a href="/products/veritis.html">Veritis</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5 class="footer-heading">Legal</h5>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/bee-certificate.pdf" target="_blank" rel="noopener">B-BBEE Level 4 Certificate</a></li>
+        <li class="footer-meta">{SITE.legalName}</li>
+        <li class="footer-meta">Reg. No. {SITE.registration}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container container-wide footer-bottom">
+    <p>&copy; {year} {SITE.legalName}. All rights reserved.</p>
+    <p class="footer-meta">{SITE.country} &middot; Working globally</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-24);
+    padding-block: var(--space-20) var(--space-8);
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: var(--space-12) var(--space-8);
+  }
+
+  .footer-brand {
+    max-width: 22rem;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-logo img {
+    border-radius: var(--radius-sm);
+  }
+
+  .footer-tagline {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+    margin-bottom: var(--space-5);
+  }
+
+  .footer-social { display: flex; gap: var(--space-2); }
+
+  .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    transition: color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .footer-social-link:hover {
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    background: var(--brand-tint);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-heading {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+    margin-bottom: var(--space-5);
+  }
+
+  .footer-col a {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .footer-col a:hover { color: var(--brand-primary); }
+
+  .footer-meta {
+    color: var(--text-subtle);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+  }
+
+  .footer-bottom {
+    margin-top: var(--space-16);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+  }
+
+  @media (max-width: 960px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand { grid-column: 1 / -1; max-width: none; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

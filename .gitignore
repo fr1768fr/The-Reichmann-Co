@@ -1,10 +1,15 @@
 # Vercel
 .vercel/
 
+# Astro
+dist/
+.astro/
+
 # Node
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json.bak
 
 # Environment
 .env
@@ -24,3 +29,9 @@ ehthumbs.db
 
 # Logs
 *.log
+
+# Local dev tooling
+.claude/
+
+# Migration reference (legacy HTML/CSS/JS preserved during Astro migration)
+_legacy/

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = 'Web application development by The Reichmann Co. Modern frameworks, responsive design, accessible, and fast on every device.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Web Application Development',
+  name: 'Web Applications',
+  url: `${SITE.url}/services/web-applications.html`,
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: 'Worldwide',
+  description: 'Modern web applications built with current frameworks. Responsive, accessible, and fast on every device.',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
+    { '@type': 'ListItem', position: 3, name: 'Web Applications', item: `${SITE.url}/services/web-applications.html` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Web Applications · The Reichmann Co."
+  description={description}
+  jsonLd={[serviceSchema, breadcrumbSchema]}
+  activeNav="services"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Web Applications</span>
+      </nav>
+      <span class="eyebrow">Service</span>
+      <h1 class="page-hero-title">Web Applications.</h1>
+      <p class="page-hero-sub">
+        Modern web apps engineered to be fast, accessible, and a pleasure to use,
+        on desktop, tablet, and phone.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>What is included</h3>
+          <ul class="feature-list">
+            <li>Product and UX discovery</li>
+            <li>Design system and responsive UI</li>
+            <li>Frontend implementation (React, Next.js, Vue, or Svelte)</li>
+            <li>Backend, APIs, and data modelling</li>
+            <li>Authentication, billing, and integrations</li>
+            <li>Accessibility (WCAG 2.2 AA) and performance budgets</li>
+            <li>CI/CD, hosting, and observability</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Typical stack</h3>
+          <ul class="feature-list">
+            <li>TypeScript across frontend and backend</li>
+            <li>Next.js, React, or Vue depending on fit</li>
+            <li>Postgres (Supabase or Neon) for data</li>
+            <li>Vercel, Fly.io, or AWS for hosting</li>
+            <li>Playwright and Vitest for tests</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Have a web app to build</span>
+      <h2 class="closing-title">Tell us about it.</h2>
+      <p class="closing-sub">We will reply within a day on weekdays.</p>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

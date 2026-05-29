@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+
+const description = 'Privacy Policy for The Reichmann Co. How we collect, use, store and protect your personal information.';
+---
+
+<BaseLayout
+  title="Privacy Policy · The Reichmann Co."
+  description={description}
+>
+  <section class="page-hero">
+    <div class="container container-prose">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Privacy</span>
+      </nav>
+      <span class="eyebrow">Legal</span>
+      <h1 class="page-hero-title">Privacy Policy</h1>
+      <p class="legal-meta">Last updated: 25 May 2026</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-prose legal-doc">
+      <section>
+        <h2>1. Introduction</h2>
+        <p>
+          The Reichmann Co. (Pty) Ltd (formerly Reichmann Holdings (Pty) Ltd, Registration Number {SITE.registration})
+          (&ldquo;The Reichmann Co.&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) operates the website
+          <a href={SITE.url}>thereichmannco.co.za</a> (the &ldquo;Site&rdquo;).
+          This Privacy Policy explains how we collect, use, store, share and protect your personal information
+          when you visit the Site or interact with our services.
+        </p>
+        <p>
+          This Policy is published in accordance with the Protection of Personal Information Act, 2013
+          (POPIA), and, where applicable, the General Data Protection Regulation (GDPR) of the European
+          Union. By using our Site, you consent to the collection and use of your information in accordance
+          with this Policy.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Information we collect</h2>
+        <h3>2.1 Information you provide directly</h3>
+        <ul>
+          <li><strong>Contact form submissions:</strong> name, email address, company name (optional), subject category, and message content.</li>
+          <li><strong>Beta signup submissions:</strong> email address.</li>
+          <li><strong>Email correspondence:</strong> any personal information you include when emailing us at info@thereichmannco.co.za.</li>
+        </ul>
+        <h3>2.2 Information collected automatically</h3>
+        <ul>
+          <li><strong>Server and operational logs:</strong> basic technical information such as IP address, browser type, device type, referrer URL, and pages visited. This is collected by our hosting provider for security, abuse prevention, and operational purposes.</li>
+          <li><strong>Browser local storage:</strong> we store your theme preference (light or dark) in your browser&rsquo;s local storage. This data is stored only on your device and is not transmitted to us.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. How we use your information</h2>
+        <p>We use your personal information for the following purposes:</p>
+        <ul>
+          <li>Responding to enquiries submitted via our contact form.</li>
+          <li>Sending the transactional welcome email confirming receipt of a beta signup.</li>
+          <li>Notifying beta-programme participants when our products are ready for testing.</li>
+          <li>Communicating with you regarding our services and any related business matters.</li>
+          <li>Improving the Site&rsquo;s functionality, security, and user experience.</li>
+          <li>Complying with our legal and regulatory obligations.</li>
+        </ul>
+        <p>
+          We do not use your personal information for direct marketing without your explicit consent, and we do not
+          sell, rent, or trade your personal information with third parties.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Lawful basis for processing (POPIA Section 11)</h2>
+        <p>We process your personal information on the following lawful grounds:</p>
+        <ul>
+          <li><strong>Your consent</strong>, provided when you submit a form or contact us.</li>
+          <li><strong>Performance of a contract</strong>, or steps taken at your request prior to entering into a contract.</li>
+          <li><strong>Our legitimate interests</strong> in operating, maintaining, securing, and improving our business, where such interests are not overridden by your rights.</li>
+          <li><strong>Compliance with applicable law</strong>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. Third-party service providers</h2>
+        <p>
+          We use the following trusted third-party services to operate the Site and our services. Each provider
+          processes your personal information only to the extent necessary to perform its specific role, and is
+          bound by its own privacy obligations.
+        </p>
+        <ul>
+          <li><strong>Vercel Inc.</strong> (United States): website hosting, content delivery, and serverless function infrastructure.</li>
+          <li><strong>Formspree, Inc.</strong> (United States): processing of contact form submissions.</li>
+          <li><strong>Resend, Inc.</strong> (United States): delivery of transactional emails, including the beta signup welcome email and admin notifications.</li>
+          <li><strong>Diamatrix CC trading as Domains.co.za</strong> (South Africa): domain registration, DNS hosting, and email mailbox hosting for our info@thereichmannco.co.za mailbox.</li>
+        </ul>
+        <p>
+          Each provider maintains its own privacy policy governing how it handles personal information. We
+          recommend reviewing those policies if you wish to understand their practices in detail.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. International data transfers</h2>
+        <p>
+          Some of our service providers are located outside the Republic of South Africa, including in the United
+          States. When your personal information is transferred outside South Africa, we take reasonable steps to
+          ensure such transfers comply with POPIA Section 72, including reliance on the contractual terms with
+          these providers and their published commitments to data protection.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Data retention</h2>
+        <p>
+          We retain personal information only for as long as necessary to fulfil the purposes for which it was
+          collected, or as required by law.
+        </p>
+        <ul>
+          <li><strong>Contact form submissions:</strong> retained for up to 24 months from the date of submission, unless ongoing communication or business reasons require a longer period.</li>
+          <li><strong>Beta signup details:</strong> retained until the launch of the relevant product plus 12 months, or until you request deletion.</li>
+          <li><strong>Server and operational logs:</strong> typically retained for up to 90 days by our hosting provider.</li>
+        </ul>
+        <p>
+          After the applicable retention period, your personal information is deleted or anonymised in
+          accordance with our internal procedures.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Your rights under POPIA</h2>
+        <p>You have the following rights in relation to your personal information:</p>
+        <ul>
+          <li>To be notified that your personal information is being collected.</li>
+          <li>To access the personal information we hold about you.</li>
+          <li>To request the correction or update of inaccurate or incomplete personal information.</li>
+          <li>To request the deletion or destruction of your personal information.</li>
+          <li>To object, on reasonable grounds, to the processing of your personal information.</li>
+          <li>To withdraw consent at any time, where processing is based on consent (without affecting the lawfulness of processing before withdrawal).</li>
+          <li>To lodge a complaint with the Information Regulator of South Africa.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, please contact us at
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. We will respond
+          within a reasonable period and as required by law.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Security</h2>
+        <p>
+          We implement reasonable technical and organisational measures to safeguard your personal information
+          against loss, unauthorised access, disclosure, alteration, or destruction. These measures include:
+        </p>
+        <ul>
+          <li>Encryption in transit (HTTPS / TLS).</li>
+          <li>Use of reputable infrastructure and service providers with established security standards.</li>
+          <li>Limiting access to personal information to authorised personnel on a need-to-know basis.</li>
+          <li>Storing credentials and API keys as protected environment variables rather than in source code.</li>
+        </ul>
+        <p>
+          No method of transmission over the internet or method of electronic storage is completely secure.
+          While we strive to protect your personal information, we cannot guarantee absolute security.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Cookies and similar technologies</h2>
+        <p>We do not use tracking, advertising, or marketing cookies on this Site.</p>
+        <p>
+          Our hosting provider may set first-party cookies that are strictly necessary for operating the Site
+          securely. Your browser may also store a theme preference (light or dark) in browser local storage;
+          this is stored only on your device and is not personal information.
+        </p>
+        <p>
+          If we introduce analytics, performance, or marketing technologies in future, we will update this
+          Policy and provide appropriate opt-out mechanisms.
+        </p>
+      </section>
+
+      <section>
+        <h2>11. Children&rsquo;s privacy</h2>
+        <p>
+          The Site and our services are not directed to individuals under the age of 18. We do not knowingly
+          collect personal information from minors. If you become aware that a minor has provided us with
+          personal information, please contact us so that we can take appropriate action.
+        </p>
+      </section>
+
+      <section>
+        <h2>12. Changes to this Privacy Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time to reflect changes in our practices, the services
+          we use, or applicable law. The &ldquo;Last updated&rdquo; date at the top of this page indicates when the Policy
+          was last revised.
+        </p>
+        <p>
+          We encourage you to review this Policy periodically. Material changes will be communicated by
+          posting a prominent notice on the Site or, where appropriate, by direct notification to
+          registered users.
+        </p>
+      </section>
+
+      <section>
+        <h2>13. Information Officer and contact details</h2>
+        <p>
+          In accordance with POPIA, the Information Officer of The Reichmann Co. (Pty) Ltd is responsible for
+          encouraging compliance with the Act and handling requests regarding personal information. For any
+          questions, requests, or concerns about this Privacy Policy or how we handle your personal information,
+          please contact:
+        </p>
+        <div class="legal-contact-block">
+          <p><strong>The Reichmann Co. (Pty) Ltd</strong></p>
+          <p>Formerly: Reichmann Holdings (Pty) Ltd</p>
+          <p>Registration Number: {SITE.registration}</p>
+          <p>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          <p>Registered in: South Africa</p>
+        </div>
+        <p>You also have the right to lodge a complaint with the Information Regulator of South Africa:</p>
+        <div class="legal-contact-block">
+          <p><strong>The Information Regulator (South Africa)</strong></p>
+          <p>JD House, 27 Stiemens Street, Braamfontein, Johannesburg, 2001</p>
+          <p>Email: <a href="mailto:complaints.IR@justice.gov.za">complaints.IR@justice.gov.za</a></p>
+          <p>Website: <a href="https://inforegulator.org.za" target="_blank" rel="noopener">inforegulator.org.za</a></p>
+        </div>
+      </section>
+
+      <p class="legal-back">
+        <a href="/" class="legal-back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to home
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-meta {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  .legal-doc section {
+    margin-bottom: var(--space-12);
+  }
+
+  .legal-doc h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+  }
+
+  .legal-doc h3 {
+    font-size: var(--fs-lg);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+  }
+
+  .legal-doc p,
+  .legal-doc li {
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+
+  .legal-doc p { margin-bottom: var(--space-4); }
+
+  .legal-doc ul {
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-4);
+    list-style: disc;
+  }
+
+  .legal-doc li { margin-bottom: var(--space-2); }
+
+  .legal-doc a {
+    color: var(--brand-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .legal-contact-block {
+    padding: var(--space-5);
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--brand-primary);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+  }
+  .legal-contact-block p { margin-bottom: var(--space-1); }
+
+  .legal-back {
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .legal-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-secondary);
+    font-weight: var(--fw-medium);
+  }
+  .legal-back-link:hover { color: var(--brand-primary); }
+</style>

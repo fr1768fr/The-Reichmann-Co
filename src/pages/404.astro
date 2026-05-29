@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="404 · Page Not Found · The Reichmann Co."
+  description="Page not found. The URL you requested does not exist on thereichmannco.co.za."
+  noindex={true}
+>
+  <section class="not-found">
+    <div class="container container-wide not-found-inner">
+      <span class="eyebrow">Error 404</span>
+      <h1 class="not-found-code">404</h1>
+      <h2 class="not-found-title">Page not found.</h2>
+      <p class="not-found-sub">
+        The URL you requested does not exist on this site. It may have moved, been renamed,
+        or never existed in the first place.
+      </p>
+      <div class="not-found-actions">
+        <Button href="/" variant="primary" size="lg" arrow>Back to home</Button>
+        <Button href="/contact.html" variant="secondary" size="lg">Tell us what you needed</Button>
+      </div>
+      <ul class="not-found-suggestions">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/products.html">Products</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: var(--space-24);
+    background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-subtle) 100%);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .not-found-inner {
+    max-width: 44rem;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .not-found-inner .eyebrow { justify-content: center; }
+
+  .not-found-code {
+    margin-top: var(--space-4);
+    font-size: clamp(5rem, 14vw, 9rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-700) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .not-found-title {
+    margin-top: var(--space-4);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .not-found-sub {
+    margin-top: var(--space-4);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .not-found-actions {
+    margin-top: var(--space-8);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .not-found-suggestions {
+    list-style: none;
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) var(--space-6);
+  }
+  .not-found-suggestions a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+  .not-found-suggestions a:hover { color: var(--brand-primary); }
+</style>

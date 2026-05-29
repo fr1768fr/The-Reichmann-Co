@@ -1,0 +1,115 @@
+---
+// Light/dark theme toggle. State lives on documentElement[data-theme]; bootstrap script in BaseLayout sets it before paint.
+---
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path>
+    <path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path>
+    <path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path>
+    <path d="M20 12h2"></path>
+    <path d="m4.93 19.07 1.41-1.41"></path>
+    <path d="m17.66 6.34 1.41-1.41"></path>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<script>
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+
+  const apply = (theme: string) => {
+    root.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch {}
+  };
+
+  const toggle = () => {
+    const current = root.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const startVT = (document as any).startViewTransition?.bind(document);
+
+    // No View Transitions or reduced motion: just flip the theme.
+    if (!startVT || reduce || !btn) {
+      apply(next);
+      return;
+    }
+
+    const rect = btn.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+    const goingDark = next === 'dark';
+
+    let transition: any;
+    try {
+      transition = startVT(() => apply(next));
+    } catch {
+      // Some browsers fail VT under iframes or headless. Apply directly.
+      apply(next);
+      return;
+    }
+
+    // Decoration only — the apply() above (inside the callback) is what flips the theme.
+    transition?.ready?.then?.(() => {
+      const clipPath = goingDark
+        ? [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+        : [`circle(${endRadius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`];
+
+      root.animate(
+        { clipPath },
+        {
+          duration: 520,
+          easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+          pseudoElement: goingDark ? '::view-transition-new(root)' : '::view-transition-old(root)',
+        }
+      );
+    }).catch?.(() => {});
+
+    // Safety net: if for any reason the VT callback didn't fire, ensure theme is applied.
+    setTimeout(() => {
+      if (root.getAttribute('data-theme') !== next) apply(next);
+    }, 300);
+  };
+
+  btn?.addEventListener('click', toggle);
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    transition: background-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
+  }
+
+  .theme-toggle:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+
+  :global([data-theme='dark']) .icon-sun { display: block; }
+  :global([data-theme='dark']) .icon-moon { display: none; }
+</style>

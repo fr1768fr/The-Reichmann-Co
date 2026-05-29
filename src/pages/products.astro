@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const description =
+  'Products built by The Reichmann Co. Lumarix, an Enterprise Resource Planning solution in development. Veritis, an AI for South African accountants in research.';
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Products · The Reichmann Co.',
+  url: `${SITE.url}/products.html`,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products.html` },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="Products · The Reichmann Co."
+  description={description}
+  jsonLd={[collectionSchema]}
+  activeNav="products"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Products</span>
+      </nav>
+      <span class="eyebrow">In the lab</span>
+      <h1 class="page-hero-title">Products built for the work we know best.</h1>
+      <p class="page-hero-sub">
+        Beyond our client work, we build software for ourselves. Products designed
+        from first principles. Here is what is currently in research and development.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="product-grid">
+        <article class="product-card">
+          <header class="product-card-head">
+            <span class="status">
+              <span class="status-dot"></span> In Development
+            </span>
+            <span class="product-category">Enterprise Resource Planning</span>
+          </header>
+          <h2 class="product-name">Lumarix</h2>
+          <p class="product-tagline">Enterprise Resource Planning, reimagined.</p>
+          <p class="product-body">
+            A cutting-edge ERP solution built for modern accountants and the
+            businesses they serve. Currently in active development.
+          </p>
+          <footer class="product-card-foot">
+            <a href="/products/lumarix.html" class="product-link">
+              Discover Lumarix<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </footer>
+        </article>
+
+        <article class="product-card">
+          <header class="product-card-head">
+            <span class="status">
+              <span class="status-dot"></span> In Research
+            </span>
+            <span class="product-category">Accounting Intelligence</span>
+          </header>
+          <h2 class="product-name">Veritis</h2>
+          <p class="product-tagline">Truth, for accountants.</p>
+          <p class="product-body">
+            An AI built for South African accountants. Accuracy-first, with deep
+            understanding of SA tax law and accounting practice. Standalone today,
+            integrated with Lumarix tomorrow.
+          </p>
+          <footer class="product-card-foot">
+            <a href="/products/veritis.html" class="product-link">
+              Discover Veritis<span aria-hidden="true"> &rarr;</span>
+            </a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Building something similar</span>
+      <h2 class="closing-title">Have a product idea of your own?</h2>
+      <p class="closing-sub">We build for clients, too. Tell us what you have in mind.</p>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+        <Button href="/services.html" variant="ghost" size="lg" class="closing-ghost">What we build</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-8);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle at top right, var(--brand-tint) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .product-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    position: relative;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-tint-strong);
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 30%, transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .product-category {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+  .product-name {
+    font-size: var(--fs-4xl);
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .product-tagline {
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    position: relative;
+  }
+  .product-body {
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    position: relative;
+  }
+  .product-card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    margin-top: var(--space-2);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+  }
+  .product-link {
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+  .product-link-alt {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+  }
+  .product-link-alt:hover { color: var(--brand-primary); }
+  @media (max-width: 800px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .product-card { padding: var(--space-6); }
+  }
+</style>

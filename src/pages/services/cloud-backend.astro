@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = 'Cloud and backend engineering by The Reichmann Co. Scalable APIs, infrastructure, and observability on AWS, GCP, Azure, Vercel, Fly.io, or Cloudflare.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Cloud Infrastructure and Backend Engineering',
+  name: 'Cloud & Backend',
+  url: `${SITE.url}/services/cloud-backend.html`,
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: 'Worldwide',
+  description: 'Scalable APIs, backends, and cloud infrastructure architected for performance and uptime.',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
+    { '@type': 'ListItem', position: 3, name: 'Cloud & Backend', item: `${SITE.url}/services/cloud-backend.html` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Cloud &amp; Backend · The Reichmann Co."
+  description={description}
+  jsonLd={[serviceSchema, breadcrumbSchema]}
+  activeNav="services"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services.html">Services</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Cloud &amp; Backend</span>
+      </nav>
+      <span class="eyebrow">Service</span>
+      <h1 class="page-hero-title">Cloud &amp; Backend.</h1>
+      <p class="page-hero-sub">
+        Scalable APIs, backends, and cloud infrastructure architected
+        for performance and uptime.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>What is included</h3>
+          <ul class="feature-list">
+            <li>REST and GraphQL API design</li>
+            <li>Postgres and Redis data layer</li>
+            <li>Infrastructure as code (Terraform, Pulumi)</li>
+            <li>CI/CD pipelines and observability</li>
+            <li>Cost-aware architecture (no surprise bills)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Platforms</h3>
+          <p class="info-card-prose">
+            AWS, GCP, Azure, Vercel, Fly.io, or Cloudflare. Chosen based on
+            your existing stack, region, and scale. We default to managed
+            services over self-hosted unless there is a clear reason otherwise.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Backend or infra help</span>
+      <h2 class="closing-title">Tell us what you are running.</h2>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .info-card-prose { color: var(--text-secondary); line-height: var(--lh-relaxed); }
+</style>

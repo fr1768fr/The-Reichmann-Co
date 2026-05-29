@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = 'Insights from The Reichmann Co. Notes on engineering, product, and building software in South Africa for the world.';
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: `${SITE.name} Insights`,
+  url: `${SITE.url}/blog/`,
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+};
+---
+
+<BaseLayout
+  title="Insights · The Reichmann Co."
+  description={description}
+  jsonLd={[blogSchema]}
+  activeNav="blog"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Blog</span>
+      </nav>
+      <span class="eyebrow">Insights</span>
+      <h1 class="page-hero-title">Notes on what we build, and what we learn.</h1>
+      <p class="page-hero-sub">
+        Engineering deep dives, product reflections, and the occasional war story.
+        We post when there is something worth saying.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide">
+      <div class="blog-empty">
+        <div class="blog-empty-card">
+          <span class="eyebrow">Coming soon</span>
+          <h2>First posts are on the way.</h2>
+          <p>
+            We are saving the first round of writing until we have something useful to share.
+            Check back soon, or reach out and we will tell you when posts begin.
+          </p>
+          <div class="blog-empty-cta">
+            <Button href="/contact.html" variant="primary" size="md" arrow>Get in touch</Button>
+            <Button href="/services.html" variant="ghost" size="md">What we build</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-empty {
+    display: flex;
+    justify-content: center;
+  }
+
+  .blog-empty-card {
+    max-width: 36rem;
+    padding: var(--space-12);
+    text-align: center;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .blog-empty-card .eyebrow { justify-content: center; }
+
+  .blog-empty-card h2 {
+    margin-top: var(--space-3);
+    font-size: var(--fs-2xl);
+    letter-spacing: -0.02em;
+  }
+
+  .blog-empty-card p {
+    margin-top: var(--space-4);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+
+  .blog-empty-cta {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+</style>

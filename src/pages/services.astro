@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const description =
+  'Services from The Reichmann Co. Web applications, SaaS products, mobile apps, desktop software, cloud and backend, AI and integrations. South African engineering, global delivery.';
+
+const services = [
+  { slug: 'web-applications', title: 'Web Applications', tagline: 'Production-grade web apps. Built on modern frameworks. Responsive, accessible, and fast.', featured: true,
+    icon: 'web' },
+  { slug: 'saas-products', title: 'SaaS Products', tagline: 'End to end SaaS development. Blank canvas to paying customers, including auth, billing, and infrastructure.', featured: true,
+    icon: 'cloud' },
+  { slug: 'mobile-apps', title: 'Mobile Apps', tagline: 'Native iOS and Android applications, from MVP to App Store launch.', icon: 'mobile' },
+  { slug: 'desktop-software', title: 'Desktop Software', tagline: "Native desktop apps for Windows, macOS, and Linux when the browser doesn't cut it.", icon: 'desktop' },
+  { slug: 'cloud-backend', title: 'Cloud & Backend', tagline: 'Scalable APIs and cloud infrastructure on AWS, GCP, or Azure.', icon: 'server' },
+  { slug: 'ai-integrations', title: 'AI & Integrations', tagline: 'LLM-powered features, automation, and integrations with the platforms your customers use.', icon: 'spark' },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Services · The Reichmann Co.',
+  url: `${SITE.url}/services.html`,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services.html` },
+    ],
+  },
+  hasPart: services.map((s) => ({
+    '@type': 'Service',
+    name: s.title,
+    url: `${SITE.url}/services/${s.slug}.html`,
+  })),
+};
+---
+
+<BaseLayout
+  title="Services · The Reichmann Co."
+  description={description}
+  keywords="software development services, web application development, SaaS development, mobile app development, desktop software, cloud backend"
+  jsonLd={[collectionSchema]}
+  activeNav="services"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Services</span>
+      </nav>
+      <span class="eyebrow">What we build</span>
+      <h1 class="page-hero-title">Two lead services. Four supporting capabilities. One team.</h1>
+      <p class="page-hero-sub">
+        We lead with web applications and SaaS products. The four capabilities below
+        support that work. Mobile, desktop, cloud infrastructure, and AI integrations
+        are how we round out an engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lead services -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">Lead services</span>
+        <h2 class="section-title">The work we lead with.</h2>
+      </header>
+
+      <div class="lead-grid">
+        <a href="/services/web-applications.html" class="lead-card">
+          <div class="lead-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="lead-card-body">
+            <h3>Web Applications</h3>
+            <p>Modern web apps built with the latest frameworks. Responsive, accessible, and fast on every device.</p>
+            <span class="lead-card-link">Explore web applications<span aria-hidden="true"> &rarr;</span></span>
+          </div>
+        </a>
+        <a href="/services/saas-products.html" class="lead-card">
+          <div class="lead-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+          </div>
+          <div class="lead-card-body">
+            <h3>SaaS Products</h3>
+            <p>End to end SaaS development. From blank canvas to paying customers, including auth, billing, and infrastructure.</p>
+            <span class="lead-card-link">Explore SaaS products<span aria-hidden="true"> &rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supporting services -->
+  <section class="section section--alt">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">Also available</span>
+        <h2 class="section-title">Supporting capabilities.</h2>
+        <p class="section-intro">
+          The work we add on when an engagement needs it. Same team, same standards.
+        </p>
+      </header>
+
+      <div class="aux-grid">
+        {services.filter(s => !s.featured).map((s) => (
+          <a href={`/services/${s.slug}.html`} class="aux-card">
+            <div class="aux-card-icon">
+              {s.icon === 'mobile' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg>
+              )}
+              {s.icon === 'desktop' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="2" y1="17" x2="22" y2="17"></line><line x1="6" y1="21" x2="18" y2="21"></line></svg>
+              )}
+              {s.icon === 'server' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              )}
+              {s.icon === 'spark' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              )}
+            </div>
+            <div class="aux-card-body">
+              <h3>{s.title}</h3>
+              <p>{s.tagline}</p>
+              <span class="aux-card-link">Learn more<span aria-hidden="true"> &rarr;</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="section section--inverse closing-cta">
+    <div class="container container-wide closing-inner">
+      <span class="eyebrow eyebrow--on-dark">Let&rsquo;s build something</span>
+      <h2 class="closing-title">Have a project in mind?</h2>
+      <p class="closing-sub">Tell us about it. We will reply within a day on weekdays.</p>
+      <div class="closing-cta-row">
+        <Button href="/contact.html" variant="inverse" size="lg" arrow>Start a project</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Lead card layout (shared with home) */
+  .lead-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .lead-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-xl);
+    color: inherit;
+    transition: border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out),
+                transform var(--duration-base) var(--ease-out);
+  }
+  .lead-card:hover {
+    color: inherit;
+    border-color: var(--brand-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .lead-card-icon {
+    width: 48px; height: 48px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+  }
+  .lead-card-icon svg { width: 24px; height: 24px; }
+  .lead-card-body h3 { font-size: var(--fs-2xl); margin-bottom: var(--space-3); }
+  .lead-card-body p { color: var(--text-secondary); line-height: var(--lh-relaxed); }
+  .lead-card-link {
+    display: inline-flex; align-items: center;
+    margin-top: var(--space-5);
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+  @media (max-width: 760px) {
+    .lead-grid { grid-template-columns: 1fr; }
+    .lead-card { padding: var(--space-6); }
+  }
+
+  /* Aux grid */
+  .aux-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  .aux-card {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+    color: inherit;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .aux-card:hover {
+    color: inherit;
+    border-color: var(--brand-primary);
+    box-shadow: var(--shadow-md);
+  }
+  .aux-card-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+  }
+  .aux-card-icon svg { width: 20px; height: 20px; }
+  .aux-card-body h3 { font-size: var(--fs-lg); margin-bottom: var(--space-2); }
+  .aux-card-body p {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .aux-card-link {
+    display: inline-flex;
+    margin-top: var(--space-3);
+    color: var(--brand-primary);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+  @media (max-width: 720px) {
+    .aux-grid { grid-template-columns: 1fr; }
+  }
+</style>

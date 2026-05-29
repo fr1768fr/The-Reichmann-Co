@@ -1,0 +1,477 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+const description = 'Lumarix. Enterprise Resource Planning reimagined for modern accountants. Built by The Reichmann Co. Beta access available.';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Lumarix',
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Enterprise Resource Planning',
+  operatingSystem: 'Web',
+  url: `${SITE.url}/products/lumarix.html`,
+  description: 'Lumarix is an Enterprise Resource Planning solution engineered to set new benchmarks in business management software.',
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/PreOrder',
+    url: `${SITE.url}/products/lumarix.html`,
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products.html` },
+    { '@type': 'ListItem', position: 3, name: 'Lumarix', item: `${SITE.url}/products/lumarix.html` },
+  ],
+};
+
+const tags = [
+  'Finance', 'Human Capital', 'Supply Chain', 'Manufacturing',
+  'Procurement', 'Sales & CRM', 'Real-Time Analytics',
+  'Intelligent Automation', 'Cloud-Native',
+];
+---
+
+<BaseLayout
+  title="Lumarix · The Reichmann Co."
+  description={description}
+  jsonLd={[productSchema, breadcrumbSchema]}
+  activeNav="products"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/products.html">Products</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Lumarix</span>
+      </nav>
+
+      <div class="lumarix-hero">
+        <div class="lumarix-hero-meta">
+          <span class="status">
+            <span class="status-dot"></span> In Development
+          </span>
+          <span class="product-category">Enterprise Resource Planning</span>
+        </div>
+        <h1 class="lumarix-name">Lumarix</h1>
+        <p class="lumarix-tagline">Enterprise Resource Planning, reimagined.</p>
+        <div class="lumarix-cta">
+          <Button href="#beta-signup" variant="primary" size="lg" arrow>Request early access</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-prose lumarix-intro">
+      <p>
+        Lumarix is a cutting-edge Enterprise Resource Planning (ERP) solution
+        engineered to establish new benchmarks in business management software.
+        Designed, built, developed, and deployed by The Reichmann Co. (Pty) Ltd,
+        Lumarix embodies a bold vision to become the premier ERP system in the
+        world, empowering organizations with unparalleled efficiency, insight,
+        and agility.
+      </p>
+      <p>
+        As a fully integrated platform, Lumarix harmonizes core business
+        processes, from financial management and human capital to supply chain,
+        manufacturing, procurement, sales, and customer engagement, into a
+        single, cohesive ecosystem. Leveraging advanced technologies such as
+        real-time analytics, intelligent automation, and scalable cloud
+        architecture, it enables data-driven decision making and operational
+        excellence across global enterprises.
+      </p>
+      <p>
+        With a focus on intuitive design, robust security, and seamless
+        adaptability, Lumarix supports businesses of all sizes in navigating
+        complexity while driving sustainable growth.
+      </p>
+
+      <ul class="product-tags">
+        {tags.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Spec sheet -->
+  <section class="section section--alt">
+    <div class="container container-wide">
+      <header class="section-head section-head-center">
+        <span class="eyebrow">Spec sheet</span>
+        <h2 class="section-title">Modern accounting and ERP. Designed and built in South Africa.</h2>
+        <p class="section-intro">
+          Here is what is in the box on day one, and where we are going.
+        </p>
+      </header>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>At launch</h3>
+          <ul class="feature-list">
+            <li>General Ledger with full double-entry</li>
+            <li>Customer invoicing and quotes</li>
+            <li>VAT module with VAT201 export</li>
+            <li>Bank reconciliation</li>
+            <li>Core financial reports (TB, P&amp;L, Balance Sheet, Cash Flow, Aged Debtors and Creditors)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Built different</h3>
+          <ul class="feature-list">
+            <li>True cloud-native. No installs, no sync headaches</li>
+            <li>Real-time multi-user collaboration</li>
+            <li>AI-assisted transaction categorisation</li>
+            <li>AI-assisted bank reconciliation</li>
+            <li>Sage Pastel migration tool included</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Trust &amp; compliance</h3>
+          <ul class="feature-list">
+            <li>POPIA-compliant by design</li>
+            <li>EU data centres today, with a South African region planned</li>
+            <li>Immutable audit trail on every transaction</li>
+            <li>Role-based access for owners, admins, accountants, bookkeepers and viewers</li>
+            <li>Encryption at rest and in transit</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Scales with you</h3>
+          <ul class="feature-list">
+            <li>Plans for small, medium and enterprise businesses</li>
+            <li>Multiple companies under one organisation</li>
+            <li>Multi-currency-ready architecture</li>
+            <li>Custom chart of accounts with SA industry templates</li>
+            <li>30-day free trial. Per-user pricing with feature tiers</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="service-callout">
+        <h3>Coming next</h3>
+        <p>
+          Phase 2 adds full Inventory, Payroll (with EMP201 and IRP5),
+          direct SARS e-filing, and live SA bank feeds. Phase 3 brings
+          a native mobile companion and a partner API for marketplace
+          integrations. More to follow as we build.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Inventory deep dive -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head section-head-center">
+        <span class="eyebrow">Phase 2</span>
+        <h2 class="section-title">Inventory, done properly.</h2>
+        <p class="section-intro">
+          Inventory lands in Phase 2, right after the core accounting
+          modules go live. Built for everything from a single shop
+          floor to multi-warehouse manufacturing.
+        </p>
+      </header>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Items and structure</h3>
+          <ul class="feature-list">
+            <li>Stock, non-stock, service, and kit items</li>
+            <li>Bill of Materials for light manufacturing</li>
+            <li>Multi-level categories and tags</li>
+            <li>Item variants (size, colour, and more)</li>
+            <li>Item images, gallery, and datasheet PDFs</li>
+            <li>Per-item VAT rates (standard, zero-rated, exempt)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Stock tracking</h3>
+          <ul class="feature-list">
+            <li>Multi-warehouse with location-level stock</li>
+            <li>Serial number tracking (toggle per item)</li>
+            <li>Batch and lot tracking with expiry dates</li>
+            <li>Multiple units of measure with conversion</li>
+            <li>Barcode generation and scanning (EAN, UPC, Code 128, QR)</li>
+            <li>Real-time perpetual accounting on Weighted Average Cost</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Buying and selling</h3>
+          <ul class="feature-list">
+            <li>Multiple suppliers per item with preferred and per-supplier pricing</li>
+            <li>Purchase Order, Goods Receipt, Supplier Invoice workflow</li>
+            <li>Multiple price lists with customer-tier overrides</li>
+            <li>Customer-specific price overrides</li>
+            <li>Stock reservations from quotes and sales orders</li>
+            <li>Backorders and partial fulfillment</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Models that fit you</h3>
+          <ul class="feature-list">
+            <li>Drop shipping</li>
+            <li>Consignment stock (in and out)</li>
+            <li>Configurable negative stock policy</li>
+            <li>Re-order point suggestions per location</li>
+            <li>Granular permissions for stock, costs, and POs</li>
+            <li>CSV catalog import and Sage Pastel migration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Early access signup -->
+  <section class="section section--inverse closing-cta" id="beta-signup">
+    <div class="container container-wide beta-inner">
+      <span class="eyebrow eyebrow--on-dark">Early access</span>
+      <h2 class="closing-title">Request early access</h2>
+      <p class="closing-sub">
+        Lumarix is in active development. Submit your email and we will reach
+        out as soon as early access opens, with sign-in details and a guided onboarding.
+      </p>
+      <form class="beta-form" id="lumarixBetaForm" novalidate>
+        <input
+          type="email"
+          name="email"
+          id="betaEmail"
+          placeholder="your@email.com"
+          required
+          aria-label="Email address"
+          autocomplete="email"
+        />
+        <button type="submit" class="beta-submit" id="betaSubmit">
+          <span>Request access</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+      <p class="beta-note" id="betaNote" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('lumarixBetaForm') as HTMLFormElement | null;
+  if (form) {
+    const note = document.getElementById('betaNote') as HTMLParagraphElement | null;
+    const submit = document.getElementById('betaSubmit') as HTMLButtonElement | null;
+    const emailInput = document.getElementById('betaEmail') as HTMLInputElement | null;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!note || !submit || !emailInput) return;
+
+      const email = emailInput.value.trim();
+      if (!email) {
+        note.className = 'beta-note error';
+        note.textContent = 'Please enter your email address.';
+        return;
+      }
+
+      const originalContent = submit.innerHTML;
+      submit.disabled = true;
+      submit.innerHTML = '<span>Sending...</span>';
+      note.className = 'beta-note';
+      note.textContent = '';
+
+      try {
+        const response = await fetch('/api/beta-signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (response.ok) {
+          form.reset();
+          note.className = 'beta-note success';
+          note.textContent = "You're on the list. Check your inbox for confirmation.";
+        } else {
+          note.className = 'beta-note error';
+          note.textContent = (data && data.error) || 'Something went wrong. Please try again.';
+        }
+      } catch {
+        note.className = 'beta-note error';
+        note.textContent = 'Network error. Please try again.';
+      } finally {
+        submit.disabled = false;
+        submit.innerHTML = originalContent;
+      }
+    });
+  }
+</script>
+
+<style>
+  /* ---- Hero block ---- */
+  .lumarix-hero {
+    max-width: 56rem;
+  }
+  .lumarix-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-6);
+  }
+  .lumarix-name {
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-700) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lumarix-tagline {
+    margin-top: var(--space-4);
+    font-size: var(--fs-2xl);
+    color: var(--text-secondary);
+    line-height: var(--lh-snug);
+  }
+  .lumarix-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  /* ---- Status pill (reused) ---- */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-tint-strong);
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 30%, transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .product-category {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+
+  /* ---- Intro prose + tags ---- */
+  .lumarix-intro p {
+    margin-bottom: var(--space-5);
+    color: var(--text-secondary);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+  }
+  .product-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .product-tags li {
+    padding: var(--space-1) var(--space-3);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    border-radius: var(--radius-pill);
+  }
+
+  /* ---- Callout (shared style) ---- */
+  .service-callout {
+    margin-top: var(--space-8);
+    padding: var(--space-6) var(--space-8);
+    background: var(--brand-tint);
+    border: 1px solid var(--brand-tint-strong);
+    border-radius: var(--radius-lg);
+  }
+  .service-callout h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-2);
+    color: var(--brand-deep);
+  }
+  .service-callout p { color: var(--text-secondary); line-height: var(--lh-relaxed); }
+  :global([data-theme='dark']) .service-callout h3 { color: var(--brand-200); }
+
+  /* ---- Beta signup ---- */
+  .beta-inner {
+    position: relative;
+    text-align: center;
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+  .beta-form {
+    margin-top: var(--space-8);
+    display: flex;
+    gap: var(--space-2);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+  }
+  .beta-form input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: 0;
+    color: var(--text-on-inverse);
+    font-size: var(--fs-base);
+  }
+  .beta-form input:focus {
+    outline: none;
+  }
+  .beta-form input::placeholder {
+    color: rgba(248, 250, 252, 0.5);
+  }
+  .beta-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: var(--brand-primary);
+    color: var(--text-on-brand);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+  .beta-submit:hover { background: var(--brand-primary-hover); }
+  .beta-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .beta-note {
+    margin-top: var(--space-4);
+    font-size: var(--fs-sm);
+    color: rgba(248, 250, 252, 0.6);
+  }
+  .beta-note.success { color: #86efac; }
+  .beta-note.error   { color: #fca5a5; }
+
+  @media (max-width: 480px) {
+    .beta-form { flex-direction: column; }
+  }
+</style>
