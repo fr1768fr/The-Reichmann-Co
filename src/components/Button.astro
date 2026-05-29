@@ -7,6 +7,7 @@ interface Props {
   arrow?: boolean;
   fullWidth?: boolean;
   external?: boolean;
+  disabled?: boolean;
   class?: string;
   id?: string;
   ariaLabel?: string;
@@ -20,6 +21,7 @@ const {
   arrow = false,
   fullWidth = false,
   external = false,
+  disabled = false,
   class: extraClass,
   id,
   ariaLabel,
@@ -30,22 +32,27 @@ const classes = [
   `btn--${variant}`,
   `btn--${size}`,
   fullWidth ? 'btn--full' : null,
+  disabled ? 'btn--disabled' : null,
   extraClass,
 ].filter(Boolean).join(' ');
 
-const Tag = href ? 'a' : 'button';
+// A disabled control is always a real <button> so it is natively
+// non-interactive and announced as disabled, never a dead link.
+const Tag = href && !disabled ? 'a' : 'button';
 
-const externalAttrs = external
+const externalAttrs = external && Tag === 'a'
   ? { target: '_blank', rel: 'noopener' }
   : {};
 ---
 
 <Tag
-  href={href}
-  type={!href ? type : undefined}
+  href={Tag === 'a' ? href : undefined}
+  type={Tag === 'button' ? type : undefined}
   class={classes}
   id={id}
   aria-label={ariaLabel}
+  disabled={disabled || undefined}
+  aria-disabled={disabled || undefined}
   {...externalAttrs}
 >
   <span><slot /></span>
@@ -153,4 +160,18 @@ const externalAttrs = external
   }
 
   .btn--full { width: 100%; }
+
+  /* ---- Disabled (e.g. a download that is not available yet) ---- */
+  .btn--disabled,
+  .btn--disabled:hover {
+    background: var(--surface-hover);
+    color: var(--text-subtle);
+    border-color: var(--border-subtle);
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .btn--disabled svg { opacity: 0.6; }
 </style>

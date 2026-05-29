@@ -66,7 +66,20 @@ const tags = [
         <p class="lumarix-tagline">Enterprise Resource Planning, reimagined.</p>
         <div class="lumarix-cta">
           <Button href="#early-access" variant="primary" size="lg" arrow>Request early access</Button>
+          <Button variant="secondary" size="lg" disabled ariaLabel="Download for Windows, available at launch">
+            <span class="dl-btn-inner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download for Windows
+            </span>
+          </Button>
         </div>
+        <p class="lumarix-cta-note">
+          The Windows download will be available at launch. Join early access to be notified first.
+        </p>
       </div>
     </div>
   </section>
@@ -344,6 +357,19 @@ const tags = [
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-8);
+  }
+
+  /* Icon + label inside the download button (Button slot wraps in a span) */
+  .dl-btn-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .lumarix-cta-note {
+    margin-top: var(--space-4);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
   }
 
   /* ---- Status pill (reused) ---- */
