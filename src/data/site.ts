@@ -14,6 +14,7 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/company/the-reichmann-co/',
   facebook: 'https://www.facebook.com/profile.php?id=61590587364359',
   instagram: 'https://www.instagram.com/thereichmannco',
+  whatsapp: 'https://wa.me/27724228127',
 } as const;
 
 export const NAV_LINKS = [
