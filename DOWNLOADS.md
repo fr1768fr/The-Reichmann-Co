@@ -71,9 +71,9 @@ To open the download:
 1. Set `LUMARIX_RELEASES_BASE_URL` in Vercel and upload the binaries + the real `releases.win.json`
    (per the runbook above).
 2. Flip `DOWNLOAD_AVAILABLE` to `true` in `src/lib/downloads/releases.ts`.
-3. Enable the "Download for Windows" button on `src/pages/products/lumarix.astro` (remove `disabled`,
-   point it at `/downloads/lumarix`), and update the "available at launch" note.
-4. Commit to `main` and push (auto-deploys to production).
+3. Commit to `main` and push (auto-deploys to production). The product page's "Download for Windows"
+   button already links to `/downloads/lumarix`, which switches from the "coming at launch" state to
+   the live download automatically when the flag flips, so no other page change is needed.
 
 ## Routing note
 
