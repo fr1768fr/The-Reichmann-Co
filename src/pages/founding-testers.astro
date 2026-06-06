@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { FOUNDING_TESTERS } from '../data/foundingTesters';
+
+const description = 'The founding testers shaping Lumarix before launch. The people who use accounting software every day, helping build the ERP that South African business deserves.';
+const hasTesters = FOUNDING_TESTERS.length > 0;
+const meta = (t: typeof FOUNDING_TESTERS[number]) =>
+  [t.role, t.company].filter(Boolean).join(', ');
+---
+
+<BaseLayout
+  title="Founding Testers · The Reichmann Co."
+  description={description}
+  activeNav="products"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/products/lumarix">Lumarix</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Founding Testers</span>
+      </nav>
+
+      <div class="ft-hero">
+        <span class="eyebrow">Founding program</span>
+        <h1 class="ft-title">Founding Testers</h1>
+        <p class="ft-intro">
+          Lumarix is being shaped by a small group of people who live in accounting
+          software every day. These are our founding testers. They put the product
+          through its paces before launch, and their feedback decides what we build
+          next. The version everyone else gets will carry their fingerprints.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-wide ft-body">
+      <aside class="ft-badge-card">
+        <img
+          src="/brand/lumarix-beta-tester-badge.png"
+          alt="The Reichmann Co. Lumarix Beta Tester badge"
+          width="220"
+          height="220"
+          class="ft-badge"
+        />
+        <h2 class="ft-badge-title">Earned, not given</h2>
+        <p class="ft-badge-text">
+          Every founding tester receives the official The Reichmann Co. Beta Tester
+          badge to show on their profile, free founding access, and a direct line to
+          the team building Lumarix.
+        </p>
+        <a class="ft-badge-link" href="/brand/lumarix-beta-tester-badge.png" download>
+          Save the badge
+        </a>
+      </aside>
+
+      <div class="ft-wall">
+        {hasTesters ? (
+          <ul class="ft-grid">
+            {FOUNDING_TESTERS.map((t) => (
+              <li class="ft-card">
+                <h3 class="ft-name">
+                  {t.url ? <a href={t.url} target="_blank" rel="noopener">{t.name}</a> : t.name}
+                </h3>
+                {meta(t) && <p class="ft-meta">{meta(t)}</p>}
+                {t.location && <p class="ft-loc">{t.location}</p>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="ft-empty">
+            <h2>The founding circle is forming now</h2>
+            <p>
+              The first names go here as our founding testers come on board. Want
+              yours among them? Join the program and help build Lumarix from the inside.
+            </p>
+            <Button href="/products/lumarix#early-access" variant="primary" size="lg" arrow>
+              Become a founding tester
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {hasTesters && (
+    <section class="section section--alt">
+      <div class="container container-wide ft-cta">
+        <h2 class="ft-cta-title">Want your name on this wall?</h2>
+        <p class="ft-cta-sub">
+          We keep the founding group small on purpose. If you use accounting software
+          every day and have opinions about what is broken, we would love your eyes on Lumarix.
+        </p>
+        <Button href="/products/lumarix#early-access" variant="primary" size="lg" arrow>
+          Become a founding tester
+        </Button>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .ft-hero { max-width: 52rem; }
+  .ft-title {
+    margin-top: var(--space-3);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .ft-intro {
+    margin-top: var(--space-4);
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+
+  .ft-body {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  /* Badge card */
+  .ft-badge-card {
+    text-align: center;
+    padding: var(--space-8) var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    position: sticky;
+    top: var(--space-8);
+  }
+  .ft-badge { width: 200px; height: 200px; }
+  .ft-badge-title {
+    margin-top: var(--space-4);
+    font-size: var(--fs-xl);
+  }
+  .ft-badge-text {
+    margin-top: var(--space-2);
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .ft-badge-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--brand-primary);
+  }
+  .ft-badge-link:hover { text-decoration: underline; }
+
+  /* Wall of testers */
+  .ft-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: var(--space-4);
+  }
+  .ft-card {
+    padding: var(--space-5);
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--brand-primary);
+  }
+  .ft-name { font-size: var(--fs-lg); font-weight: var(--fw-semibold); }
+  .ft-name a { color: var(--text-primary); }
+  .ft-name a:hover { color: var(--brand-primary); }
+  .ft-meta { margin-top: var(--space-1); color: var(--text-secondary); font-size: var(--fs-sm); }
+  .ft-loc {
+    margin-top: var(--space-1);
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  /* Empty state */
+  .ft-empty {
+    padding: var(--space-10) var(--space-8);
+    background: var(--brand-tint);
+    border: 1px solid var(--brand-tint-strong);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+  .ft-empty h2 { font-size: var(--fs-2xl); color: var(--brand-deep); }
+  .ft-empty p {
+    margin: var(--space-3) auto var(--space-6);
+    max-width: 34rem;
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  :global([data-theme='dark']) .ft-empty h2 { color: var(--brand-200); }
+
+  /* Closing CTA */
+  .ft-cta { text-align: center; max-width: 40rem; margin-inline: auto; }
+  .ft-cta-title { font-size: var(--fs-3xl); }
+  .ft-cta-sub {
+    margin: var(--space-3) auto var(--space-6);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+
+  @media (max-width: 768px) {
+    .ft-body { grid-template-columns: 1fr; gap: var(--space-8); }
+    .ft-badge-card { position: static; max-width: 22rem; margin-inline: auto; }
+  }
+</style>
