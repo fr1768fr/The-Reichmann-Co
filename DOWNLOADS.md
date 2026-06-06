@@ -52,9 +52,10 @@ pass through the function (a redirect, not a proxy), so the size/duration limits
    `public/downloads/lumarix/releases.win.json` here. Do not hand-edit the schema; use exactly what
    `vpk pack` produced (field names, SHA1/SHA256, and Size must match the uploaded bytes or Velopack
    rejects the update).
-4. Commit to the `redesign` branch and push.
-5. **Deploy:** stash the secret files out of the repo, then run `vercel --prod` from `redesign`
-   (a plain push only makes a preview; production is promoted manually). See `LICENSING.md`.
+4. First release only: set `DOWNLOAD_AVAILABLE = true` in `src/lib/downloads/releases.ts` so the
+   `/downloads/lumarix` button goes live (it shows a "coming at launch" state until then).
+5. **Deploy:** commit to `main` and push. Vercel auto-deploys `main` to production. Git deploys ship
+   only committed files, so the gitignored secrets never upload; they live in Vercel env vars.
 6. Verify:
    ```
    curl https://thereichmannco.co.za/downloads/lumarix/releases.win.json      # the index
@@ -62,16 +63,21 @@ pass through the function (a redirect, not a proxy), so the size/duration limits
    ```
    Then run the installed app's Help, Check for updates against the live feed.
 
-## Go-live: the marketing download button
+## Go-live checklist (turning the download on)
 
-The "Download for Windows" button on `src/pages/products/lumarix.astro` is intentionally left
-**disabled** until the first installer is actually hosted. At go-live, enable it by removing
-`disabled` and pointing it at `/downloads/lumarix` (or directly at the `Setup.exe` route), and update
-the "available at launch" note. The standalone landing page at `/downloads/lumarix` already exists.
+The `/downloads/lumarix` landing page shows a "coming at launch" state until the binaries are hosted.
+To open the download:
+
+1. Set `LUMARIX_RELEASES_BASE_URL` in Vercel and upload the binaries + the real `releases.win.json`
+   (per the runbook above).
+2. Flip `DOWNLOAD_AVAILABLE` to `true` in `src/lib/downloads/releases.ts`.
+3. Enable the "Download for Windows" button on `src/pages/products/lumarix.astro` (remove `disabled`,
+   point it at `/downloads/lumarix`), and update the "available at launch" note.
+4. Commit to `main` and push (auto-deploys to production).
 
 ## Routing note
 
-This relies on Vercel serving the static `releases.win.json` in preference to the dynamic
-`[file].ts` function for that exact path (standard Vercel behaviour). After the first deploy, confirm
-`GET /downloads/lumarix/releases.win.json` returns the JSON (not a function response). If it ever
-hits the function, add a `vercel.json` rewrite to force the static file.
+Vercel serves the static `releases.win.json` in preference to the dynamic `[file].ts` function for
+that exact path. This is confirmed live: `GET /downloads/lumarix/releases.win.json` returns the JSON,
+and the function only handles binary filenames (verified returning a graceful 500 until storage is
+configured). If it ever regresses, add a `vercel.json` rewrite to force the static file.

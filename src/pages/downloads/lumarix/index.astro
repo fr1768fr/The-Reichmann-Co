@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Button from '../../../components/Button.astro';
+import { DOWNLOAD_AVAILABLE } from '../../../lib/downloads/releases';
 
 const description = 'Download Lumarix for Windows. Windows-native ERP and accounting for South African business, with a 30-day free trial and built-in automatic updates.';
 
 // The Velopack installer, served through the same-origin download route which redirects to
 // off-Vercel storage. Filename matches what `vpk pack` emits (see RELEASING.md in the app repo).
+// Until the binaries are hosted, DOWNLOAD_AVAILABLE is false and we point at early access instead.
 const setupHref = '/downloads/lumarix/Lumarix-win-Setup.exe';
 ---
 
@@ -26,31 +28,63 @@ const setupHref = '/downloads/lumarix/Lumarix-win-Setup.exe';
 
       <div class="dl-hero">
         <span class="product-category">For Windows 10 and 11</span>
-        <h1 class="dl-title">Download Lumarix</h1>
-        <p class="dl-sub">
-          Windows-native ERP and accounting, built in South Africa. Install once and
-          run a 30-day free trial. Lumarix keeps itself up to date, so you always have
-          the latest version without reinstalling.
-        </p>
+        <h1 class="dl-title">{DOWNLOAD_AVAILABLE ? 'Download Lumarix' : 'Lumarix for Windows'}</h1>
+        {DOWNLOAD_AVAILABLE ? (
+          <p class="dl-sub">
+            Windows-native ERP and accounting, built in South Africa. Install once and
+            run a 30-day free trial. Lumarix keeps itself up to date, so you always have
+            the latest version without reinstalling.
+          </p>
+        ) : (
+          <p class="dl-sub">
+            Windows-native ERP and accounting, built in South Africa. The download opens at
+            launch. Join early access and we will send it to you the moment it is ready, with
+            a 30-day free trial and built-in automatic updates.
+          </p>
+        )}
 
         <div class="dl-actions">
-          <Button href={setupHref} variant="primary" size="lg">
-            <span class="dl-btn-inner">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              Download for Windows
-            </span>
-          </Button>
-          <Button href="/products/lumarix" variant="secondary" size="lg">About Lumarix</Button>
+          {DOWNLOAD_AVAILABLE ? (
+            <Fragment>
+              <Button href={setupHref} variant="primary" size="lg">
+                <span class="dl-btn-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download for Windows
+                </span>
+              </Button>
+              <Button href="/products/lumarix" variant="secondary" size="lg">About Lumarix</Button>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Button href="/products/lumarix#early-access" variant="primary" size="lg" arrow>Request early access</Button>
+              <Button variant="secondary" size="lg" disabled ariaLabel="Download for Windows, available at launch">
+                <span class="dl-btn-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download at launch
+                </span>
+              </Button>
+            </Fragment>
+          )}
         </div>
 
-        <p class="dl-note">
-          64-bit Windows 10 or 11. After installing, the app updates itself automatically
-          (you can also check any time from Help, Check for updates).
-        </p>
+        {DOWNLOAD_AVAILABLE ? (
+          <p class="dl-note">
+            64-bit Windows 10 or 11. After installing, the app updates itself automatically
+            (you can also check any time from Help, Check for updates).
+          </p>
+        ) : (
+          <p class="dl-note">
+            64-bit Windows 10 or 11, with built-in automatic updates once you are running.
+          </p>
+        )}
       </div>
 
       <div class="dl-steps">

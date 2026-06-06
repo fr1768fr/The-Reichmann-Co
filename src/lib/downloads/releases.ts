@@ -7,6 +7,15 @@
 // or Cloudflare R2 bucket URL, with no trailing slash). Until it is set, the download route
 // reports "not configured" the same way the license API does when its signing key is missing.
 
+/**
+ * Whether the Windows download is publicly available yet. Stays false until the binaries
+ * are actually hosted (storage configured via LUMARIX_RELEASES_BASE_URL and the first
+ * release uploaded). While false, the /downloads/lumarix page shows a "coming at launch"
+ * state and points at early access instead of linking to a download that is not there.
+ * Flip to true at launch. See DOWNLOADS.md.
+ */
+export const DOWNLOAD_AVAILABLE = false;
+
 const env = (key: string): string | undefined =>
   (import.meta.env as Record<string, string | undefined>)?.[key] ?? process.env[key];
 
