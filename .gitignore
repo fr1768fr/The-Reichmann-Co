@@ -35,3 +35,8 @@ ehthumbs.db
 
 # Migration reference (legacy HTML/CSS/JS preserved during Astro migration)
 _legacy/
+
+# Licensing — never commit signing keys or the local dev subscription store
+license-private-key.pem
+license-public-key.txt
+.license-subscriptions.json
