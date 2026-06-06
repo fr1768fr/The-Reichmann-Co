@@ -139,3 +139,68 @@ The copy below is ready to paste into a LinkedIn DM, WhatsApp, or email. Replace
 A short note like this, sent when their feedback lands in a build, is the single best way to
 keep founding testers engaged. People stay involved when they can see their fingerprints on
 the product.
+
+---
+
+## 5. Social recruitment posts
+
+Same founding-circle framing as the LinkedIn post, adapted per platform. Pair both with a
+visual: the Beta Tester badge (`public/brand/lumarix-beta-tester-badge.png`) or a Lumarix
+screenshot/splash. No em-dashes (house style).
+
+### Facebook
+
+```
+We are building Lumarix, and we are looking for a few South African business owners and
+bookkeepers to help shape it before launch.
+
+Lumarix is desktop accounting and ERP built for how SA businesses actually keep books. VAT 201,
+EMP201 and EMP501, IRP5, provisional tax, all of it. A modern take on what you would use Pastel
+or Sage for, made here, for here.
+
+We are putting together a small founding circle of testers. The people who live in accounting
+software every day, telling us what is broken, what is clumsy, and what they wish it did. The
+version everyone else gets will carry their fingerprints.
+
+As a founding tester you get:
+- Free founding access to the full app, right now
+- Twelve months free after we launch
+- The official The Reichmann Co. Beta Tester badge for your profile
+- Your name on our Founding Testers wall
+- A direct line to the team building Lumarix
+
+We are keeping the group small on purpose. If you use accounting software every day and have
+opinions about what it gets wrong, we would love your eyes on Lumarix.
+
+Comment below or send us a message to join.
+
+Learn more: thereichmannco.co.za/products/lumarix
+```
+
+### Instagram
+
+```
+Use accounting software every day? Help us build a better one. 🇿🇦
+
+We are building Lumarix, a modern desktop accounting and ERP app made for South African
+business. VAT 201, EMP201, IRP5, provisional tax, all of it. A fresh take on what you would use
+Pastel or Sage for.
+
+We are looking for a small founding circle of testers to shape it before launch.
+
+What founding testers get:
+✅ Free founding access now
+✅ 12 months free after launch
+✅ Official Beta Tester badge
+✅ Your name on our Founding Testers wall
+✅ A direct line to the team
+
+We are keeping it small on purpose. If you know accounting software inside out, we want your
+eyes on Lumarix.
+
+DM us to join, or tap the link in our bio. 👇
+
+#Lumarix #TheReichmannCo #SouthAfrica #SouthAfricanBusiness #SmallBusinessSA #SMME #Bookkeeping
+#Accounting #AccountingSoftware #ERP #BetaTesters #FoundingMembers #BuiltInSA #CapeTown
+#Johannesburg #Pretoria #Durban #Entrepreneurship #Fintech
+```
