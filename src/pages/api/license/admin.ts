@@ -20,7 +20,7 @@ const json = (data: unknown, status = 200): Response =>
   new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
 function authorized(request: Request): boolean {
-  const expected = env('LICENSE_ADMIN_TOKEN');
+  const expected = env('LICENSE_ADMIN_TOKEN')?.trim();
   if (!expected) return false;
   const match = /^Bearer\s+(.+)$/i.exec(request.headers.get('authorization') ?? '');
   const provided = match?.[1]?.trim() ?? '';
