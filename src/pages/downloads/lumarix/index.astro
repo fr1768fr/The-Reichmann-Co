@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Button from '../../../components/Button.astro';
+
+const description = 'Download Lumarix for Windows. Windows-native ERP and accounting for South African business, with a 30-day free trial and built-in automatic updates.';
+
+// The Velopack installer, served through the same-origin download route which redirects to
+// off-Vercel storage. Filename matches what `vpk pack` emits (see RELEASING.md in the app repo).
+const setupHref = '/downloads/lumarix/Lumarix-win-Setup.exe';
+---
+
+<BaseLayout
+  title="Download Lumarix · The Reichmann Co."
+  description={description}
+  activeNav="products"
+>
+  <section class="page-hero">
+    <div class="container container-wide">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/products/lumarix">Lumarix</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Download</span>
+      </nav>
+
+      <div class="dl-hero">
+        <span class="product-category">For Windows 10 and 11</span>
+        <h1 class="dl-title">Download Lumarix</h1>
+        <p class="dl-sub">
+          Windows-native ERP and accounting, built in South Africa. Install once and
+          run a 30-day free trial. Lumarix keeps itself up to date, so you always have
+          the latest version without reinstalling.
+        </p>
+
+        <div class="dl-actions">
+          <Button href={setupHref} variant="primary" size="lg">
+            <span class="dl-btn-inner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download for Windows
+            </span>
+          </Button>
+          <Button href="/products/lumarix" variant="secondary" size="lg">About Lumarix</Button>
+        </div>
+
+        <p class="dl-note">
+          64-bit Windows 10 or 11. After installing, the app updates itself automatically
+          (you can also check any time from Help, Check for updates).
+        </p>
+      </div>
+
+      <div class="dl-steps">
+        <div class="dl-step">
+          <span class="dl-step-num">1</span>
+          <h3>Install</h3>
+          <p>Run the downloaded installer. No .NET runtime or other prerequisites to set up.</p>
+        </div>
+        <div class="dl-step">
+          <span class="dl-step-num">2</span>
+          <h3>Create your company</h3>
+          <p>Start a fresh set of books with a standard SA chart of accounts, or open an existing company file.</p>
+        </div>
+        <div class="dl-step">
+          <span class="dl-step-num">3</span>
+          <h3>Activate when ready</h3>
+          <p>Use the 30-day free trial, then activate your license key in Administration, License to keep going.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .dl-hero { max-width: 48rem; }
+  .product-category {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+  }
+  .dl-title {
+    margin-top: var(--space-3);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .dl-sub {
+    margin-top: var(--space-4);
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  .dl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+  .dl-btn-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .dl-note {
+    margin-top: var(--space-4);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+  }
+
+  .dl-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-10);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .dl-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-semibold);
+  }
+  .dl-step h3 {
+    margin-top: var(--space-3);
+    font-size: var(--fs-lg);
+  }
+  .dl-step p {
+    margin-top: var(--space-2);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+</style>
