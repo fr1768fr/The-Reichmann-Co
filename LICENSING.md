@@ -44,6 +44,15 @@ Fields: `company` (required), `plan` (`monthly`|`yearly`), `seats` (int ≥ 1), 
 `graceDays` (1–365, default 21), `accountKey` (auto-generated if omitted). Re-POST the same
 `accountKey` to edit. `GET ?accountKey=…` reads one, `GET` lists all, `DELETE ?accountKey=…` removes.
 
+Note: send `DELETE` with `-H "Content-Type: application/json"`. Astro's built-in CSRF guard rejects
+form-type state-changing requests, so a bare `DELETE` returns 403; a JSON content-type passes (the
+app's `activate`/`refresh` already use JSON, so they're unaffected). Example:
+
+```bash
+curl -X DELETE "https://thereichmannco.co.za/api/license/admin?accountKey=LMX-XXXX-XXXX-XXXX" \
+  -H "Authorization: Bearer $LICENSE_ADMIN_TOKEN" -H "Content-Type: application/json"
+```
+
 ## Pricing model (reference)
 
 Base: per active user (R299/mo, R2999/yr) — "basic accounting", always included. Advanced modules:
