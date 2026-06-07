@@ -78,13 +78,12 @@ const {
     <title>{title}</title>
     <link rel="canonical" href={canonical} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
+    <link rel="icon" href="/favicon.ico?v=4" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-light-32.png?v=4" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-light-96.png?v=4" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png?v=4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
 
     {jsonLd.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} />

@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "banner": "node scripts/generate-linkedin-banner.js",
-    "og": "node scripts/generate-og-images.mjs"
+    "og": "node scripts/generate-og-images.mjs",
+    "favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^8.2.11",
