@@ -47,6 +47,15 @@ const {
   activeNav,
   noindex = false,
 } = Astro.props;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  inLanguage: 'en-ZA',
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+};
 ---
 
 <!doctype html>
@@ -85,6 +94,7 @@ const {
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-light-192.png?v=4" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
 
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     {jsonLd.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} />
     ))}

@@ -76,6 +76,14 @@ const CARDS = [
     sub: 'An app, a web app, or a SaaS to launch?',
     url: 'thereichmannco.co.za/contact',
   },
+  {
+    slug: 'founding-testers',
+    eyebrow: 'THE REICHMANN CO.',
+    title: 'Founding Testers',
+    tagline: 'Shape Lumarix before launch.',
+    sub: 'Help build the ERP South African business deserves.',
+    url: 'thereichmannco.co.za/founding-testers',
+  },
 ];
 
 const card = ({ eyebrow, title, tagline, sub, url }) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
@@ -101,7 +109,7 @@ const card = ({ eyebrow, title, tagline, sub, url }) => `<svg xmlns="http://www.
 
   <text x="400" y="322"
         font-family="'Helvetica Neue', Arial, sans-serif"
-        font-size="84" font-weight="700" fill="#f5f5f5" letter-spacing="-2">${esc(title)}</text>
+        font-size="${title.length > 12 ? 58 : 84}" font-weight="700" fill="#f5f5f5" letter-spacing="-2">${esc(title)}</text>
 
   <line x1="400" y1="360" x2="480" y2="360" stroke="rgba(255,255,255,0.4)" stroke-width="0.75"/>
 

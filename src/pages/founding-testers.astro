@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { FOUNDING_TESTERS } from '../data/foundingTesters';
+import { SITE } from '../data/site';
 
 const description = 'The founding testers shaping Lumarix before launch. The people who use accounting software every day, helping build the ERP that South African business deserves.';
 const hasTesters = FOUNDING_TESTERS.length > 0;
@@ -12,6 +13,8 @@ const meta = (t: typeof FOUNDING_TESTERS[number]) =>
 <BaseLayout
   title="Founding Testers · The Reichmann Co."
   description={description}
+  ogImage={`${SITE.url}/og/founding-testers.png`}
+  ogImageAlt="Lumarix Founding Testers, a small circle shaping the product before launch"
   activeNav="products"
 >
   <section class="page-hero">
