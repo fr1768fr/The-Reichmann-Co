@@ -86,6 +86,58 @@ const tags = [
     </div>
   </section>
 
+  <!-- Screenshots: real screens from the app -->
+  <section class="section section--alt">
+    <div class="container container-wide">
+      <header class="section-head section-head-center">
+        <span class="eyebrow">See it in action</span>
+        <h2 class="section-title">Real software, not a mockup.</h2>
+        <p class="section-intro">
+          Lumarix is built and tested every day. These are real screens from the app.
+        </p>
+      </header>
+
+      <figure class="shot shot-feature">
+        <img src="/screenshots/lumarix/dashboard.png" width="1600" height="827" loading="lazy" decoding="async"
+             alt="Lumarix dashboard with cash on hand, receivables, payables, ageing and recent journals" />
+        <figcaption>A live financial dashboard. Cash, receivables, payables and ageing at a glance.</figcaption>
+      </figure>
+
+      <div class="shot-grid">
+        <figure class="shot">
+          <img src="/screenshots/lumarix/invoices.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix tax invoice list showing posted invoices with VAT totals" />
+          <figcaption>Tax invoicing with VAT, posted straight to the ledger.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/screenshots/lumarix/inventory.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix stock items list with cost, sales price, quantity on hand and stock value" />
+          <figcaption>Multi-warehouse inventory with live stock values and costing.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/screenshots/lumarix/payroll.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix pay runs list showing a monthly pay run with gross and net pay" />
+          <figcaption>Payroll with PAYE, UIF and SDL on the SARS tables.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/screenshots/lumarix/income-statement.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix income statement showing income, expenses and net profit" />
+          <figcaption>Financial statements that update as you post.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/screenshots/lumarix/vat201.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix VAT 201 return showing output and input VAT and the net due to SARS" />
+          <figcaption>A SARS-style VAT 201, reconciled to the ledger.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/screenshots/lumarix/customers.png" width="1600" height="827" loading="lazy" decoding="async"
+               alt="Lumarix customer list with codes, names and contact details" />
+          <figcaption>Customers and suppliers across the full sales and purchase cycle.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container container-prose lumarix-intro">
       <p>
@@ -123,60 +175,87 @@ const tags = [
         <span class="eyebrow">Spec sheet</span>
         <h2 class="section-title">Modern accounting and ERP. Designed and built in South Africa.</h2>
         <p class="section-intro">
-          Here is what is in the box on day one, and where we are going.
+          Here is what Lumarix does today, and what is still on the way.
         </p>
       </header>
 
       <div class="info-grid">
         <div class="info-card">
-          <h3>At launch</h3>
+          <h3>Accounting &amp; tax</h3>
           <ul class="feature-list">
-            <li>General Ledger with full double-entry</li>
-            <li>Customer invoicing and quotes</li>
-            <li>VAT module with VAT201 export</li>
-            <li>Bank reconciliation</li>
-            <li>Core financial reports (TB, P&amp;L, Balance Sheet, Cash Flow, Aged Debtors and Creditors)</li>
-            <li>Budgets with budget vs actual reporting</li>
+            <li>Full double-entry General Ledger and journals</li>
+            <li>VAT 201 and provisional tax (IRP6)</li>
+            <li>Trial Balance, P&amp;L, Balance Sheet and Cash Flow</li>
+            <li>Bank reconciliation with statement import</li>
+            <li>Budgets with budget vs actual</li>
+            <li>Fixed assets, depreciation and year-end close</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Sales &amp; purchases</h3>
+          <ul class="feature-list">
+            <li>Quotes, orders, tax invoices and credit notes</li>
+            <li>Supplier bills, debit notes and purchase orders</li>
+            <li>Receipts and payments with allocation</li>
+            <li>Customer and supplier statements</li>
+            <li>Aged receivables and payables</li>
+            <li>Trade and settlement (early-payment) discounts</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Inventory &amp; manufacturing</h3>
+          <ul class="feature-list">
+            <li>Multi-warehouse stock on weighted-average cost</li>
+            <li>Bill of Materials and kit builds</li>
+            <li>Batch, lot and serial-number tracking</li>
+            <li>Price lists and per-supplier pricing</li>
+            <li>Goods receipts, backorders and stock takes</li>
+            <li>Drop-shipping and consignment stock</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Payroll &amp; people</h3>
+          <ul class="feature-list">
+            <li>Monthly, fortnightly and weekly pay runs</li>
+            <li>PAYE, UIF and SDL on the SARS tables</li>
+            <li>EMP201 and EMP501 reports</li>
+            <li>IRP5 / IT3(a) certificates</li>
+            <li>Multi-user with role-based access</li>
+            <li>Immutable audit trail on every transaction</li>
           </ul>
         </div>
         <div class="info-card">
           <h3>Built different</h3>
           <ul class="feature-list">
             <li>Native Windows. Runs at the speed of your hardware</li>
-            <li>Multi-user on a shared network install</li>
-            <li>AI-assisted transaction categorisation</li>
-            <li>AI-assisted bank reconciliation</li>
-            <li>Migration tool from your previous accounting system</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3>Trust &amp; compliance</h3>
-          <ul class="feature-list">
-            <li>POPIA-compliant by design</li>
             <li>Your data on your machine, on your network</li>
-            <li>Immutable audit trail on every transaction</li>
-            <li>Role-based access for owners, admins, accountants, bookkeepers and viewers</li>
-            <li>Encryption at rest and in transit</li>
+            <li>Multi-currency with period-end revaluation</li>
+            <li>Email invoices, statements and payslips</li>
+            <li>Recurring invoices and journals</li>
+            <li>A branded PDF for every document</li>
           </ul>
         </div>
         <div class="info-card">
-          <h3>Scales with you</h3>
+          <h3>Built for South Africa</h3>
           <ul class="feature-list">
-            <li>Plans for small, medium and enterprise businesses</li>
-            <li>Multiple companies under one organisation</li>
-            <li>Multi-currency-ready architecture</li>
-            <li>Custom chart of accounts with SA industry templates</li>
-            <li>30-day free trial. Per-user pricing with feature tiers</li>
+            <li>SA chart of accounts and VAT out of the box</li>
+            <li>SARS-format VAT 201, EMP201, EMP501 and IRP5</li>
+            <li>POPIA-friendly: your data never leaves your control</li>
+            <li>CSV import to migrate your master data</li>
+            <li>30-day free trial, then per-user pricing</li>
+            <li>Multiple companies, each its own file</li>
           </ul>
         </div>
       </div>
 
       <aside class="service-callout">
-        <h3>Coming next</h3>
+        <h3>On the roadmap</h3>
         <p>
-          Phase 2 adds the full Inventory module, direct SARS e-filing, and
-          live SA bank feeds. Phase 3 brings a native mobile companion and a
-          partner API for marketplace integrations. More to follow as we build.
+          The accounting, inventory and payroll engine is built and tested today.
+          Still on the way: direct SARS e-filing and live SA bank feeds (the
+          reports and statement import are already here), AI-assisted
+          categorisation and reconciliation (powered by Veritis), a native mobile
+          companion, a macOS build, and a partner API for integrations.
         </p>
       </aside>
     </div>
@@ -186,12 +265,12 @@ const tags = [
   <section class="section">
     <div class="container container-wide">
       <header class="section-head section-head-center">
-        <span class="eyebrow">Phase 2</span>
+        <span class="eyebrow">Inventory &amp; manufacturing</span>
         <h2 class="section-title">Inventory, done properly.</h2>
         <p class="section-intro">
-          Inventory lands in Phase 2, right after the core accounting
-          modules go live. Built for everything from a single shop
-          floor to multi-warehouse manufacturing.
+          Built in, not bolted on. From a single shop floor to
+          multi-warehouse light manufacturing, with real-time costing
+          that posts straight to the ledger.
         </p>
       </header>
 
@@ -200,33 +279,31 @@ const tags = [
           <h3>Items and structure</h3>
           <ul class="feature-list">
             <li>Stock, non-stock, service, and kit items</li>
-            <li>Bill of Materials for light manufacturing</li>
-            <li>Multi-level categories and tags</li>
-            <li>Item variants (size, colour, and more)</li>
-            <li>Item images, gallery, and datasheet PDFs</li>
+            <li>Bill of Materials and multi-level kit builds</li>
+            <li>Item categories</li>
             <li>Per-item VAT rates (standard, zero-rated, exempt)</li>
+            <li>Per-item cost and sales pricing</li>
           </ul>
         </div>
         <div class="info-card">
           <h3>Stock tracking</h3>
           <ul class="feature-list">
-            <li>Multi-warehouse with location-level stock</li>
+            <li>Multi-warehouse stock control with transfers</li>
             <li>Serial number tracking (toggle per item)</li>
             <li>Batch and lot tracking with expiry dates</li>
-            <li>Multiple units of measure with conversion</li>
-            <li>Barcode generation and scanning (EAN, UPC, Code 128, QR)</li>
-            <li>Real-time perpetual accounting on Weighted Average Cost</li>
+            <li>Stock takes and adjustments</li>
+            <li>Per-item stock ledger with full movement history</li>
+            <li>Real-time perpetual costing on weighted average</li>
           </ul>
         </div>
         <div class="info-card">
           <h3>Buying and selling</h3>
           <ul class="feature-list">
-            <li>Multiple suppliers per item with preferred and per-supplier pricing</li>
-            <li>Purchase Order, Goods Receipt, Supplier Invoice workflow</li>
-            <li>Multiple price lists with customer-tier overrides</li>
-            <li>Customer-specific price overrides</li>
-            <li>Stock reservations from quotes and sales orders</li>
-            <li>Backorders and partial fulfillment</li>
+            <li>Preferred and per-supplier pricing</li>
+            <li>Purchase order, goods receipt and bill workflow</li>
+            <li>Price lists with customer-specific overrides</li>
+            <li>Backorders and partial fulfilment</li>
+            <li>Stock items on quotes, orders and invoices</li>
           </ul>
         </div>
         <div class="info-card">
@@ -234,10 +311,8 @@ const tags = [
           <ul class="feature-list">
             <li>Drop shipping</li>
             <li>Consignment stock (in and out)</li>
-            <li>Configurable negative stock policy</li>
-            <li>Re-order point suggestions per location</li>
-            <li>Granular permissions for stock, costs, and POs</li>
-            <li>CSV catalog import and migration from your previous system</li>
+            <li>Granular permissions for stock, costs and POs</li>
+            <li>CSV catalogue import for master data</li>
           </ul>
         </div>
       </div>
@@ -500,5 +575,34 @@ const tags = [
 
   @media (max-width: 480px) {
     .beta-form { flex-direction: column; }
+  }
+
+  /* Screenshot gallery */
+  .shot { margin: 0; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+    background: var(--surface-card);
+  }
+  .shot figcaption {
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    text-align: center;
+  }
+  .shot-feature { max-width: 60rem; margin: 0 auto var(--space-10); }
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+    max-width: 76rem;
+    margin-inline: auto;
+  }
+  @media (max-width: 768px) {
+    .shot-grid { grid-template-columns: 1fr; }
   }
 </style>
