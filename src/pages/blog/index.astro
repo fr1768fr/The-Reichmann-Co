@@ -1,9 +1,16 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
+import { getCollection } from 'astro:content';
 import { SITE } from '../../data/site';
 
-const description = 'Insights from The Reichmann Co. Notes on engineering, product, and building software in South Africa for the world.';
+const description = 'Insights from The Reichmann Co. Notes on engineering, product, and building software in South Africa.';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const hasPosts = posts.length > 0;
+const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
 
 const blogSchema = {
   '@context': 'https://schema.org',
@@ -38,59 +45,99 @@ const blogSchema = {
 
   <section class="section">
     <div class="container container-wide">
-      <div class="blog-empty">
-        <div class="blog-empty-card">
-          <span class="eyebrow">Coming soon</span>
-          <h2>First posts are on the way.</h2>
-          <p>
-            We are saving the first round of writing until we have something useful to share.
-            Check back soon, or reach out and we will tell you when posts begin.
-          </p>
-          <div class="blog-empty-cta">
-            <Button href="/contact" variant="primary" size="md" arrow>Get in touch</Button>
-            <Button href="/services" variant="ghost" size="md">What we build</Button>
+      {hasPosts ? (
+        <ul class="post-list">
+          {posts.map((p) => (
+            <li class="post-item">
+              <a href={`/blog/${p.id}`} class="post-link">
+                <time class="post-date" datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time>
+                <h2 class="post-heading">{p.data.title}</h2>
+                <p class="post-desc">{p.data.description}</p>
+                <span class="post-more">Read more &rarr;</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="blog-empty">
+          <div class="blog-empty-card">
+            <span class="eyebrow">Coming soon</span>
+            <h2>First posts are on the way.</h2>
+            <p>
+              We are saving the first round of writing until we have something useful to share.
+              Check back soon, or reach out and we will tell you when posts begin.
+            </p>
+            <div class="blog-empty-cta">
+              <Button href="/contact" variant="primary" size="md" arrow>Get in touch</Button>
+              <Button href="/services" variant="ghost" size="md">What we build</Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .blog-empty {
-    display: flex;
-    justify-content: center;
+  .post-list {
+    list-style: none;
+    display: grid;
+    gap: var(--space-5);
+    max-width: 52rem;
+  }
+  .post-item {
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+  }
+  .post-item:hover {
+    border-color: var(--brand-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .post-link { display: block; padding: var(--space-6); }
+  .post-date {
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+  .post-heading {
+    margin-top: var(--space-2);
+    font-size: var(--fs-2xl);
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+  .post-desc {
+    margin-top: var(--space-2);
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  .post-more {
+    display: inline-block;
+    margin-top: var(--space-4);
+    color: var(--brand-primary);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
   }
 
+  /* Empty state (kept as a fallback) */
+  .blog-empty { display: flex; justify-content: center; }
   .blog-empty-card {
     max-width: 36rem;
     padding: var(--space-12);
     text-align: center;
     background: var(--surface-card);
-    border: 1px solid var(--surface-card-border);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-sm);
   }
-
   .blog-empty-card .eyebrow { justify-content: center; }
-
-  .blog-empty-card h2 {
-    margin-top: var(--space-3);
-    font-size: var(--fs-2xl);
-    letter-spacing: -0.02em;
-  }
-
-  .blog-empty-card p {
-    margin-top: var(--space-4);
-    color: var(--text-secondary);
-    line-height: var(--lh-relaxed);
-  }
-
-  .blog-empty-cta {
-    margin-top: var(--space-6);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-3);
-  }
+  .blog-empty-card h2 { margin-top: var(--space-3); font-size: var(--fs-2xl); letter-spacing: -0.02em; }
+  .blog-empty-card p { margin-top: var(--space-4); color: var(--text-secondary); line-height: var(--lh-relaxed); }
+  .blog-empty-cta { margin-top: var(--space-6); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
 </style>

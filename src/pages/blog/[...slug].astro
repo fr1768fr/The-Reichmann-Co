@@ -1,0 +1,115 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = post.data.date.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+const isOrg = post.data.author === SITE.name;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': isOrg ? 'Organization' : 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  mainEntityOfPage: `${SITE.url}/blog/${post.id}`,
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} · The Reichmann Co.`}
+  description={post.data.description}
+  ogType="article"
+  jsonLd={[articleSchema]}
+  activeNav="blog"
+>
+  <section class="page-hero">
+    <div class="container container-prose">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/blog">Blog</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{post.data.title}</span>
+      </nav>
+      <span class="eyebrow">Insights</span>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{fmt}</time> &middot; {post.data.author}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-prose post-prose">
+      <Content />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-prose post-cta">
+      <Button href="/products/lumarix#early-access" variant="primary" size="lg" arrow>Try Lumarix</Button>
+      <Button href="/blog" variant="ghost" size="lg">Back to all posts</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .post-title {
+    margin-top: var(--space-3);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .post-meta {
+    margin-top: var(--space-3);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+  }
+
+  .post-prose {
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+    font-size: var(--fs-lg);
+  }
+  .post-prose :global(h2) {
+    color: var(--text-primary);
+    font-size: var(--fs-2xl);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-3);
+  }
+  .post-prose :global(h3) {
+    color: var(--text-primary);
+    font-size: var(--fs-xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-2);
+  }
+  .post-prose :global(p) { margin-bottom: var(--space-5); }
+  .post-prose :global(ul) { margin: 0 0 var(--space-5) var(--space-6); list-style: disc; }
+  .post-prose :global(li) { margin-bottom: var(--space-2); }
+  .post-prose :global(strong) { color: var(--text-primary); font-weight: var(--fw-semibold); }
+  .post-prose :global(a) { color: var(--brand-primary); text-decoration: underline; }
+  .post-prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .post-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+</style>
