@@ -44,6 +44,38 @@ const CARDS = [
     sub: 'An AI built for South African accountants.',
     url: 'thereichmannco.co.za/products/veritis',
   },
+  {
+    slug: 'about',
+    eyebrow: 'THE REICHMANN CO.',
+    title: 'About',
+    tagline: 'Software, built with care.',
+    sub: 'A South African software company, built to ship.',
+    url: 'thereichmannco.co.za/about',
+  },
+  {
+    slug: 'services',
+    eyebrow: 'THE REICHMANN CO.',
+    title: 'Services',
+    tagline: 'What we build.',
+    sub: 'Web, SaaS, mobile, desktop, cloud, and AI.',
+    url: 'thereichmannco.co.za/services',
+  },
+  {
+    slug: 'products',
+    eyebrow: 'THE REICHMANN CO.',
+    title: 'Products',
+    tagline: 'Built for the work we know best.',
+    sub: 'Lumarix (ERP) and Veritis (AI for accountants).',
+    url: 'thereichmannco.co.za/products',
+  },
+  {
+    slug: 'contact',
+    eyebrow: 'THE REICHMANN CO.',
+    title: 'Contact',
+    tagline: "Let's build something.",
+    sub: 'An app, a web app, or a SaaS to launch?',
+    url: 'thereichmannco.co.za/contact',
+  },
 ];
 
 const card = ({ eyebrow, title, tagline, sub, url }) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
