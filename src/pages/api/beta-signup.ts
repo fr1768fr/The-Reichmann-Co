@@ -30,11 +30,11 @@ const buildWelcomeHtml = (signupDate: string) => `<!DOCTYPE html>
                                 Welcome to <span style="background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent;">Lumarix</span> Early Access
                             </h1>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
-                                Thanks for signing up. You've secured a spot on our early access list for Lumarix, the next-generation Enterprise Resource Planning platform in active development at The Reichmann Co.
+                                Thanks for signing up. You've secured a spot on our early access list for Lumarix, the next-generation Enterprise Resource Planning platform, now in beta at The Reichmann Co.
                             </p>
                             <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 <strong style="color:#f8fafc;">What happens next?</strong><br>
-                                When Lumarix is ready for early access, we'll email you directly with installer download, license details, and onboarding instructions. No further action needed on your side for now.
+                                As we open up beta access, we'll email you directly with your installer download, licence details, and onboarding instructions. No further action needed on your side for now.
                             </p>
                             <p style="margin:0 0 28px;font-size:16px;line-height:1.6;color:#cbd5e1;">
                                 If you have any questions in the meantime, just reply to this email.
