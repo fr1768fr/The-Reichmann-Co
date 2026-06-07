@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "banner": "node scripts/generate-linkedin-banner.js"
+    "banner": "node scripts/generate-linkedin-banner.js",
+    "og": "node scripts/generate-og-images.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^8.2.11",
