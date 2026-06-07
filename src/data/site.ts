@@ -12,6 +12,7 @@ export const SITE = {
   countryCode: 'ZA',
   ogImage: '/og-image.png',
   linkedin: 'https://www.linkedin.com/company/the-reichmann-co/',
+  founderLinkedin: 'https://www.linkedin.com/in/franco-reichmann-612b91271',
   facebook: 'https://www.facebook.com/profile.php?id=61590587364359',
   instagram: 'https://www.instagram.com/thereichmannco',
   whatsapp: 'https://wa.me/27724228127',

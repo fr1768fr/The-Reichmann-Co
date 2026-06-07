@@ -75,6 +75,10 @@ const aboutSchema = {
           Primary hours are Mon to Thu 08:00 to 16:00 and Fri 08:00 to 12:00
           SAST (UTC+2), with async collaboration outside of those hours.
         </p>
+        <p class="story-founder">
+          Founded by Franco Reichmann.
+          <a href={SITE.founderLinkedin} target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </p>
       </div>
 
       <aside class="story-stats">
@@ -169,6 +173,9 @@ const aboutSchema = {
 
   .story-prose p { margin-bottom: var(--space-5); color: var(--text-secondary); line-height: var(--lh-relaxed); }
   .story-prose .lead { color: var(--text-primary); font-size: var(--fs-xl); }
+  .story-founder { margin-top: var(--space-6); color: var(--text-primary); font-weight: var(--fw-medium); }
+  .story-founder a { color: var(--brand-primary); font-weight: var(--fw-semibold); }
+  .story-founder a:hover { text-decoration: underline; }
 
   .story-stats {
     display: grid;

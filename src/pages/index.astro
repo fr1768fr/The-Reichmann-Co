@@ -17,7 +17,7 @@ const orgSchema = {
   image: `${SITE.url}/og-image.png`,
   description,
   foundingDate: SITE.founded,
-  founders: [{ '@type': 'Person', name: 'Franco Reichmann' }],
+  founders: [{ '@type': 'Person', name: 'Franco Reichmann', sameAs: [SITE.founderLinkedin] }],
   address: { '@type': 'PostalAddress', addressCountry: SITE.countryCode },
   contactPoint: {
     '@type': 'ContactPoint',
