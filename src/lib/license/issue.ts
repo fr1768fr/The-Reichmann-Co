@@ -9,6 +9,7 @@ interface ActivationBody {
   activeUsers?: unknown;
   appVersion?: unknown;
   installationId?: unknown;
+  machineId?: unknown;
 }
 
 const env = (key: string): string | undefined =>
@@ -96,6 +97,7 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
     await getStore().recordUsage({
       accountKey: sub.accountKey,
       installationId: typeof body.installationId === 'string' && body.installationId.trim() ? body.installationId.trim() : null,
+      machineId: typeof body.machineId === 'string' && body.machineId.trim() ? body.machineId.trim() : null,
       company: typeof body.companyName === 'string' && body.companyName.trim() ? body.companyName.trim() : sub.company,
       registrationNumber: typeof body.registrationNumber === 'string' && body.registrationNumber.trim() ? body.registrationNumber.trim() : null,
       activeUsers: Number.isInteger(Number(body.activeUsers)) ? Number(body.activeUsers) : null,

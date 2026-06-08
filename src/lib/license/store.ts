@@ -29,6 +29,7 @@ export interface Subscription {
 export interface Usage {
   accountKey: string; // "" for a trial install with no licence yet
   installationId: string | null; // stable per-company-file id, present from app builds that send it
+  machineId: string | null; // stable per-device fingerprint (hashed), to anchor the trial to a machine
   company: string;
   registrationNumber: string | null;
   activeUsers: number | null;
