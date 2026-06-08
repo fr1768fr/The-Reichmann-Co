@@ -19,11 +19,27 @@ export interface Subscription {
   updatedAt: string;
 }
 
+/**
+ * Best-effort usage telemetry, recorded on each activate/refresh: which company uses a licence
+ * and how many active users it has, so over-seat use is visible. Keyed by accountKey.
+ */
+export interface Usage {
+  accountKey: string;
+  company: string;
+  registrationNumber: string | null;
+  activeUsers: number | null;
+  appVersion: string | null;
+  firstSeen: string; // ISO-8601
+  lastSeen: string; // ISO-8601
+}
+
 export interface SubscriptionStore {
   get(accountKey: string): Promise<Subscription | null>;
   upsert(sub: Subscription): Promise<void>;
   list(): Promise<Subscription[]>;
   remove(accountKey: string): Promise<boolean>;
+  recordUsage(usage: Usage): Promise<void>;
+  listUsage(): Promise<Usage[]>;
 }
 
 const env = (key: string): string | undefined =>
@@ -31,6 +47,8 @@ const env = (key: string): string | undefined =>
 
 const subKey = (accountKey: string) => `license:sub:${accountKey}`;
 const INDEX = 'license:subs';
+const usageKey = (accountKey: string) => `license:usage:${accountKey}`;
+const USAGE_INDEX = 'license:usages';
 
 /** Build an Upstash Redis client from whichever env var pair is present, or null if none. */
 function redisOrNull(): Redis | null {
@@ -62,6 +80,20 @@ class RedisStore implements SubscriptionStore {
     const deleted = await this.redis.del(subKey(accountKey));
     await this.redis.srem(INDEX, accountKey);
     return deleted > 0;
+  }
+
+  async recordUsage(usage: Usage): Promise<void> {
+    const existing = await this.redis.get<Usage>(usageKey(usage.accountKey));
+    const merged: Usage = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
+    await this.redis.set(usageKey(usage.accountKey), merged);
+    await this.redis.sadd(USAGE_INDEX, usage.accountKey);
+  }
+
+  async listUsage(): Promise<Usage[]> {
+    const keys = await this.redis.smembers(USAGE_INDEX);
+    if (keys.length === 0) return [];
+    const values = await this.redis.mget<Usage[]>(...keys.map(usageKey));
+    return values.filter((u): u is Usage => u != null);
   }
 }
 
@@ -106,6 +138,28 @@ class FileStore implements SubscriptionStore {
     delete all[accountKey];
     this.write(all);
     return true;
+  }
+
+  private readonly usagePath = '.license-usage.json';
+
+  private readUsage(): Record<string, Usage> {
+    if (!existsSync(this.usagePath)) return {};
+    try {
+      return JSON.parse(readFileSync(this.usagePath, 'utf8')) as Record<string, Usage>;
+    } catch {
+      return {};
+    }
+  }
+
+  async recordUsage(usage: Usage): Promise<void> {
+    const all = this.readUsage();
+    const existing = all[usage.accountKey];
+    all[usage.accountKey] = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
+    writeFileSync(this.usagePath, JSON.stringify(all, null, 2));
+  }
+
+  async listUsage(): Promise<Usage[]> {
+    return Object.values(this.readUsage());
   }
 }
 

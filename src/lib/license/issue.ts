@@ -7,6 +7,7 @@ interface ActivationBody {
   companyName?: unknown;
   registrationNumber?: unknown;
   activeUsers?: unknown;
+  appVersion?: unknown;
 }
 
 const env = (key: string): string | undefined =>
@@ -79,6 +80,23 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
   if (!sub) return json({ error: 'That account key was not recognised.' }, 404);
   if (!opts.allowInactive && sub.status === 'cancelled') {
     return json({ error: 'This subscription is no longer active. Contact The Reichmann Co.' }, 403);
+  }
+
+  // Best-effort usage telemetry: record who is using this licence and how many active users, so
+  // over-seat use is visible in the console. Wrapped so it can NEVER break activation/refresh.
+  try {
+    const seenIso = new Date().toISOString();
+    await getStore().recordUsage({
+      accountKey: sub.accountKey,
+      company: typeof body.companyName === 'string' && body.companyName.trim() ? body.companyName.trim() : sub.company,
+      registrationNumber: typeof body.registrationNumber === 'string' && body.registrationNumber.trim() ? body.registrationNumber.trim() : null,
+      activeUsers: Number.isInteger(Number(body.activeUsers)) ? Number(body.activeUsers) : null,
+      appVersion: typeof body.appVersion === 'string' && body.appVersion.trim() ? body.appVersion.trim() : null,
+      firstSeen: seenIso,
+      lastSeen: seenIso,
+    });
+  } catch (err) {
+    console.error('Usage telemetry record failed (non-fatal):', err);
   }
 
   try {
