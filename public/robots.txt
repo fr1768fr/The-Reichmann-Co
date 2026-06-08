@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://thereichmannco.co.za/sitemap.xml
+Sitemap: https://thereichmannco.co.za/sitemap-index.xml

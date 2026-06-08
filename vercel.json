@@ -9,7 +9,8 @@
     { "source": "/blog.html", "destination": "/blog", "permanent": true },
     { "source": "/blog/", "destination": "/blog", "permanent": true },
     { "source": "/services/:slug.html", "destination": "/services/:slug", "permanent": true },
-    { "source": "/products/:slug.html", "destination": "/products/:slug", "permanent": true }
+    { "source": "/products/:slug.html", "destination": "/products/:slug", "permanent": true },
+    { "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "permanent": true }
   ],
   "headers": [
     {
