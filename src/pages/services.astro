@@ -141,6 +141,92 @@ const collectionSchema = {
     </div>
   </section>
 
+  <!-- How we work / process -->
+  <section class="section">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">How we work</span>
+        <h2 class="section-title">From idea to live software, in six steps.</h2>
+        <p class="section-intro">
+          Every engagement follows the same path. You always know what is
+          happening now, what comes next, and what we need from you.
+        </p>
+      </header>
+
+      <ol class="process-steps">
+        <li class="process-step">
+          <span class="process-num">01</span>
+          <h3>Define</h3>
+          <p>We start with the problem, not a feature list. A short discovery conversation, then a written scope: what we are building, what it does, and what it does not. You sign it off before a line of code is written.</p>
+        </li>
+        <li class="process-step">
+          <span class="process-num">02</span>
+          <h3>Design</h3>
+          <p>We map the screens and the data before we build them. You see the shape of the product early, as wireframes or a clickable prototype, so the costly changes happen while they are still cheap.</p>
+        </li>
+        <li class="process-step">
+          <span class="process-num">03</span>
+          <h3>Build</h3>
+          <p>Engineering in short, visible increments. You get a working build to click through as features land, not a black box that opens on launch day. Scope stays small and honest.</p>
+        </li>
+        <li class="process-step">
+          <span class="process-num">04</span>
+          <h3>Test</h3>
+          <p>We test as we go, not as an afterthought. Automated checks where they pay back, plus real testing on the devices and browsers your users actually have. The demo always works.</p>
+        </li>
+        <li class="process-step">
+          <span class="process-num">05</span>
+          <h3>Launch</h3>
+          <p>We ship to production and make sure it holds. Deployment, monitoring, and a calm handover. You go live knowing exactly what is running and where.</p>
+        </li>
+        <li class="process-step">
+          <span class="process-num">06</span>
+          <h3>Support</h3>
+          <p>We do not disappear at launch. Maintenance, fixes, and new features as the product grows, with a direct line to the person who built it.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- How we charge / pricing -->
+  <section class="section section--alt">
+    <div class="container container-wide">
+      <header class="section-head">
+        <span class="eyebrow">How we charge</span>
+        <h2 class="section-title">Pricing that matches the work.</h2>
+        <p class="section-intro">
+          We do not publish a price list, because no two projects are the same.
+          What we will always tell you up front is how we scope and quote, so you
+          know exactly what you are paying for before you commit.
+        </p>
+      </header>
+
+      <div class="pricing-grid">
+        <article class="pricing-card">
+          <span class="pricing-tag">For a defined build</span>
+          <h3>Fixed-scope project</h3>
+          <p>An app, a SaaS MVP, or a website with a clear brief. We scope the work, then quote one fixed price and timeline. You approve both before we start, and the number does not move unless the scope does.</p>
+        </article>
+        <article class="pricing-card">
+          <span class="pricing-tag">For ongoing work</span>
+          <h3>Monthly partnership</h3>
+          <p>For a product that keeps evolving. A set amount of engineering time each month at a predictable fee, so you can plan around it. Adjust or pause it as your needs change.</p>
+        </article>
+        <article class="pricing-card">
+          <span class="pricing-tag">For a rough idea</span>
+          <h3>Discovery sprint</h3>
+          <p>Not sure what you need yet? A short, paid engagement that turns a rough idea into a costed plan and a clickable prototype. No obligation to build with us afterwards.</p>
+        </article>
+      </div>
+
+      <p class="pricing-note">
+        Every engagement starts with a free intro call and a written quote. No hourly
+        surprises, no obligation. <a href="/contact">Tell us about your project</a> and
+        we will come back with a number.
+      </p>
+    </div>
+  </section>
+
   <!-- Closing CTA -->
   <section class="section section--inverse closing-cta">
     <div class="container container-wide closing-inner">
@@ -249,4 +335,76 @@ const collectionSchema = {
   @media (max-width: 720px) {
     .aux-grid { grid-template-columns: 1fr; }
   }
+
+  /* Process steps */
+  .process-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .process-step {
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+  }
+  .process-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--brand-tint);
+    color: var(--brand-primary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+  }
+  .process-step h3 { font-size: var(--fs-lg); margin-bottom: var(--space-2); }
+  .process-step p {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  @media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .process-steps { grid-template-columns: 1fr; } }
+
+  /* Pricing / how we charge */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .pricing-card {
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--surface-card-border);
+    border-radius: var(--radius-lg);
+  }
+  .pricing-tag {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--brand-primary);
+  }
+  .pricing-card h3 { font-size: var(--fs-xl); margin-bottom: var(--space-3); }
+  .pricing-card p {
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .pricing-note {
+    margin-top: var(--space-8);
+    max-width: 44rem;
+    color: var(--text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  .pricing-note a { font-weight: var(--fw-semibold); }
+  @media (max-width: 820px) { .pricing-grid { grid-template-columns: 1fr; } }
 </style>
