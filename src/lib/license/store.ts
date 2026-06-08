@@ -50,6 +50,12 @@ export interface SubscriptionStore {
   recordUsage(usage: Usage): Promise<void>;
   listUsage(): Promise<Usage[]>;
   /**
+   * Remove one usage record by its storage id (the install id, or the account key for older
+   * rows). Lets an admin clear out companies that are no longer in use. Returns false if there
+   * was nothing to remove. The record reappears if that install ever checks in again.
+   */
+  removeUsage(id: string): Promise<boolean>;
+  /**
    * Record (once) when a device first started a trial and return that start time. Used to anchor
    * the free trial to a machine so a new company file does not hand out a fresh trial.
    */
@@ -123,6 +129,12 @@ class RedisStore implements SubscriptionStore {
     if (keys.length === 0) return [];
     const values = await this.redis.mget<Usage[]>(...keys.map(usageKey));
     return values.filter((u): u is Usage => u != null);
+  }
+
+  async removeUsage(id: string): Promise<boolean> {
+    const deleted = await this.redis.del(usageKey(id));
+    await this.redis.srem(USAGE_INDEX, id);
+    return deleted > 0;
   }
 
   async ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string> {
@@ -207,6 +219,14 @@ class FileStore implements SubscriptionStore {
 
   async listUsage(): Promise<Usage[]> {
     return Object.values(this.readUsage());
+  }
+
+  async removeUsage(id: string): Promise<boolean> {
+    const all = this.readUsage();
+    if (!(id in all)) return false;
+    delete all[id];
+    writeFileSync(this.usagePath, JSON.stringify(all, null, 2));
+    return true;
   }
 
   private readonly machinePath = '.license-machine-trials.json';
