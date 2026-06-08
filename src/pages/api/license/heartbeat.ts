@@ -85,5 +85,14 @@ export const POST: APIRoute = async ({ request }) => {
     console.error('Licence assignment lookup failed (non-fatal):', err);
   }
 
-  return json({ ok: true, trial, assignedAccountKey });
+  // If an admin nudged this install (or everyone) to update, return when — the app re-checks for
+  // an app update if this is newer than the nudge it last acted on. Best-effort; never blocks.
+  let updateNudge: string | null = null;
+  try {
+    updateNudge = await getStore().getUpdateNudge(installationId);
+  } catch (err) {
+    console.error('Update nudge lookup failed (non-fatal):', err);
+  }
+
+  return json({ ok: true, trial, assignedAccountKey, updateNudge });
 };

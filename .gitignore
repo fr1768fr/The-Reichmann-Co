@@ -42,3 +42,4 @@ license-public-key.txt
 license-admin-token.txt
 .license-subscriptions.json
 .license-assignments.json
+.license-update-nudges.json

@@ -120,8 +120,20 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
     console.error('Usage telemetry record failed (non-fatal):', err);
   }
 
+  // If an admin nudged this install (or everyone) to update, return when, so an already-licensed
+  // app re-checks for an app update on its silent refresh. Best-effort; never blocks the token.
+  let updateNudge: string | null = null;
+  const installationId = str(body.installationId);
+  if (installationId) {
+    try {
+      updateNudge = await getStore().getUpdateNudge(installationId);
+    } catch (err) {
+      console.error('Update nudge lookup failed (non-fatal):', err);
+    }
+  }
+
   try {
-    return json({ token: signToken(tokenFor(sub), privateKeyPem) });
+    return json({ token: signToken(tokenFor(sub), privateKeyPem), updateNudge });
   } catch (err) {
     console.error('Token signing failed:', err);
     return json({ error: 'Could not issue a licence token.' }, 500);

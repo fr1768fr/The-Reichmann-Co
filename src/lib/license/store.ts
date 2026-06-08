@@ -68,6 +68,18 @@ export interface SubscriptionStore {
   setAssignment(installationId: string, accountKey: string): Promise<void>;
   /** The account key assigned to this install, if any (returned to it on heartbeat). */
   getAssignment(installationId: string): Promise<string | null>;
+  /**
+   * Record an "an app update is available — check now" nudge. <paramref name="target"/> is a
+   * specific installationId (nudge one company) or the literal "all" (nudge everyone). The app
+   * sees it on its next check-in and runs its update check.
+   */
+  setUpdateNudge(target: string, nowIso: string): Promise<void>;
+  /**
+   * The most recent update nudge that applies to this install: the later of the global ("all")
+   * nudge and this install's own nudge, or null if neither was set. The app re-checks only when
+   * this is newer than the one it last acted on.
+   */
+  getUpdateNudge(installationId: string): Promise<string | null>;
 }
 
 const env = (key: string): string | undefined =>
@@ -79,6 +91,18 @@ const usageKey = (id: string) => `license:usage:${id}`;
 const USAGE_INDEX = 'license:usages';
 const machineKey = (machineId: string) => `license:machine:${machineId}`;
 const assignKey = (installationId: string) => `license:assign:${installationId}`;
+const updateNudgeKey = (target: string) => `license:update:${target}`;
+/** The target used for an "update everyone" nudge (vs a specific installationId). */
+export const UPDATE_ALL = 'all';
+/** The later of two ISO-8601 timestamps (string compare is valid for ISO), or null. */
+const laterIso = (a: string | null, b: string | null): string | null =>
+  a && b ? (a > b ? a : b) : a ?? b ?? null;
+/** An update nudge self-clears about a week after it is set, so it bounds the rollout window. */
+const NUDGE_TTL_SEC = 7 * 24 * 60 * 60;
+const NUDGE_TTL_MS = NUDGE_TTL_SEC * 1000;
+/** The timestamp if it is within the nudge TTL, else null (so stale nudges stop nudging). */
+const freshNudge = (iso: string | null | undefined): string | null =>
+  iso && Date.now() - new Date(iso).getTime() < NUDGE_TTL_MS ? iso : null;
 
 /** The storage id for a usage record: the stable install id when present, else the account key. */
 const usageId = (u: Usage): string => (u.installationId?.trim() || u.accountKey || '').trim();
@@ -151,6 +175,18 @@ class RedisStore implements SubscriptionStore {
   async getAssignment(installationId: string): Promise<string | null> {
     const a = await this.redis.get<{ accountKey: string }>(assignKey(installationId));
     return a?.accountKey?.trim() || null;
+  }
+
+  async setUpdateNudge(target: string, nowIso: string): Promise<void> {
+    await this.redis.set(updateNudgeKey(target), { at: nowIso }, { ex: NUDGE_TTL_SEC });
+  }
+
+  async getUpdateNudge(installationId: string): Promise<string | null> {
+    const [all, mine] = await Promise.all([
+      this.redis.get<{ at: string }>(updateNudgeKey(UPDATE_ALL)),
+      this.redis.get<{ at: string }>(updateNudgeKey(installationId)),
+    ]);
+    return laterIso(all?.at ?? null, mine?.at ?? null);
   }
 }
 
@@ -267,6 +303,28 @@ class FileStore implements SubscriptionStore {
 
   async getAssignment(installationId: string): Promise<string | null> {
     return this.readAssignments()[installationId]?.trim() || null;
+  }
+
+  private readonly updatePath = '.license-update-nudges.json';
+
+  private readUpdateNudges(): Record<string, string> {
+    if (!existsSync(this.updatePath)) return {};
+    try {
+      return JSON.parse(readFileSync(this.updatePath, 'utf8')) as Record<string, string>;
+    } catch {
+      return {};
+    }
+  }
+
+  async setUpdateNudge(target: string, nowIso: string): Promise<void> {
+    const all = this.readUpdateNudges();
+    all[target] = nowIso;
+    writeFileSync(this.updatePath, JSON.stringify(all, null, 2));
+  }
+
+  async getUpdateNudge(installationId: string): Promise<string | null> {
+    const all = this.readUpdateNudges();
+    return laterIso(freshNudge(all[UPDATE_ALL]), freshNudge(all[installationId]));
   }
 }
 
