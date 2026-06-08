@@ -21,11 +21,14 @@ export interface Subscription {
 }
 
 /**
- * Best-effort usage telemetry, recorded on each activate/refresh: which company uses a licence
- * and how many active users it has, so over-seat use is visible. Keyed by accountKey.
+ * Best-effort usage telemetry: which company uses the app and how many active users it has, so
+ * over-seat use is visible in the console. Recorded on each activate/refresh (licensed) and on a
+ * trial heartbeat (unlicensed). Keyed by the stable per-install `installationId` when present
+ * (so a trial that later activates stays a single row), else by `accountKey`.
  */
 export interface Usage {
-  accountKey: string;
+  accountKey: string; // "" for a trial install with no licence yet
+  installationId: string | null; // stable per-company-file id, present from app builds that send it
   company: string;
   registrationNumber: string | null;
   activeUsers: number | null;
@@ -48,8 +51,11 @@ const env = (key: string): string | undefined =>
 
 const subKey = (accountKey: string) => `license:sub:${accountKey}`;
 const INDEX = 'license:subs';
-const usageKey = (accountKey: string) => `license:usage:${accountKey}`;
+const usageKey = (id: string) => `license:usage:${id}`;
 const USAGE_INDEX = 'license:usages';
+
+/** The storage id for a usage record: the stable install id when present, else the account key. */
+const usageId = (u: Usage): string => (u.installationId?.trim() || u.accountKey || '').trim();
 
 /** Build an Upstash Redis client from whichever env var pair is present, or null if none. */
 function redisOrNull(): Redis | null {
@@ -84,10 +90,12 @@ class RedisStore implements SubscriptionStore {
   }
 
   async recordUsage(usage: Usage): Promise<void> {
-    const existing = await this.redis.get<Usage>(usageKey(usage.accountKey));
+    const id = usageId(usage);
+    if (!id) return;
+    const existing = await this.redis.get<Usage>(usageKey(id));
     const merged: Usage = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
-    await this.redis.set(usageKey(usage.accountKey), merged);
-    await this.redis.sadd(USAGE_INDEX, usage.accountKey);
+    await this.redis.set(usageKey(id), merged);
+    await this.redis.sadd(USAGE_INDEX, id);
   }
 
   async listUsage(): Promise<Usage[]> {
@@ -153,9 +161,11 @@ class FileStore implements SubscriptionStore {
   }
 
   async recordUsage(usage: Usage): Promise<void> {
+    const id = usageId(usage);
+    if (!id) return;
     const all = this.readUsage();
-    const existing = all[usage.accountKey];
-    all[usage.accountKey] = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
+    const existing = all[id];
+    all[id] = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
     writeFileSync(this.usagePath, JSON.stringify(all, null, 2));
   }
 
