@@ -291,12 +291,17 @@ hr {
    values so child elements (titles, buttons) render correctly
    in both themes. */
 .closing-cta {
-  /* Lock inverse context: text reads white-on-navy here, always */
+  /* Lock inverse context: text reads white-on-navy here, always.
+     --text-secondary and --surface-hover are locked too so the ghost
+     button (.btn--ghost uses both) stays legible on the navy panel in
+     light mode, not just dark. */
   --text-on-inverse: #ffffff;
   --bg-base: #ffffff;
   --bg-subtle: #f1f5f9;
   --brand-deep: #0a2540;
   --text-primary: #ffffff;
+  --text-secondary: rgba(248, 250, 252, 0.85);
+  --surface-hover: rgba(255, 255, 255, 0.08);
 
   background: linear-gradient(135deg, #0a2540 0%, #051026 100%);
   color: #ffffff;
