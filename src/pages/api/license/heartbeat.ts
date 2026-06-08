@@ -15,10 +15,17 @@ interface HeartbeatBody {
   activeUsers?: unknown;
   appVersion?: unknown;
   machineId?: unknown;
+  vatNumber?: unknown;
+  address?: unknown;
+  email?: unknown;
+  phone?: unknown;
 }
 
 const json = (data: unknown, status = 200): Response =>
   new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
+
+/** Trim a possibly-unknown body field to a non-empty string, or null. */
+const str = (v: unknown): string | null => (typeof v === 'string' && v.trim() ? v.trim() : null);
 
 const TRIAL_DAYS = 30;
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -41,10 +48,14 @@ export const POST: APIRoute = async ({ request }) => {
       accountKey: '', // a trial has no licence yet
       installationId,
       machineId,
-      company: typeof body.companyName === 'string' && body.companyName.trim() ? body.companyName.trim() : '(unnamed company)',
-      registrationNumber: typeof body.registrationNumber === 'string' && body.registrationNumber.trim() ? body.registrationNumber.trim() : null,
+      company: str(body.companyName) ?? '(unnamed company)',
+      registrationNumber: str(body.registrationNumber),
+      vatNumber: str(body.vatNumber),
+      address: str(body.address),
+      email: str(body.email),
+      phone: str(body.phone),
       activeUsers: Number.isInteger(Number(body.activeUsers)) ? Number(body.activeUsers) : null,
-      appVersion: typeof body.appVersion === 'string' && body.appVersion.trim() ? body.appVersion.trim() : null,
+      appVersion: str(body.appVersion),
       firstSeen: seenIso,
       lastSeen: seenIso,
     });

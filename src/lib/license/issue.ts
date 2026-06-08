@@ -10,7 +10,14 @@ interface ActivationBody {
   appVersion?: unknown;
   installationId?: unknown;
   machineId?: unknown;
+  vatNumber?: unknown;
+  address?: unknown;
+  email?: unknown;
+  phone?: unknown;
 }
+
+/** Trim a possibly-unknown body field to a non-empty string, or null. */
+const str = (v: unknown): string | null => (typeof v === 'string' && v.trim() ? v.trim() : null);
 
 const env = (key: string): string | undefined =>
   (import.meta.env as Record<string, string | undefined>)?.[key] ?? process.env[key];
@@ -96,12 +103,16 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
     const seenIso = new Date().toISOString();
     await getStore().recordUsage({
       accountKey: sub.accountKey,
-      installationId: typeof body.installationId === 'string' && body.installationId.trim() ? body.installationId.trim() : null,
-      machineId: typeof body.machineId === 'string' && body.machineId.trim() ? body.machineId.trim() : null,
-      company: typeof body.companyName === 'string' && body.companyName.trim() ? body.companyName.trim() : sub.company,
-      registrationNumber: typeof body.registrationNumber === 'string' && body.registrationNumber.trim() ? body.registrationNumber.trim() : null,
+      installationId: str(body.installationId),
+      machineId: str(body.machineId),
+      company: str(body.companyName) ?? sub.company,
+      registrationNumber: str(body.registrationNumber),
+      vatNumber: str(body.vatNumber),
+      address: str(body.address),
+      email: str(body.email),
+      phone: str(body.phone),
       activeUsers: Number.isInteger(Number(body.activeUsers)) ? Number(body.activeUsers) : null,
-      appVersion: typeof body.appVersion === 'string' && body.appVersion.trim() ? body.appVersion.trim() : null,
+      appVersion: str(body.appVersion),
       firstSeen: seenIso,
       lastSeen: seenIso,
     });

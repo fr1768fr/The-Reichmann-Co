@@ -32,6 +32,10 @@ export interface Usage {
   machineId: string | null; // stable per-device fingerprint (hashed), to anchor the trial to a machine
   company: string;
   registrationNumber: string | null;
+  vatNumber: string | null; // the company's own contact details, for support and accurate invoicing
+  address: string | null;
+  email: string | null;
+  phone: string | null;
   activeUsers: number | null;
   appVersion: string | null;
   firstSeen: string; // ISO-8601
