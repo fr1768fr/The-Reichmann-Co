@@ -98,7 +98,22 @@ export const POST: APIRoute = async ({ request }) => {
   };
 
   await store.upsert(sub);
-  return json({ ok: true, subscription: sub }, existing ? 200 : 201);
+
+  // Optionally assign this licence to a specific install so it self-activates on its next
+  // heartbeat (no customer action). Best-effort — must never fail the upsert that just succeeded.
+  let assignedTo: string | null = null;
+  const assignToInstallationId =
+    typeof body.assignToInstallationId === 'string' ? body.assignToInstallationId.trim() : '';
+  if (assignToInstallationId) {
+    try {
+      await store.setAssignment(assignToInstallationId, accountKey);
+      assignedTo = assignToInstallationId;
+    } catch (err) {
+      console.error('Licence assignment failed (non-fatal):', err);
+    }
+  }
+
+  return json({ ok: true, subscription: sub, assignedTo }, existing ? 200 : 201);
 };
 
 export const GET: APIRoute = async ({ request, url }) => {

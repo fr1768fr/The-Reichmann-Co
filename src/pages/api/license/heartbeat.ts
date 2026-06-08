@@ -76,5 +76,14 @@ export const POST: APIRoute = async ({ request }) => {
     }
   }
 
-  return json({ ok: true, trial });
+  // If an admin assigned a licence to this install, hand back the account key so the app can
+  // self-activate via the normal /activate path. Best-effort; never blocks the response.
+  let assignedAccountKey: string | null = null;
+  try {
+    assignedAccountKey = await getStore().getAssignment(installationId);
+  } catch (err) {
+    console.error('Licence assignment lookup failed (non-fatal):', err);
+  }
+
+  return json({ ok: true, trial, assignedAccountKey });
 };

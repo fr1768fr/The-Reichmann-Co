@@ -41,3 +41,4 @@ license-private-key.pem
 license-public-key.txt
 license-admin-token.txt
 .license-subscriptions.json
+.license-assignments.json

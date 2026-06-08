@@ -54,6 +54,14 @@ export interface SubscriptionStore {
    * the free trial to a machine so a new company file does not hand out a fresh trial.
    */
   ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string>;
+  /**
+   * Assign a licence to a specific install so it can self-activate: the heartbeat hands the
+   * account key back to that install (keyed by its stable installationId), which then activates
+   * via the normal /activate path. Set when an admin issues a licence to a known company.
+   */
+  setAssignment(installationId: string, accountKey: string): Promise<void>;
+  /** The account key assigned to this install, if any (returned to it on heartbeat). */
+  getAssignment(installationId: string): Promise<string | null>;
 }
 
 const env = (key: string): string | undefined =>
@@ -64,6 +72,7 @@ const INDEX = 'license:subs';
 const usageKey = (id: string) => `license:usage:${id}`;
 const USAGE_INDEX = 'license:usages';
 const machineKey = (machineId: string) => `license:machine:${machineId}`;
+const assignKey = (installationId: string) => `license:assign:${installationId}`;
 
 /** The storage id for a usage record: the stable install id when present, else the account key. */
 const usageId = (u: Usage): string => (u.installationId?.trim() || u.accountKey || '').trim();
@@ -121,6 +130,15 @@ class RedisStore implements SubscriptionStore {
     if (existing?.trialStartedAt) return existing.trialStartedAt;
     await this.redis.set(machineKey(machineId), { trialStartedAt: nowIso });
     return nowIso;
+  }
+
+  async setAssignment(installationId: string, accountKey: string): Promise<void> {
+    await this.redis.set(assignKey(installationId), { accountKey });
+  }
+
+  async getAssignment(installationId: string): Promise<string | null> {
+    const a = await this.redis.get<{ accountKey: string }>(assignKey(installationId));
+    return a?.accountKey?.trim() || null;
   }
 }
 
@@ -208,6 +226,27 @@ class FileStore implements SubscriptionStore {
     all[machineId] = { trialStartedAt: nowIso };
     writeFileSync(this.machinePath, JSON.stringify(all, null, 2));
     return nowIso;
+  }
+
+  private readonly assignPath = '.license-assignments.json';
+
+  private readAssignments(): Record<string, string> {
+    if (!existsSync(this.assignPath)) return {};
+    try {
+      return JSON.parse(readFileSync(this.assignPath, 'utf8')) as Record<string, string>;
+    } catch {
+      return {};
+    }
+  }
+
+  async setAssignment(installationId: string, accountKey: string): Promise<void> {
+    const all = this.readAssignments();
+    all[installationId] = accountKey;
+    writeFileSync(this.assignPath, JSON.stringify(all, null, 2));
+  }
+
+  async getAssignment(installationId: string): Promise<string | null> {
+    return this.readAssignments()[installationId]?.trim() || null;
   }
 }
 
