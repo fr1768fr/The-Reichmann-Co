@@ -15,6 +15,7 @@ export interface Subscription {
   modules: string[]; // wire codes: "inventory", "payroll"
   status: 'active' | 'past_due' | 'cancelled';
   graceDays: number;
+  expiresAt?: string | null; // licence term end (ISO-8601); null/absent = open-ended
   createdAt: string;
   updatedAt: string;
 }

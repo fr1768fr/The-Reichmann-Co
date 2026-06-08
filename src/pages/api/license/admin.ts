@@ -71,6 +71,14 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: 'graceDays must be an integer between 1 and 365.' }, 400);
   }
 
+  // Optional licence term end. Absent/null/empty = open-ended licence.
+  let expiresAt: string | null = null;
+  if (body.expiresAt !== undefined && body.expiresAt !== null && body.expiresAt !== '') {
+    const parsed = new Date(String(body.expiresAt));
+    if (Number.isNaN(parsed.getTime())) return json({ error: 'expiresAt must be a valid date or null.' }, 400);
+    expiresAt = parsed.toISOString();
+  }
+
   const accountKey = typeof body.accountKey === 'string' && body.accountKey.trim() ? body.accountKey.trim() : newAccountKey();
 
   const store = getStore();
@@ -84,6 +92,7 @@ export const POST: APIRoute = async ({ request }) => {
     modules,
     status: status as Subscription['status'],
     graceDays,
+    expiresAt,
     createdAt: existing?.createdAt ?? nowIso,
     updatedAt: nowIso,
   };

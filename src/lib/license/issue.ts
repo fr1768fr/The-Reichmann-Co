@@ -43,6 +43,7 @@ function tokenFor(sub: Subscription): EntitlementTokenPayload {
     Status: sub.status,
     IssuedAt: now.toISOString(),
     ValidUntil: new Date(now.getTime() + sub.graceDays * DAY_MS).toISOString(),
+    ExpiresAt: sub.expiresAt ?? null,
   };
 }
 
@@ -80,6 +81,11 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
   if (!sub) return json({ error: 'That account key was not recognised.' }, 404);
   if (!opts.allowInactive && sub.status === 'cancelled') {
     return json({ error: 'This subscription is no longer active. Contact The Reichmann Co.' }, 403);
+  }
+  // On a fresh activation, refuse an already-expired term (refresh still issues a token carrying
+  // the past ExpiresAt, so a running app learns it has lapsed and self-expires via the gate).
+  if (!opts.allowInactive && sub.expiresAt && new Date(sub.expiresAt).getTime() < Date.now()) {
+    return json({ error: 'This licence has expired. Contact The Reichmann Co. to renew.' }, 403);
   }
 
   // Best-effort usage telemetry: record who is using this licence and how many active users, so

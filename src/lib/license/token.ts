@@ -13,6 +13,7 @@ export interface EntitlementTokenPayload {
   Status: string; // "active" | "past_due" | "cancelled"
   IssuedAt: string; // ISO-8601 UTC
   ValidUntil: string; // ISO-8601 UTC (offline-grace horizon)
+  ExpiresAt: string | null; // ISO-8601 UTC licence term end, or null for an open-ended licence
 }
 
 const base64url = (buf: Buffer): string =>
