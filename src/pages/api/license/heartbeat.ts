@@ -20,6 +20,9 @@ interface HeartbeatBody {
 const json = (data: unknown, status = 200): Response =>
   new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
+const TRIAL_DAYS = 30;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
 export const POST: APIRoute = async ({ request }) => {
   let body: HeartbeatBody = {};
   try {
@@ -30,13 +33,14 @@ export const POST: APIRoute = async ({ request }) => {
 
   const installationId = typeof body.installationId === 'string' ? body.installationId.trim() : '';
   if (!installationId) return json({ error: 'An installation id is required.' }, 400);
+  const machineId = typeof body.machineId === 'string' && body.machineId.trim() ? body.machineId.trim() : null;
 
+  const seenIso = new Date().toISOString();
   try {
-    const seenIso = new Date().toISOString();
     await getStore().recordUsage({
       accountKey: '', // a trial has no licence yet
       installationId,
-      machineId: typeof body.machineId === 'string' && body.machineId.trim() ? body.machineId.trim() : null,
+      machineId,
       company: typeof body.companyName === 'string' && body.companyName.trim() ? body.companyName.trim() : '(unnamed company)',
       registrationNumber: typeof body.registrationNumber === 'string' && body.registrationNumber.trim() ? body.registrationNumber.trim() : null,
       activeUsers: Number.isInteger(Number(body.activeUsers)) ? Number(body.activeUsers) : null,
@@ -46,8 +50,20 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (err) {
     console.error('Trial heartbeat record failed (non-fatal):', err);
-    return json({ ok: false }, 200);
   }
 
-  return json({ ok: true });
+  // Anchor the trial to the device: its first-seen date plus the trial length. Returned so the app
+  // caps a new company file's trial at the device's window. Best-effort; never blocks the response.
+  let trial: { startedAt: string; expiresAt: string } | null = null;
+  if (machineId) {
+    try {
+      const startedAt = await getStore().ensureMachineTrialStart(machineId, seenIso);
+      const expiresAt = new Date(new Date(startedAt).getTime() + TRIAL_DAYS * DAY_MS).toISOString();
+      trial = { startedAt, expiresAt };
+    } catch (err) {
+      console.error('Machine trial anchor failed (non-fatal):', err);
+    }
+  }
+
+  return json({ ok: true, trial });
 };

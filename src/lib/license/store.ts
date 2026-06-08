@@ -45,6 +45,11 @@ export interface SubscriptionStore {
   remove(accountKey: string): Promise<boolean>;
   recordUsage(usage: Usage): Promise<void>;
   listUsage(): Promise<Usage[]>;
+  /**
+   * Record (once) when a device first started a trial and return that start time. Used to anchor
+   * the free trial to a machine so a new company file does not hand out a fresh trial.
+   */
+  ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string>;
 }
 
 const env = (key: string): string | undefined =>
@@ -54,6 +59,7 @@ const subKey = (accountKey: string) => `license:sub:${accountKey}`;
 const INDEX = 'license:subs';
 const usageKey = (id: string) => `license:usage:${id}`;
 const USAGE_INDEX = 'license:usages';
+const machineKey = (machineId: string) => `license:machine:${machineId}`;
 
 /** The storage id for a usage record: the stable install id when present, else the account key. */
 const usageId = (u: Usage): string => (u.installationId?.trim() || u.accountKey || '').trim();
@@ -104,6 +110,13 @@ class RedisStore implements SubscriptionStore {
     if (keys.length === 0) return [];
     const values = await this.redis.mget<Usage[]>(...keys.map(usageKey));
     return values.filter((u): u is Usage => u != null);
+  }
+
+  async ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string> {
+    const existing = await this.redis.get<{ trialStartedAt: string }>(machineKey(machineId));
+    if (existing?.trialStartedAt) return existing.trialStartedAt;
+    await this.redis.set(machineKey(machineId), { trialStartedAt: nowIso });
+    return nowIso;
   }
 }
 
@@ -172,6 +185,25 @@ class FileStore implements SubscriptionStore {
 
   async listUsage(): Promise<Usage[]> {
     return Object.values(this.readUsage());
+  }
+
+  private readonly machinePath = '.license-machine-trials.json';
+
+  private readMachineTrials(): Record<string, { trialStartedAt: string }> {
+    if (!existsSync(this.machinePath)) return {};
+    try {
+      return JSON.parse(readFileSync(this.machinePath, 'utf8')) as Record<string, { trialStartedAt: string }>;
+    } catch {
+      return {};
+    }
+  }
+
+  async ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string> {
+    const all = this.readMachineTrials();
+    if (all[machineId]?.trialStartedAt) return all[machineId].trialStartedAt;
+    all[machineId] = { trialStartedAt: nowIso };
+    writeFileSync(this.machinePath, JSON.stringify(all, null, 2));
+    return nowIso;
   }
 }
 
