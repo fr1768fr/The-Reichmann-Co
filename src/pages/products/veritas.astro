@@ -3,22 +3,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
 
-const description = 'Veritis. An AI built for South African accountants. Accuracy-first, with deep understanding of SA tax law and accounting practice. Currently in research.';
+const description = 'Veritas. An AI built for South African accountants. Accuracy-first, with deep understanding of SA tax law and accounting practice. Currently in research.';
 
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Veritis',
+  name: 'Veritas',
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Artificial Intelligence',
   operatingSystem: 'Web',
-  url: `${SITE.url}/products/veritis`,
-  description: 'Veritis is an AI built for South African accountants, focused on accuracy and deep understanding of SA tax law and accounting practice. Currently in research at The Reichmann Co.',
+  url: `${SITE.url}/products/veritas`,
+  description: 'Veritas is an AI built for South African accountants, focused on accuracy and deep understanding of SA tax law and accounting practice. Currently in research at The Reichmann Co.',
   publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/PreOrder',
-    url: `${SITE.url}/products/veritis`,
+    url: `${SITE.url}/products/veritas`,
   },
 };
 
@@ -28,7 +28,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
     { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.url}/products` },
-    { '@type': 'ListItem', position: 3, name: 'Veritis', item: `${SITE.url}/products/veritis` },
+    { '@type': 'ListItem', position: 3, name: 'Veritas', item: `${SITE.url}/products/veritas` },
   ],
 };
 
@@ -36,10 +36,10 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
 ---
 
 <BaseLayout
-  title="Veritis · The Reichmann Co."
+  title="Veritas · The Reichmann Co."
   description={description}
-  ogImage={`${SITE.url}/og/veritis.png`}
-  ogImageAlt="Veritis, an AI built for South African accountants"
+  ogImage={`${SITE.url}/og/veritas.png`}
+  ogImageAlt="Veritas, an AI built for South African accountants"
   jsonLd={[productSchema, breadcrumbSchema]}
   activeNav="products"
 >
@@ -50,26 +50,26 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
         <span aria-hidden="true">/</span>
         <a href="/products">Products</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">Veritis</span>
+        <span aria-current="page">Veritas</span>
       </nav>
 
-      <div class="veritis-hero">
-        <div class="veritis-hero-meta">
+      <div class="veritas-hero">
+        <div class="veritas-hero-meta">
           <span class="status">
             <span class="status-dot"></span> In Research
           </span>
           <span class="product-category">Accounting Intelligence</span>
         </div>
-        <h1 class="veritis-name">Veritis</h1>
-        <p class="veritis-tagline">Truth, for accountants.</p>
+        <h1 class="veritas-name">Veritas</h1>
+        <p class="veritas-tagline">Truth, for accountants.</p>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container container-prose veritis-intro">
+    <div class="container container-prose veritas-intro">
       <p class="lead">
-        Veritis is an AI built for South African accountants. Accuracy-first,
+        Veritas is an AI built for South African accountants. Accuracy-first,
         grounded in SA tax law and accounting practice, designed for the work
         that actually fills an accountant&rsquo;s week: reconciliations, compliance
         checks, tax queries, audit trails, and explanation of the law behind
@@ -83,12 +83,12 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
       </p>
 
       <aside class="why-name">
-        <span class="eyebrow">Why &ldquo;Veritis&rdquo;</span>
+        <span class="eyebrow">Why &ldquo;Veritas&rdquo;</span>
         <p>
           The name comes from the Latin <em>veritas</em>, meaning truth. We picked
           it deliberately. Accountants spend their careers verifying that the
           numbers reflect reality. An AI that hallucinates is worse than no AI at
-          all for that audience, so Veritis is being built around verifiability:
+          all for that audience, so Veritas is being built around verifiability:
           every answer cites the legislation, the standard, or the source data it
           came from. If it cannot back its claim, it says so.
         </p>
@@ -103,7 +103,7 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
   <section class="section section--inverse closing-cta">
     <div class="container container-wide closing-inner">
       <span class="eyebrow eyebrow--on-dark">Stay close to the work</span>
-      <h2 class="closing-title">Veritis is in research.</h2>
+      <h2 class="closing-title">Veritas is in research.</h2>
       <p class="closing-sub">When early access opens, we will reach out to the accountants on our list first.</p>
       <div class="closing-cta-row">
         <Button href="/contact" variant="inverse" size="lg" arrow>Get in touch</Button>
@@ -114,9 +114,9 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
 </BaseLayout>
 
 <style>
-  .veritis-hero { max-width: 56rem; }
+  .veritas-hero { max-width: 56rem; }
 
-  .veritis-hero-meta {
+  .veritas-hero-meta {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
@@ -124,7 +124,7 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
     margin-bottom: var(--space-6);
   }
 
-  .veritis-name {
+  .veritas-name {
     font-size: clamp(3.5rem, 7vw, 5.5rem);
     font-weight: var(--fw-bold);
     letter-spacing: -0.04em;
@@ -135,7 +135,7 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
     color: transparent;
   }
 
-  .veritis-tagline {
+  .veritas-tagline {
     margin-top: var(--space-4);
     font-size: var(--fs-2xl);
     color: var(--text-secondary);
@@ -173,13 +173,13 @@ const tags = ['AI', 'SA Tax', 'IFRS for SMEs', 'Compliance', 'Audit', 'Reconcili
     color: var(--text-muted);
   }
 
-  .veritis-intro .lead {
+  .veritas-intro .lead {
     color: var(--text-primary);
     font-size: var(--fs-xl);
     line-height: var(--lh-relaxed);
     margin-bottom: var(--space-5);
   }
-  .veritis-intro p {
+  .veritas-intro p {
     color: var(--text-secondary);
     font-size: var(--fs-lg);
     line-height: var(--lh-relaxed);

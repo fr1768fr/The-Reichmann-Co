@@ -37,12 +37,12 @@ const CARDS = [
     url: 'thereichmannco.co.za/products/lumarix',
   },
   {
-    slug: 'veritis',
+    slug: 'veritas',
     eyebrow: 'THE REICHMANN CO.',
-    title: 'Veritis',
+    title: 'Veritas',
     tagline: 'Truth, for accountants.',
     sub: 'An AI built for South African accountants.',
-    url: 'thereichmannco.co.za/products/veritis',
+    url: 'thereichmannco.co.za/products/veritas',
   },
   {
     slug: 'about',
@@ -65,7 +65,7 @@ const CARDS = [
     eyebrow: 'THE REICHMANN CO.',
     title: 'Products',
     tagline: 'Built for the work we know best.',
-    sub: 'Lumarix (ERP) and Veritis (AI for accountants).',
+    sub: 'Lumarix (ERP) and Veritas (AI for accountants).',
     url: 'thereichmannco.co.za/products',
   },
   {
