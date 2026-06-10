@@ -106,7 +106,10 @@ export const POST: APIRoute = async ({ request }) => {
     typeof body.assignToInstallationId === 'string' ? body.assignToInstallationId.trim() : '';
   if (assignToInstallationId) {
     try {
-      await store.setAssignment(assignToInstallationId, accountKey);
+      // Bind the assignment to the device that has been checking in as this install, so the
+      // heartbeat only releases the key to that machine (not to anyone who learns the install id).
+      const boundMachineId = (await store.getUsage(assignToInstallationId))?.machineId ?? null;
+      await store.setAssignment(assignToInstallationId, accountKey, boundMachineId);
       assignedTo = assignToInstallationId;
     } catch (err) {
       console.error('Licence assignment failed (non-fatal):', err);

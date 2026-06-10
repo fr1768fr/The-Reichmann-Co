@@ -1,5 +1,6 @@
 import { getStore, type Subscription } from './store';
 import { signToken, type EntitlementTokenPayload } from './token';
+import { allowRequest, readJsonCapped } from './guard';
 
 // The Lumarix app posts these with camelCase keys (System.Net.Http.Json uses Web defaults).
 interface ActivationBody {
@@ -63,12 +64,12 @@ function tokenFor(sub: Subscription): EntitlementTokenPayload {
  * learns of the lapse and stops honouring it once the cached token's grace window ends.
  */
 export async function handleLicenseRequest(request: Request, opts: { allowInactive: boolean }): Promise<Response> {
-  let body: ActivationBody = {};
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: 'Invalid request body.' }, 400);
+  if (!(await allowRequest(request, opts.allowInactive ? 'refresh' : 'activate'))) {
+    return json({ error: 'Too many requests. Please slow down.' }, 429);
   }
+
+  const body = await readJsonCapped<ActivationBody>(request);
+  if (!body) return json({ error: 'Invalid request body.' }, 400);
 
   const accountKey = typeof body.accountKey === 'string' ? body.accountKey.trim() : '';
   if (!accountKey) return json({ error: 'An account key is required.' }, 400);

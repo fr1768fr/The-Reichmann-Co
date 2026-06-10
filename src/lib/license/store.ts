@@ -49,6 +49,8 @@ export interface SubscriptionStore {
   remove(accountKey: string): Promise<boolean>;
   recordUsage(usage: Usage): Promise<void>;
   listUsage(): Promise<Usage[]>;
+  /** One usage record by its storage id (the install id, else the account key), or null. */
+  getUsage(id: string): Promise<Usage | null>;
   /**
    * Remove one usage record by its storage id (the install id, or the account key for older
    * rows). Lets an admin clear out companies that are no longer in use. Returns false if there
@@ -65,9 +67,14 @@ export interface SubscriptionStore {
    * account key back to that install (keyed by its stable installationId), which then activates
    * via the normal /activate path. Set when an admin issues a licence to a known company.
    */
-  setAssignment(installationId: string, accountKey: string): Promise<void>;
-  /** The account key assigned to this install, if any (returned to it on heartbeat). */
-  getAssignment(installationId: string): Promise<string | null>;
+  setAssignment(installationId: string, accountKey: string, machineId?: string | null): Promise<void>;
+  /**
+   * The account key assigned to this install, returned to it on heartbeat — but only when the
+   * caller presents the same machineId the licence was assigned to, so a guessed/observed
+   * installationId alone cannot retrieve another install's key. Legacy assignments stored without
+   * a bound machineId fall back to the installationId alone.
+   */
+  getAssignment(installationId: string, machineId?: string | null): Promise<string | null>;
   /**
    * Record an "an app update is available — check now" nudge. <paramref name="target"/> is a
    * specific installationId (nudge one company) or the literal "all" (nudge everyone). The app
@@ -80,6 +87,12 @@ export interface SubscriptionStore {
    * this is newer than the one it last acted on.
    */
   getUpdateNudge(installationId: string): Promise<string | null>;
+  /**
+   * Fixed-window rate limit: increment the counter for `bucket` and return whether it is still
+   * within `limit` for the current `windowSec` window. Throttles the unauthenticated endpoints.
+   * Implementations fail open (return true) on any internal error.
+   */
+  hitRateLimit(bucket: string, limit: number, windowSec: number): Promise<boolean>;
 }
 
 const env = (key: string): string | undefined =>
@@ -104,8 +117,27 @@ const NUDGE_TTL_MS = NUDGE_TTL_SEC * 1000;
 const freshNudge = (iso: string | null | undefined): string | null =>
   iso && Date.now() - new Date(iso).getTime() < NUDGE_TTL_MS ? iso : null;
 
+/** Usage/machine telemetry self-expires after a year with no check-in, bounding storage growth from
+ * abandoned or forged installs. It is refreshed on every check-in, so an active install never
+ * disappears. */
+const TELEMETRY_TTL_SEC = 365 * 24 * 60 * 60;
+
 /** The storage id for a usage record: the stable install id when present, else the account key. */
 const usageId = (u: Usage): string => (u.installationId?.trim() || u.accountKey || '').trim();
+
+/**
+ * Merge an incoming usage report onto the existing record. firstSeen is always preserved. A keyless
+ * (trial heartbeat) report must NOT alter a row that already carries a licence (non-empty
+ * accountKey): otherwise anyone who learns a licensed install's id could blank its key, falsify its
+ * company/contact details, or reset its active-user count to hide over-seat use. Such a report only
+ * bumps lastSeen so the install still shows as alive.
+ */
+function mergeUsage(existing: Usage | null | undefined, incoming: Usage): Usage {
+  if (existing && existing.accountKey && !incoming.accountKey) {
+    return { ...existing, lastSeen: incoming.lastSeen };
+  }
+  return { ...incoming, firstSeen: existing?.firstSeen ?? incoming.firstSeen };
+}
 
 /** Build an Upstash Redis client from whichever env var pair is present, or null if none. */
 function redisOrNull(): Redis | null {
@@ -143,8 +175,8 @@ class RedisStore implements SubscriptionStore {
     const id = usageId(usage);
     if (!id) return;
     const existing = await this.redis.get<Usage>(usageKey(id));
-    const merged: Usage = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
-    await this.redis.set(usageKey(id), merged);
+    const merged = mergeUsage(existing, usage);
+    await this.redis.set(usageKey(id), merged, { ex: TELEMETRY_TTL_SEC });
     await this.redis.sadd(USAGE_INDEX, id);
   }
 
@@ -153,6 +185,10 @@ class RedisStore implements SubscriptionStore {
     if (keys.length === 0) return [];
     const values = await this.redis.mget<Usage[]>(...keys.map(usageKey));
     return values.filter((u): u is Usage => u != null);
+  }
+
+  async getUsage(id: string): Promise<Usage | null> {
+    return (await this.redis.get<Usage>(usageKey(id))) ?? null;
   }
 
   async removeUsage(id: string): Promise<boolean> {
@@ -164,17 +200,22 @@ class RedisStore implements SubscriptionStore {
   async ensureMachineTrialStart(machineId: string, nowIso: string): Promise<string> {
     const existing = await this.redis.get<{ trialStartedAt: string }>(machineKey(machineId));
     if (existing?.trialStartedAt) return existing.trialStartedAt;
-    await this.redis.set(machineKey(machineId), { trialStartedAt: nowIso });
+    await this.redis.set(machineKey(machineId), { trialStartedAt: nowIso }, { ex: TELEMETRY_TTL_SEC });
     return nowIso;
   }
 
-  async setAssignment(installationId: string, accountKey: string): Promise<void> {
-    await this.redis.set(assignKey(installationId), { accountKey });
+  async setAssignment(installationId: string, accountKey: string, machineId: string | null = null): Promise<void> {
+    await this.redis.set(assignKey(installationId), { accountKey, machineId });
   }
 
-  async getAssignment(installationId: string): Promise<string | null> {
-    const a = await this.redis.get<{ accountKey: string }>(assignKey(installationId));
-    return a?.accountKey?.trim() || null;
+  async getAssignment(installationId: string, machineId: string | null = null): Promise<string | null> {
+    const a = await this.redis.get<{ accountKey: string; machineId?: string | null }>(assignKey(installationId));
+    const key = a?.accountKey?.trim();
+    if (!key) return null;
+    // Only hand the key back to the device the licence was assigned to. A legacy assignment with no
+    // bound machineId falls back to the installationId alone so it still self-activates.
+    if (a?.machineId && a.machineId !== machineId) return null;
+    return key;
   }
 
   async setUpdateNudge(target: string, nowIso: string): Promise<void> {
@@ -187,6 +228,17 @@ class RedisStore implements SubscriptionStore {
       this.redis.get<{ at: string }>(updateNudgeKey(installationId)),
     ]);
     return laterIso(all?.at ?? null, mine?.at ?? null);
+  }
+
+  async hitRateLimit(bucket: string, limit: number, windowSec: number): Promise<boolean> {
+    try {
+      const key = `license:rl:${bucket}`;
+      const n = await this.redis.incr(key);
+      if (n === 1) await this.redis.expire(key, windowSec);
+      return n <= limit;
+    } catch {
+      return true; // never block a real request because the limiter glitched
+    }
   }
 }
 
@@ -248,13 +300,16 @@ class FileStore implements SubscriptionStore {
     const id = usageId(usage);
     if (!id) return;
     const all = this.readUsage();
-    const existing = all[id];
-    all[id] = { ...usage, firstSeen: existing?.firstSeen ?? usage.firstSeen };
+    all[id] = mergeUsage(all[id], usage);
     writeFileSync(this.usagePath, JSON.stringify(all, null, 2));
   }
 
   async listUsage(): Promise<Usage[]> {
     return Object.values(this.readUsage());
+  }
+
+  async getUsage(id: string): Promise<Usage | null> {
+    return this.readUsage()[id] ?? null;
   }
 
   async removeUsage(id: string): Promise<boolean> {
@@ -286,23 +341,36 @@ class FileStore implements SubscriptionStore {
 
   private readonly assignPath = '.license-assignments.json';
 
-  private readAssignments(): Record<string, string> {
+  private readAssignments(): Record<string, { accountKey: string; machineId: string | null }> {
     if (!existsSync(this.assignPath)) return {};
     try {
-      return JSON.parse(readFileSync(this.assignPath, 'utf8')) as Record<string, string>;
+      const raw = JSON.parse(readFileSync(this.assignPath, 'utf8')) as Record<string, unknown>;
+      const out: Record<string, { accountKey: string; machineId: string | null }> = {};
+      for (const [id, v] of Object.entries(raw)) {
+        if (typeof v === 'string') out[id] = { accountKey: v, machineId: null }; // legacy string form
+        else if (v && typeof v === 'object' && typeof (v as { accountKey?: unknown }).accountKey === 'string') {
+          const o = v as { accountKey: string; machineId?: unknown };
+          out[id] = { accountKey: o.accountKey, machineId: typeof o.machineId === 'string' ? o.machineId : null };
+        }
+      }
+      return out;
     } catch {
       return {};
     }
   }
 
-  async setAssignment(installationId: string, accountKey: string): Promise<void> {
+  async setAssignment(installationId: string, accountKey: string, machineId: string | null = null): Promise<void> {
     const all = this.readAssignments();
-    all[installationId] = accountKey;
+    all[installationId] = { accountKey, machineId };
     writeFileSync(this.assignPath, JSON.stringify(all, null, 2));
   }
 
-  async getAssignment(installationId: string): Promise<string | null> {
-    return this.readAssignments()[installationId]?.trim() || null;
+  async getAssignment(installationId: string, machineId: string | null = null): Promise<string | null> {
+    const a = this.readAssignments()[installationId];
+    const key = a?.accountKey?.trim();
+    if (!key) return null;
+    if (a?.machineId && a.machineId !== machineId) return null;
+    return key;
   }
 
   private readonly updatePath = '.license-update-nudges.json';
@@ -325,6 +393,21 @@ class FileStore implements SubscriptionStore {
   async getUpdateNudge(installationId: string): Promise<string | null> {
     const all = this.readUpdateNudges();
     return laterIso(freshNudge(all[UPDATE_ALL]), freshNudge(all[installationId]));
+  }
+
+  // Dev fallback only: a per-process in-memory window (no shared state across instances). Production
+  // uses RedisStore.hitRateLimit. Good enough to exercise the limiting paths locally.
+  private readonly rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+  async hitRateLimit(bucket: string, limit: number, windowSec: number): Promise<boolean> {
+    const now = Date.now();
+    const b = this.rateBuckets.get(bucket);
+    if (!b || now >= b.resetAt) {
+      this.rateBuckets.set(bucket, { count: 1, resetAt: now + windowSec * 1000 });
+      return true;
+    }
+    b.count += 1;
+    return b.count <= limit;
   }
 }
 

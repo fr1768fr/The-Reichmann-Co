@@ -4,6 +4,7 @@
 // the app ignores the response, so this must never be the reason the app misbehaves.
 import type { APIRoute } from 'astro';
 import { getStore } from '../../../lib/license/store';
+import { allowRequest, readJsonCapped } from '../../../lib/license/guard';
 
 export const prerender = false;
 
@@ -31,12 +32,12 @@ const TRIAL_DAYS = 30;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export const POST: APIRoute = async ({ request }) => {
-  let body: HeartbeatBody = {};
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: 'Invalid request body.' }, 400);
+  if (!(await allowRequest(request, 'heartbeat'))) {
+    return json({ error: 'Too many requests. Please slow down.' }, 429);
   }
+
+  const body = await readJsonCapped<HeartbeatBody>(request);
+  if (!body) return json({ error: 'Invalid request body.' }, 400);
 
   const installationId = typeof body.installationId === 'string' ? body.installationId.trim() : '';
   if (!installationId) return json({ error: 'An installation id is required.' }, 400);
@@ -80,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
   // self-activate via the normal /activate path. Best-effort; never blocks the response.
   let assignedAccountKey: string | null = null;
   try {
-    assignedAccountKey = await getStore().getAssignment(installationId);
+    assignedAccountKey = await getStore().getAssignment(installationId, machineId);
   } catch (err) {
     console.error('Licence assignment lookup failed (non-fatal):', err);
   }
