@@ -43,7 +43,7 @@ const json = (data: unknown, status = 200): Response =>
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-function tokenFor(sub: Subscription): EntitlementTokenPayload {
+function tokenFor(sub: Subscription, installationId: string | null): EntitlementTokenPayload {
   const now = new Date();
   return {
     Company: sub.company,
@@ -54,6 +54,9 @@ function tokenFor(sub: Subscription): EntitlementTokenPayload {
     IssuedAt: now.toISOString(),
     ValidUntil: new Date(now.getTime() + sub.graceDays * DAY_MS).toISOString(),
     ExpiresAt: sub.expiresAt ?? null,
+    // Bind the token to the install that activated, so a copied token cannot license a different
+    // company file (the app rejects a token whose InstallationId is not its own).
+    InstallationId: installationId,
   };
 }
 
@@ -134,7 +137,7 @@ export async function handleLicenseRequest(request: Request, opts: { allowInacti
   }
 
   try {
-    return json({ token: signToken(tokenFor(sub), privateKeyPem), updateNudge });
+    return json({ token: signToken(tokenFor(sub, installationId), privateKeyPem), updateNudge });
   } catch (err) {
     console.error('Token signing failed:', err);
     return json({ error: 'Could not issue a licence token.' }, 500);

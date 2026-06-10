@@ -14,6 +14,7 @@ export interface EntitlementTokenPayload {
   IssuedAt: string; // ISO-8601 UTC
   ValidUntil: string; // ISO-8601 UTC (offline-grace horizon)
   ExpiresAt: string | null; // ISO-8601 UTC licence term end, or null for an open-ended licence
+  InstallationId: string | null; // the install this licence was activated for; null = legacy/unbound
 }
 
 const base64url = (buf: Buffer): string =>
